@@ -3,28 +3,25 @@ import json
 
 from agent import Agent 
 
-
-with open('agent_params.json') as json_file:
-    data_agents = json.load(json_file)
+# Loading agents from JSON file
+with open('agent_params.json') as agents_json:
+    data_agents = json.load(agents_json)
   
-    # Print the type of data variable
-    print("Type:", type(data_agents))
-  
-    # Print the data of dictionary
-    print("\na:", data_agents)
+# Loading topology from JSON file
+with open('topology.json') as conn_json:
+    connections = json.load(conn_json)
 
+# Saving dictionary containing Agent objects 
 agents= {}
 for agent in data_agents:
 	agent_obj=Agent(**agent)
 
 	agents[agent_obj.name]=agent_obj
 
-print(agents)
-
     
-agents['a']. interact([agents['b']],1,5)
+agents['a']. interact([agents.get(key) for key in connections['a']], 1, 5)
 
-print(agents['a'],  agents['b'])
+print(agents['a'], agents['b'], agents['c'])
 
 """
 agent_a=Agent('a',10, 10 ,10)
