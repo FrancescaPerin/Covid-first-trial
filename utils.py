@@ -16,6 +16,4 @@ def check_file(file_name):
 def load_JSON(file_name):
 
 	with open(file_name, 'rt') as agents_json:
-		data_agents = json.load(agents_json)
-
-	return data_agents
+		return json.load(agents_json)
