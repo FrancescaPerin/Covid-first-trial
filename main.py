@@ -4,6 +4,7 @@ import argparse
 
 from agent import Agent 
 from utils import check_file, load_JSON
+from plots import plot_compartment_comparison
 
 
 parser = argparse.ArgumentParser(description='Passing arguments to code.')
@@ -36,13 +37,29 @@ for agent in data_agents:
 
 for i in range(settings['iterations']):
 
-	print(f"Iteration: {i}")
+	#print(f"Iteration: {i}")
 
 	for agent in agents:
+
+		print(agent)
 	    
-		agents[agent]. interact([agents.get(key) for key in connections[agent]], settings['pop_migration'])
+		agents[agent].interact([agents.get(key) for key in connections[agent]], settings['pop_migration'])
+
+		#print(agents)
+
+	#for agent in agents:
+
+		#agent.set_state(agent.state)
 
 		#print(agents['a'], agents['b'], agents['c'])
+
+print(agents['a'].history[:5])
+print(agents['b'].history[:5])
+print(agents['c'].history[:5])
+
+#print(len(agents['a'].history))
+#print(len(agents['b'].history))
+#print(len(agents['c'].history))
 
 
 plot_compartment_comparison(agents, 1, "Exposed")
