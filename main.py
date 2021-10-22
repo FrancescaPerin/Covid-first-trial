@@ -41,21 +41,14 @@ for i in range(settings['iterations']):
 	    
 		agents[agent].interact([agents.get(key) for key in connections[agent]], settings['pop_migration'])
 
-		#print(agents)
-
-	#for agent in agents:
-
-		#agent.set_state(agent.state)
-
-		#print(agents['a'], agents['b'], agents['c'])
+	
+	for agent in agents:
+		agents[agent].set_state(agents[agent].state.next_state(agents[agent].parameters))
+		
 
 print(agents['a'].history[:5])
 print(agents['b'].history[:5])
 print(agents['c'].history[:5])
-
-print(len(agents['a'].history))
-print(len(agents['b'].history))
-print(len(agents['c'].history))
 
 
 plot_compartment_comparison(agents, 1, "Exposed")

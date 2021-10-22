@@ -48,13 +48,13 @@ class Agent:
 
 		new_state= np.append(self.state.SEIR,self.state.set_value('-',value))
 
-		self.set_state(State(*new_state))
+		self.replace_state(State(*new_state))
 
 		return self
 
 	def immigrate (self, mig_agent, value):
 
-		calc_new_seir =  ((mig_agent.state.SEIR * value) + (self.state.SEIR * self.state.N)) / (value + self.state.N)
+		calc_new_seir = ((mig_agent.state.SEIR * value) + (self.state.SEIR * self.state.N)) / (value + self.state.N)
 
 
 		new_state = State(*calc_new_seir,  value + self.state.N)
@@ -63,31 +63,23 @@ class Agent:
 
 	def interact(self, conn_agents, value):
 
-		#print(f"----NEW INTERACTION SELF=={self.name}-------")
-
-
-		#print(f"----BEFORE MIGRATION-------")
-		#print(self.history)
-
 		migration= int(self.state.N * value)
 
-		self=self.emigrate(migration)
+		self.emigrate(migration)
 
 		for agent in conn_agents:
 
 			new_state_agent = agent.immigrate(self, migration/len(conn_agents))
 
 
-			agent.state = new_state_agent
+			agent.replace_state(new_state_agent)
 
-		self.replace_state(self.state.next_state(self.parameters))
+		
+		#self.replace_state(self.state.next_state(self.parameters))
 
-		#print(f"----after MIGRATION-------")
-		#print(self.history)
+		#for agent in conn_agents:
 
-		for agent in conn_agents:
-
-			agent.replace_state(agent.state.next_state(agent.parameters))
+			#agent.replace_state(agent.state.next_state(agent.parameters))
 
 		return self,conn_agents
 
