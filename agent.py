@@ -29,6 +29,16 @@ class Agent:
 
 		return self
 
+	def replace_state(self, state):
+
+		#print(self.name, state)
+
+		self.state=state
+
+		self.__history[-1]=state.to_array
+
+		return self
+
 	@property
 	def history(self):
 
@@ -53,11 +63,11 @@ class Agent:
 
 	def interact(self, conn_agents, value):
 
-		print(f"----NEW INTERACTION SELF=={self.name}-------")
+		#print(f"----NEW INTERACTION SELF=={self.name}-------")
 
 
-		print(f"----BEFORE MIGRATION-------")
-		print(self.history)
+		#print(f"----BEFORE MIGRATION-------")
+		#print(self.history)
 
 		migration= int(self.state.N * value)
 
@@ -74,14 +84,14 @@ class Agent:
 
 			agent.state = new_state_agent
 
-		self.set_state(self.state.next_state(agent.parameters))
+		self.replace_state(self.state.next_state(agent.parameters))
 
-		print(f"----after MIGRATION-------")
-		print(self.history)
+		#print(f"----after MIGRATION-------")
+		#print(self.history)
 
 		for agent in conn_agents:
 
-			agent.set_state(agent.state.next_state(agent.parameters))
+			agent.replace_state(agent.state.next_state(agent.parameters))
 
 		return self,conn_agents
 

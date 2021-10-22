@@ -53,13 +53,13 @@ print(agents['a'].history[:5])
 print(agents['b'].history[:5])
 print(agents['c'].history[:5])
 
-#print(len(agents['a'].history))
-#print(len(agents['b'].history))
-#print(len(agents['c'].history))
+print(len(agents['a'].history))
+print(len(agents['b'].history))
+print(len(agents['c'].history))
 
 
-#plot_compartment_comparison(agents, 1, "Exposed")
-#plot_compartment_comparison(agents, 2, "Infected")
+plot_compartment_comparison(agents, 1, "Exposed")
+plot_compartment_comparison(agents, 2, "Infected")
 
 
 
