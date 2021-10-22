@@ -1,8 +1,9 @@
 import numpy as np
 
 from state import State
+from abc import ABC
 
-class Agent:
+class Agent(ABC):
 
 	def __init__(self, name, state, parameters):
 
@@ -61,6 +62,27 @@ class Agent:
 
 		return new_state
 
+	def interact(self):
+
+		pass
+
+	@property
+	def next_state(self):
+
+		S, E, I, R, N = self.state.to_array
+
+		a, b, g, d, r = [*self.parameters.values()]
+		
+		next_S = S - (r * b * S * I) + (d * R)  # Add fraction of recovered compartment.
+		next_E = E + (r * b * S * I - a * E)
+		next_I = I + (a * E - g * I)
+		next_R = R + (g * I) - (d * R)  # Remove fraction of recovered compartment.
+
+		return State(next_S, next_E, next_I, next_R, N)
+
+
+class Nation(Agent):
+
 	def interact(self, conn_agents, value):
 
 		migration= int(self.state.N * value)
@@ -77,18 +99,5 @@ class Agent:
 
 		return self,conn_agents
 
-	@property
-	def next_state(self):
-
-		S, E, I, R, N = self.state.to_array
-
-		a, b, g, d, r = [*self.parameters.values()]
-		
-		next_S = S - (r * b * S * I) + (d * R)  # Add fraction of recovered compartment.
-		next_E = E + (r * b * S * I - a * E)
-		next_I = I + (a * E - g * I)
-		next_R = R + (g * I) - (d * R)  # Remove fraction of recovered compartment.
-
-		return State(next_S, next_E, next_I, next_R, N)
 
 

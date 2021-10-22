@@ -2,7 +2,7 @@ import numpy
 import json
 import argparse 
 
-from agent import Agent 
+from agent import Agent,Nation 
 from utils import check_file, load_JSON
 from plots import plot_compartment_comparison
 
@@ -31,7 +31,7 @@ agents = {}
 
 for agent in data_agents:
 
-		agent_obj = Agent(**agent)
+		agent_obj = Nation(**agent)
 
 		agents[agent_obj.name]=agent_obj
 
