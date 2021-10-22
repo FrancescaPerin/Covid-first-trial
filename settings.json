@@ -1,3 +1,4 @@
 {"iterations": 80,
-"pop_migration": 0.02
+"pop_migration": 0.02,
+"nation_def": "NationCities"
 }

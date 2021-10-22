@@ -2,7 +2,7 @@ import numpy
 import json
 import argparse 
 
-from agent import Agent,Nation 
+from agent import Agent, Nation, NationCities 
 from utils import check_file, load_JSON
 from plots import plot_compartment_comparison
 
@@ -31,7 +31,14 @@ agents = {}
 
 for agent in data_agents:
 
-		agent_obj = Nation(**agent)
+		if settings['nation_def']=='Nation':
+
+			agent_obj = Nation(**agent)
+
+		elif settings['nation_def']=='NationCities':
+
+			agent_obj = NationCities(**agent)
+
 
 		agents[agent_obj.name]=agent_obj
 
@@ -45,10 +52,6 @@ for i in range(settings['iterations']):
 	for agent in agents:
 		agents[agent].set_state(agents[agent].next_state)
 		
-
-print(agents['a'].history[:5])
-print(agents['b'].history[:5])
-print(agents['c'].history[:5])
 
 
 plot_compartment_comparison(agents, 1, "Exposed")
