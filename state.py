@@ -49,17 +49,3 @@ class State:
 	@property
 	def SEIR(self):
 		return self._state[:4]
-
-
-	def next_state(self, params):
-
-		S, E, I, R, N = self._state
-
-		a, b, g, d, r = [*params.values()]
-		
-		next_S = S - (r * b * S * I) + (d * R)  # Add fraction of recovered compartment.
-		next_E = E + (r * b * S * I - a * E)
-		next_I = I + (a * E - g * I)
-		next_R = R + (g * I) - (d * R)  # Remove fraction of recovered compartment.
-
-		return State(next_S, next_E, next_I, next_R, N)

@@ -43,7 +43,7 @@ for i in range(settings['iterations']):
 
 	
 	for agent in agents:
-		agents[agent].set_state(agents[agent].state.next_state(agents[agent].parameters))
+		agents[agent].set_state(agents[agent].next_state)
 		
 
 print(agents['a'].history[:5])

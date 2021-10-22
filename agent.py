@@ -74,13 +74,21 @@ class Agent:
 
 			agent.replace_state(new_state_agent)
 
-		
-		#self.replace_state(self.state.next_state(self.parameters))
-
-		#for agent in conn_agents:
-
-			#agent.replace_state(agent.state.next_state(agent.parameters))
 
 		return self,conn_agents
+
+	@property
+	def next_state(self):
+
+		S, E, I, R, N = self.state.to_array
+
+		a, b, g, d, r = [*self.parameters.values()]
+		
+		next_S = S - (r * b * S * I) + (d * R)  # Add fraction of recovered compartment.
+		next_E = E + (r * b * S * I - a * E)
+		next_I = I + (a * E - g * I)
+		next_R = R + (g * I) - (d * R)  # Remove fraction of recovered compartment.
+
+		return State(next_S, next_E, next_I, next_R, N)
 
 
