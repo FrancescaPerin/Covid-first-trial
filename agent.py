@@ -9,7 +9,7 @@ class Agent:
 		self.name= name
 		self.state = State(**state)
 		self.parameters = parameters
-		self.__history = [self.state.to_array]
+		self.__history = [self.state.to_array, self.state.to_array]
 	
 	def __repr__ (self):
 

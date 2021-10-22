@@ -7,3 +7,5 @@ __pycache__/agent.cpython-37.pyc
 __pycache__/agent.cpython-37.pyc
 __pycache__/state.cpython-37.pyc
 *.pyc
+*.pyc
+__pycache__/state.cpython-37.pyc
