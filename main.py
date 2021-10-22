@@ -37,11 +37,7 @@ for agent in data_agents:
 
 for i in range(settings['iterations']):
 
-	#print(f"Iteration: {i}")
-
 	for agent in agents:
-
-		print(agent)
 	    
 		agents[agent].interact([agents.get(key) for key in connections[agent]], settings['pop_migration'])
 
@@ -62,8 +58,8 @@ print(agents['c'].history[:5])
 #print(len(agents['c'].history))
 
 
-plot_compartment_comparison(agents, 1, "Exposed")
-plot_compartment_comparison(agents, 2, "Infected")
+#plot_compartment_comparison(agents, 1, "Exposed")
+#plot_compartment_comparison(agents, 2, "Infected")
 
 
 

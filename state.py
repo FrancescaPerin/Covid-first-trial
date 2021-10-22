@@ -30,17 +30,17 @@ class State:
 	def N(self):
 		return self._state[4]
 
-	def set_N(self, sign, value):
+	def set_value(self, sign, value):
 
 		if sign=='+':
 
-			self._state[4] = self.N + value
+			value = self.N + value
 
 		elif sign=='-':
 
-			self._state[4] = self.N - value
+			value = self.N - value
 		
-		return self
+		return value
 
 	@property
 	def to_array(self):
