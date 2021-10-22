@@ -73,10 +73,6 @@ class Agent:
 
 		self=self.emigrate(migration)
 
-
-		#self.set_state(self.state.next_state(self.parameters))
-
-
 		for agent in conn_agents:
 
 			new_state_agent = agent.immigrate(self, migration/len(conn_agents))
@@ -84,7 +80,7 @@ class Agent:
 
 			agent.state = new_state_agent
 
-		self.replace_state(self.state.next_state(agent.parameters))
+		self.replace_state(self.state.next_state(self.parameters))
 
 		#print(f"----after MIGRATION-------")
 		#print(self.history)
