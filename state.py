@@ -2,9 +2,9 @@ import numpy as np
 
 class State:
 
-	def __init__(self, S, E, I, R, N):
+	def __init__(self, S, E, A, I, R, D, N):
 
-		self._state = np.array([S, E, I, R, N])
+		self._state = np.array([S, E, A, I, R, D, N])
 
 	def __repr__(self):
 
@@ -19,16 +19,24 @@ class State:
 		return self._state[1]
 
 	@property
-	def I(self):
+	def A(self):
 		return self._state[2]
 
 	@property
-	def R(self):
+	def I(self):
 		return self._state[3]
 
 	@property
-	def N(self):
+	def R(self):
 		return self._state[4]
+
+	@property
+	def D(self):
+		return self._state[5]
+
+	@property
+	def N(self):
+		return self._state[6]
 
 	def set_value(self, sign, value):
 
@@ -48,4 +56,4 @@ class State:
 
 	@property
 	def SEIR(self):
-		return self._state[:4]
+		return self._state[:6]

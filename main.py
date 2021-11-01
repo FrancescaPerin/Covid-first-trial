@@ -55,9 +55,9 @@ for i in range(settings['iterations']):
 		agents[agent].set_state(agents[agent].next_state)
 		
 
-
+plot_compartment_comparison(agents, 0, "susceptible")
 plot_compartment_comparison(agents, 1, "Exposed")
-plot_compartment_comparison(agents, 2, "Infected")
+plot_compartment_comparison(agents, 3, "Infected")
 
 
 
