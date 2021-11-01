@@ -2,7 +2,8 @@ import numpy
 import json
 import argparse 
 
-from agent import Agent, Nation, NationCities 
+from agent import Agent, Nation
+#from nation_cities import NationCities 
 from utils import check_file, load_JSON
 from plots import plot_compartment_comparison
 
@@ -50,6 +51,7 @@ for i in range(settings['iterations']):
 
 	
 	for agent in agents:
+
 		agents[agent].set_state(agents[agent].next_state)
 		
 

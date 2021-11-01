@@ -18,9 +18,12 @@ class Agent(ABC):
 	
 	def update_history(self, state):
 
+		print(state.to_array)
+
 		self.__history.append(state.to_array)
 
 	def set_state(self, state):
+		print(self.state)
 
 		self.state=state
 
@@ -62,19 +65,9 @@ class Agent(ABC):
 
 		pass
 
-	@property
+	#@property
 	def next_state(self):
-
-		S, E, I, R, N = self.state.to_array
-
-		a, b, g, d, r = [*self.parameters.values()]
-		
-		next_S = S - (r * b * S * I) + (d * R)  # Add fraction of recovered compartment.
-		next_E = E + (r * b * S * I - a * E)
-		next_I = I + (a * E - g * I)
-		next_R = R + (g * I) - (d * R)  # Remove fraction of recovered compartment.
-
-		return State(next_S, next_E, next_I, next_R, N)
+		pass
 
 
 class Nation(Agent):
@@ -95,6 +88,19 @@ class Nation(Agent):
 
 		return self,conn_agents
 
+	@property
+	def next_state(self):
 
+		S, E, I, R, N = self.state.to_array
+
+		a, b, g, d, r = [*self.parameters.values()]
+		
+		next_S = S - (r * b * S * I) + (d * R)  # Add fraction of recovered compartment.
+		next_E = E + (r * b * S * I - a * E)
+		next_I = I + (a * E - g * I)
+		next_R = R + (g * I) - (d * R)  # Remove fraction of recovered compartment.
+
+		print(State(next_S, next_E, next_I, next_R, N))
+		return State(next_S, next_E, next_I, next_R, N)
 
 
