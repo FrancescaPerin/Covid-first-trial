@@ -7,7 +7,7 @@ class NationCities(Agent):
 
 	def interact(self, conn_agents, value):
 
-		migration= int(self.state.N * 0.4)
+		migration= int(self.state.N * value)
 
 		self.emigrate(migration)
 

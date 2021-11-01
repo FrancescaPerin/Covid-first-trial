@@ -22,8 +22,6 @@ class Agent(ABC):
 
 	def set_state(self, state):
 
-		#print(self.name, state)
-
 		self.state=state
 
 		self.update_history(state)
@@ -31,8 +29,6 @@ class Agent(ABC):
 		return self
 
 	def replace_state(self, state):
-
-		#print(self.name, state)
 
 		self.state=state
 
