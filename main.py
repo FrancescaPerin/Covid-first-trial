@@ -11,7 +11,7 @@ from plots import plot_compartment_comparison
 
 parser = argparse.ArgumentParser(description='Passing arguments to code.')
 
-parser.add_argument('--agent_params',type=check_file, default='agent_params.json',
+parser.add_argument('--agent_params',type=check_file, default='agents_SEAIRD.json',
                     help='JSON file with definition of agents parameters')
 parser.add_argument('--topology', type=check_file, default='topology.json',
                     help='JSON file with topology definition of model')
