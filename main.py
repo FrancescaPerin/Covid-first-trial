@@ -2,8 +2,9 @@ import numpy
 import json
 import argparse 
 
-from agent import Agent, Nation
-#from nation_cities import NationCities 
+from nation import Nation
+from agent import Agent
+
 from utils import check_file, load_JSON
 from plots import plot_compartment_comparison
 
@@ -32,14 +33,8 @@ agents = {}
 
 for agent in data_agents:
 
-		if settings['nation_def']=='Nation':
 
-			agent_obj = Nation(**agent)
-
-		elif settings['nation_def']=='NationCities':
-
-			agent_obj = NationCities(**agent)
-
+		agent_obj = Nation(**agent)
 
 		agents[agent_obj.name]=agent_obj
 
