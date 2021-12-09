@@ -7,7 +7,6 @@ import os
 def load_matrix_xlsx(file_name,sheet):
 
 	matrix = pd.read_excel(io=file_name, sheet_name=sheet)
-	#print(matrix.head(5))  # print first 5 rows of the dataframe
 
 	return matrix 
 
