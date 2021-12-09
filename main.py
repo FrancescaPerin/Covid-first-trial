@@ -6,7 +6,7 @@ import os
 from nation import Nation
 from agent import Agent
 
-from utils import check_file, load_JSON
+from utils import check_file, load_JSON, load_contact
 from plots import plot_compartment_comparison
 
 
@@ -36,10 +36,7 @@ agents = {}
 
 for agent in data_agents:
 
-		file=os.path.join(path,'home',agent['name'], 'age_matrix.npy')
-
-		cont_matrix=np.load(file)
-
+		cont_matrix=load_contact(path, agent['name'])
 
 		agent_obj = Nation(cont_matrix, **agent)
 
