@@ -10,3 +10,8 @@ __pycache__/state.cpython-37.pyc
 *.pyc
 __pycache__/state.cpython-37.pyc
 *.pyc
+*.png
+*.png
+*.png
+Preprocessing/age_matrices_152_countries/.DS_Store
+Preprocessing/age_matrices_152_countries/all_locations/.DS_Store

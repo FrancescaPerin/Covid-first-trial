@@ -5,25 +5,27 @@ from abc import ABC
 
 class Agent(ABC):
 
-	def __init__(self, name, state, parameters):
+	def __init__(self, contact_matrix, name, state, parameters):
 
+		self.contact_matrix = contact_matrix
 		self.name= name
 		self.state = State(**state)
 		self.parameters = parameters
 		self.__history = [self.state.to_array, self.state.to_array]
+		self.contact_matrix = contact_matrix
 	
 	def __repr__ (self):
 
-		return "\nAgent %s : \n\t %s,\n\t " % (self.name, self.state)
+		return "\nAgent %s :\n\t Contact matrix:\n\t %s \n\n\t %s,\n\t " % (self.name, self.contact_matrix, self.state)
 	
 	def update_history(self, state):
 
-		print(state.to_array)
+		#print(state.to_array)
 
 		self.__history.append(state.to_array)
 
 	def set_state(self, state):
-		print(self.state)
+		#print(self.state)
 
 		self.state=state
 

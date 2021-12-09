@@ -1,6 +1,7 @@
-import numpy 
+import numpy as np
 import json
 import argparse 
+import os
 
 from nation import Nation
 from agent import Agent
@@ -29,12 +30,20 @@ connections=  load_JSON(args.topology)
 settings = load_JSON(args.settings)
 
 # Saving dictionary containing Agent objects 
+
+path = 'Preprocessing/age_matrices_152_countries'
 agents = {}
 
 for agent in data_agents:
 
+		file=os.path.join(path,'home',agent['name'], 'age_matrix.npy')
 
-		agent_obj = Nation(**agent)
+		cont_matrix=np.load(file)
+
+
+		agent_obj = Nation(cont_matrix, **agent)
+
+		print(agent_obj)
 
 		agents[agent_obj.name]=agent_obj
 
