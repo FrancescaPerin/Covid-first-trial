@@ -15,3 +15,6 @@ __pycache__/state.cpython-37.pyc
 *.png
 Preprocessing/age_matrices_152_countries/.DS_Store
 Preprocessing/age_matrices_152_countries/all_locations/.DS_Store
+Preprocessing/.DS_Store
+Preprocessing/age_matrices_152_countries/.DS_Store
+.DS_Store
