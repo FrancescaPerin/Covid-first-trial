@@ -19,3 +19,6 @@ Preprocessing/.DS_Store
 Preprocessing/age_matrices_152_countries/.DS_Store
 .DS_Store
 Preprocessing/.DS_Store
+*.npy
+*.npy
+*.npy

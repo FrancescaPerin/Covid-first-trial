@@ -3,6 +3,33 @@ import pandas as pd
 import json
 import os 
 
+from pandas import ExcelWriter
+
+def merge_xlsx(file_list):
+
+	with ExcelWriter(file_list[0][:-7]+'.xlsx') as writer:
+
+		data=pd.DataFrame()
+
+		for file in file_list:
+
+			countries = pd.ExcelFile(file).sheet_names
+
+			for country in countries: 
+
+				if file==file_list[1]:
+					col_list = ['X1','X2','X3','X4','X5','X6','X7','X8','X9','X10','X11','X12','X13','X14','X15','X16']
+					converters = {col: str for col in col_list}
+					data=pd.read_excel(file, sheet_name=country, names=col_list, header=None,index_col=0)
+					#data.reset_index(drop=True,inplace=True)
+				else:
+					data=pd.read_excel(file, sheet_name=country,index_col=0)
+					#data.reset_index(drop=True,inplace=True)
+
+				data.to_excel(writer, sheet_name=country)
+	
+		writer.save()
+
 
 def load_matrix_xlsx(file_name,sheet):
 
@@ -10,25 +37,26 @@ def load_matrix_xlsx(file_name,sheet):
 
 	return matrix 
 
+def save_list_json(countries,file_name='countries.json', save_json=False):
 
-def list_countries(file_name, second_file=None, save_json=False):
+	if save_json:
+		with open(file_name, 'w') as f:
+			json.dump(countries, f)
+
+
+def list_countries(file_name):
 
 	countries = pd.ExcelFile(file_name)
 
-	if second_file!=None:
-		countries_2 = pd.ExcelFile(second_file)
-		
-		tot_countries=countries.sheet_names+countries_2.sheet_names
-	else:
+	return countries.sheet_names
 
-		tot_countries=countries.sheet_names
+def remove_countries(list_c, countries):
 
-	if save_json:
-		with open('countries.json', 'w') as f:
-			json.dump(tot_countries, f)
-	
-	return tot_countries
+	for country in countries:
 
+		list_c.remove(countries)
+
+	return list_c
 
 def age_to_group(age_matrix):
 
@@ -47,53 +75,40 @@ def age_to_group(age_matrix):
 
 	return group_matrix
 
-def reformat_all_matrices(locations, path, endings, parent_dir):
+def reformat_all_matrices(countries,location, path, parent_dir):
 
-	max_val=0
-	min_val=1000
+	for country in countries:
 
-	for location in locations:
+		if location=='environment':
 
-		for ending in endings:
+			true_location='all_locations'
+		else:
+			true_location =location
 
-			if location=='environment':
+		new_path = os.path.join(parent_dir,location,country)
 
-					true_location='all_locations'
-			else:
-				true_location =location
+		os.makedirs(new_path, exist_ok = True)
 
-			countries = list_countries(path+true_location+ending, save_json=False)
-
-			for country in countries:
-
-				new_path = os.path.join(parent_dir,location,country)
-
-				os.makedirs(new_path, exist_ok = True)
+		age_matrix=load_matrix_xlsx(path+true_location+'.xlsx', country)
 
 
-				age_matrix=load_matrix_xlsx(path+true_location+ending, country)
+		group_matrix=age_to_group(age_matrix).to_numpy()
 
-				group_matrix=age_to_group(age_matrix).to_numpy()
+		#temp_max=np.amax(group_matrix)
+		#temp_min=np.amin(group_matrix)
 
-				temp_max=np.amax(group_matrix)
-				temp_min=np.amin(group_matrix)
+		if location=='environment':
 
-				if location=='environment':
+			env_matrix=group_matrix/6
 
-					env_matrix=group_matrix/6
+			np.save(new_path+'/age_matrix',env_matrix)
 
-					np.save(new_path+'/age_matrix',env_matrix)
-
-					temp_max=np.amax(env_matrix)
-					temp_min=np.amin(env_matrix)
-
-
-				if temp_max> max_val:
-					max_val=temp_max
-				if temp_min< min_val:
-					min_val=temp_min
-
-	return temp_max, temp_min
+			#temp_max=np.amax(env_matrix)
+			#temp_min=np.amin(env_matrix)
+		else:
+			np.save(new_path+'/age_matrix',group_matrix)
+	
+	print('Done')
 
 
 
