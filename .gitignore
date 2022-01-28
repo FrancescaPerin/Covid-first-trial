@@ -22,3 +22,5 @@ Preprocessing/.DS_Store
 *.npy
 *.npy
 *.npy
+.DS_Store
+Preprocessing/.DS_Store

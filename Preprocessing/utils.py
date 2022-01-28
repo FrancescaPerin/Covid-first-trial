@@ -54,7 +54,7 @@ def remove_countries(list_c, countries):
 
 	for country in countries:
 
-		list_c.remove(countries)
+		list_c.remove(country)
 
 	return list_c
 

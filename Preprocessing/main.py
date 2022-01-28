@@ -11,7 +11,6 @@ path='contact_matrices_152_countries/MUestimates_'
 
 endings=['_1.xlsx','_2.xlsx']
 
-
 #merging the files with same location in one single file
 for location in locations[1:]:
 
@@ -20,18 +19,13 @@ for location in locations[1:]:
 
 	merge_xlsx(files_names)
 
-#print(load_matrix_xlsx(path+locations[0]+'.xlsx', "Albania"))
-
-
-
-
-
-
-#parent_dir='age_matrices_152_countries'
 
 parent_dir='new_matrices_152_countries'
 
-countries = list_countries(path+locations[-1]+'.xlsx')
+countries_mid = list_countries(path+locations[-1]+'.xlsx')
+
+countries = remove_countries(countries_mid,['Taiwan'])
+
 
 for location in locations:
 
@@ -39,4 +33,6 @@ for location in locations:
 
 
 save_list_json(countries,save_json=False)
+
+
 
