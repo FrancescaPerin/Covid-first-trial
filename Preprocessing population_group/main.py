@@ -13,7 +13,6 @@ population=load_population(file)
 countries=country_list(population,True)[:-3]
 
 
-
 file_m = '/Preprocessing/countries.json'
 
 countries_m = load_json(path+file_m)
