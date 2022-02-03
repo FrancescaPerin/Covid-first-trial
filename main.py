@@ -6,7 +6,7 @@ import os
 from nation import Nation
 from agent import Agent
 
-from utils import check_file, load_JSON, load_contact
+from utils import check_file, load_JSON, load_contact, load_pop
 from plots import plot_compartment_comparison
 
 
@@ -31,14 +31,17 @@ settings = load_JSON(args.settings)
 
 # Saving dictionary containing Agent objects 
 
-path = 'Preprocessing/age_matrices_152_countries'
 agents = {}
 
 for agent in data_agents:
 
-		cont_matrix=load_contact(path, agent['name'])
+		#print(agent)
 
-		agent_obj = Nation(cont_matrix, **agent)
+		cont_matrix = load_contact(agent['name'])
+
+		population = load_pop(agent['name'])
+
+		agent_obj = Nation(cont_matrix, population, **agent)
 
 		print(agent_obj)
 

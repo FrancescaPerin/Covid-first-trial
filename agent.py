@@ -5,14 +5,13 @@ from abc import ABC
 
 class Agent(ABC):
 
-	def __init__(self, contact_matrix, name, state, parameters):
+	def __init__(self, contact_matrix, population, name, state, parameters):
 
 		self.contact_matrix = contact_matrix
 		self.name= name
-		self.state = State(**state)
+		self.state = State(population, **state)
 		self.parameters = parameters
 		self.__history = [self.state.to_array, self.state.to_array]
-		self.contact_matrix = contact_matrix
 	
 	def __repr__ (self):
 
