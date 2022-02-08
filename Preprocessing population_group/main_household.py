@@ -3,7 +3,7 @@ import pandas as pd
 import os
 import json
 
-from utils import load_json
+from utils import load_json, summary_table
 
 save_json=True
 
@@ -28,8 +28,6 @@ data['Reference date (dd/mm/yyyy)'] = pd.to_datetime(data['Reference date (dd/mm
 
 common=list(set(old_countries).intersection(new_countries))
 
-#common_2=list(set(old_countries).intersection(new_countries))
-
 
 rest_old=list((set(old_countries)^set(new_countries))& set(old_countries))
 
@@ -43,26 +41,43 @@ countries_list=list()
 for country in common:
 
 	hh_table=data[data['Country or area']== country] ##add here to .drop(to drop columns)
+	avg_table=summary_table(hh_table)
 
-	new_path=os.path.join(path, 'Household data','Tables', country)
-	os.makedirs(new_path, exist_ok = True)
+	if not avg_table.empty :
 
-	np.save(new_path+'/hh_table',hh_table)
-
-	countries_list.append(country)
-
-for country in rest_old:
-
-	if country in countries_fix: 
-
-		hh_table=data[data['Country or area']== country]
-
-		new_path=os.path.join(path, 'Household data','Tables', countries_fix[country])
+		new_path=os.path.join(path, 'Household data','Tables', country)
 		os.makedirs(new_path, exist_ok = True)
 
 		np.save(new_path+'/hh_table',hh_table)
 
-		countries_list.append(countries_fix[country])
+		np.save(new_path+'/avg_table', avg_table)
+
+		countries_list.append(country)
+	else:
+
+			print(f'Country {country} DATA NOT AVAILABLE')
+
+for country in rest_old:
+
+	if country in countries_fix:
+
+		hh_table=data[data['Country or area']== countries_fix[country]]
+
+		avg_table=summary_table(hh_table)
+
+		if not avg_table.empty :
+
+			new_path=os.path.join(path, 'Household data','Tables', country)
+			os.makedirs(new_path, exist_ok = True)
+
+			np.save(new_path+'/hh_table',hh_table)
+			np.save(new_path+'/summary_table',avg_table)
+
+			countries_list.append(countries_fix[country])
+
+		else:
+
+			print(f'Country {country} DATA NOT AVAILABLE')
 
 
 if save_json==True:
