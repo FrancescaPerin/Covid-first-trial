@@ -84,3 +84,34 @@ def norm_home(country, path):
 		sum_home_hh= np.divide(home, arr.reshape(3,1))
 
 	return sum_home_hh
+
+def summary_C(nation, alpha=0.2):
+
+	dict=load_JSON('contact_settings.json')
+
+	p_mom=np.asarray(list(dict.values()))
+
+	p=p_mom * alpha
+
+	X=np.diag(1-p)
+
+	print(p_mom)
+	print('\n')
+	print(p)
+	print('\n')
+	print(X)
+
+
+	k=['school','work','other']
+
+	C=nation.contact_matrix.home
+
+	for i in k:
+
+		m_i=getattr(nation.contact_matrix,i)
+
+		C_i=X@(m_i@X)
+
+		C+=C_i
+
+	return C

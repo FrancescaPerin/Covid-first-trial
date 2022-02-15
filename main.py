@@ -6,7 +6,7 @@ import os
 from nation import Nation
 from agent import Agent
 
-from utils import check_file, load_JSON, load_contact, load_pop
+from utils import check_file, load_JSON, load_contact, load_pop, summary_C
 from plots import plot_compartment_comparison
 
 
@@ -46,6 +46,10 @@ for agent in data_agents:
 		print(agent_obj)
 
 		agents[agent_obj.name]=agent_obj
+
+		summary_C(agent_obj)
+
+
 
 for i in range(settings['iterations']):
 
