@@ -73,7 +73,7 @@ def norm_home(country, path):
 
 	if len(hh_table.columns)>2:
 
-		sum_home_hh=home+ hh_table.to_numpy()[0][2:].reshape(3,1)
+		sum_home_hh=np.divide(home, hh_table.to_numpy()[0][2:].reshape(3,1))
 
 	else:
 		
@@ -81,6 +81,6 @@ def norm_home(country, path):
 
 		arr= np.repeat(avg/3, 3) # child, adult, senior, distributed equally across households (Assumption)
 
-		sum_home_hh=home + arr.reshape(3,1)
+		sum_home_hh= np.divide(home, arr.reshape(3,1))
 
 	return sum_home_hh
