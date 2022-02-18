@@ -1,6 +1,7 @@
 import numpy as np
 
 from state import State
+from contact_m import Population
 from abc import ABC
 
 class Agent(ABC):
@@ -47,15 +48,22 @@ class Agent(ABC):
 
 	def emigrate (self, value):
 
-		new_state= np.append(self.state.SEIR,self.state.set_value('-',value))
+		new_state= State(Population(*self.state.set_value('-',value)), *self.state.SEAIRDV)
 
-		self.replace_state(State(*new_state))
+		#np.append(self.state.SEAIRDV)
+
+
+		#print(self.state.SEAIRDV)
+
+		print(new_state)
+
+		self.replace_state(new_state)
 
 		return self
 
 	def immigrate (self, mig_agent, value):
 
-		calc_new_seir = ((mig_agent.state.SEIR * value) + (self.state.SEIR * self.state.N)) / (value + self.state.N)
+		calc_new_seir = ((mig_agent.state.SEAIRDV * value) + (self.state.SEAIRDV * self.state.N)) / (value + self.state.N)
 
 
 		new_state = State(*calc_new_seir,  value + self.state.N)

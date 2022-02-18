@@ -54,11 +54,11 @@ class State:
 
 		if sign=='+':
 
-			value = self.N + value
+			value = self.N.pop_to_array + value
 
 		elif sign=='-':
 
-			value = self.N - value
+			value = self.N.pop_to_array - value
 		
 		return value
 
@@ -68,4 +68,4 @@ class State:
 
 	@property
 	def SEAIRDV(self):
-		return self._state[1:]
+		return np.row_stack(self._state[1:])

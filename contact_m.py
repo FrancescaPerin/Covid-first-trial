@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+import numpy as np
 
 @dataclass
 class contactMatrix:
@@ -37,3 +38,9 @@ class Population:
 			pop_s: %s, \n
 			pop_tot: %s, \n
 			""" % ( self.pop_c, self.pop_a, self.pop_s, self.pop_tot)
+
+	@property
+	def pop_to_array(self):
+
+		return np.array([self.pop_c, self.pop_a, self.pop_s, self.pop_tot])
+
