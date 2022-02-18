@@ -54,11 +54,11 @@ class State:
 
 		if sign=='+':
 
-			value = self.N.pop_to_array + value
+			value = self.N + value
 
 		elif sign=='-':
 
-			value = self.N.pop_to_array - value
+			value = self.N - value
 		
 		return value
 

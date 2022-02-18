@@ -37,13 +37,13 @@ for agent in data_agents:
 
 		cont_matrix = load_contact(agent['name'])
 
-		population = load_pop(agent['name'])
+		population = load_pop(agent['name'], settings['age_group'])
 
 		print(agent)
 
 		if settings['age_group'] == True:
 
-			pop_perc = np.array([population.pop_c, population.pop_a, population.pop_s])/population.pop_tot
+			pop_perc = population/population.sum()
 
 			for key, value in agent['state'].items():
 

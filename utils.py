@@ -5,7 +5,7 @@ import pandas as pd
 
 from sys import exit
 
-from contact_m import contactMatrix, Population
+from contact_m import contactMatrix
 
 def check_file(file_name):
 
@@ -40,7 +40,7 @@ def load_contact(country):
 
 	return contactMatrix(country, home, work, school, other,env, all_l)
 
-def load_pop(country):
+def load_pop(country, age_group=False):
 
 	path = 'Preprocessing population_group/Tables'
 
@@ -60,7 +60,7 @@ def load_pop(country):
 		if row.count() < 3:
 			empty_row +=1
 
-	return Population(*df['2020'].to_numpy())
+	return df['2020'].to_numpy()[:3] if age_group else df['2020'].to_numpy()[-1]
 
 
 def norm_home(country, path):

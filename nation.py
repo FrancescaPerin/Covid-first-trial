@@ -7,8 +7,8 @@ class Nation(Agent):
 
 	def interact(self, conn_agents, value):
 
-		print(self.state.N.pop_to_array)
-		migration= self.state.N.pop_to_array * value
+		print(self.state.N)
+		migration= self.state.N * value
 
 		self.emigrate(migration)
 

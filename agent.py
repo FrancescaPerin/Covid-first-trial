@@ -1,7 +1,6 @@
 import numpy as np
 
 from state import State
-from contact_m import Population
 from abc import ABC
 
 class Agent(ABC):
@@ -48,7 +47,7 @@ class Agent(ABC):
 
 	def emigrate (self, value):
 
-		new_state= State(Population(*self.state.set_value('-',value)), *self.state.SEAIRDV)
+		new_state= State(self.state.set_value('-',value), *self.state.SEAIRDV)
 
 		#np.append(self.state.SEAIRDV)
 
