@@ -2,13 +2,14 @@ import numpy as np
 
 class State:
 
-	def __init__(self, N, S, E, A, I, R, D):
+	def __init__(self, N, S, E, A, I, R, D, V):
 
-		self._state = np.array([ N, S, E, A, I, R, D])
+		self._state = np.array([ N, S, E, A, I, R, D, V])
+		#self._state = [N, self.SEAIRDV()/ self.SEAIRDV.sum()] 
 
 	def __repr__(self):
 
-		return "Population:  %s \n \t SEAIRD:	%s" % (self.N, self.SEAIRD )
+		return "Population:  %s \n \t SEAIRDV:	%s" % (self.N, self.SEAIRDV )
 
 	@property
 	def N(self):
@@ -38,6 +39,10 @@ class State:
 	def D(self):
 		return self._state[6]
 
+	@property
+	def D(self):
+		return self._state[7]
+
 
 	def set_N(self, N):
 
@@ -62,5 +67,5 @@ class State:
 		return self._state
 
 	@property
-	def SEAIRD(self):
+	def SEAIRDV(self):
 		return self._state[1:]

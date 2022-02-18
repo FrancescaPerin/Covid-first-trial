@@ -95,13 +95,6 @@ def summary_C(nation, alpha=0.2):
 
 	X=np.diag(1-p)
 
-	print(p_mom)
-	print('\n')
-	print(p)
-	print('\n')
-	print(X)
-
-
 	k=['school','work','other']
 
 	C=nation.contact_matrix.home

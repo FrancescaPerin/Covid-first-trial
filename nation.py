@@ -31,12 +31,14 @@ class Nation(Agent):
 		g=infected/aymptomatic recovery rate
 		d=infected die rate
 		e=
-		k="""
+		k=
+		w_a, w_m= environment transmission
+		"""
 
 
-		S, E, A, I, R, D, N = self.state.to_array
+		S, E, A, I, R, D, V, N = self.state.to_array
 
-		b, n, c, s, g, d, e, k = [*self.parameters.values()]
+		b, n, c, s, g, d, e, k, w_a, w_i = [*self.parameters.values()]
 
 
 		
@@ -46,5 +48,22 @@ class Nation(Agent):
 		next_I = I + (e * k * E) - (g + d + n) * I
 		next_R = R + (g * (A + I)) - (n * R) 
 		next_D = D + d * I  # Remove fraction of recovered compartment.
+		next_V = w_a*A+w_i*I
 
-		return State(next_S, next_E, next_A, next_I, next_R, next_D, N)
+		"""
+		next_S_i= S_i - b*S*(C*V)    - n * S_i - n * (1 - D_i)
+
+		next_E_i = E_i 
+
+		next_A_i = A_i + (1- e) * k * E_i - (g + n) * A_i
+
+		next_I_i = I_i + (e * k * E_i) - (g +d + n)* A
+
+		next_R_i = R_i +(g * (A_i + I_i)) - n * (R_i)
+
+		next_D_i = D_i + d * I_i
+
+		next_V_i = (w_a * A_i) + (w_i * I_i) 
+		"""
+
+		return State(next_S, next_E, next_A, next_I, next_R, next_D, next_V, N)

@@ -35,11 +35,19 @@ agents = {}
 
 for agent in data_agents:
 
-		#print(agent)
-
 		cont_matrix = load_contact(agent['name'])
 
 		population = load_pop(agent['name'])
+
+		print(agent)
+
+		if settings['age_group'] == True:
+
+			pop_perc = np.array([population.pop_c, population.pop_a, population.pop_s])/population.pop_tot
+
+			for key, value in agent['state'].items():
+
+				agent['state'][key] = pop_perc*value
 
 		agent_obj = Nation(cont_matrix, population, **agent)
 
