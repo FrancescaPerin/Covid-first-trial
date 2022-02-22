@@ -5,9 +5,11 @@ from abc import ABC
 
 class Agent(ABC):
 
-	def __init__(self, contact_matrix, population, name, state, parameters):
+	def __init__(self, contact_matrix, population, C, name, state, parameters):
 
 		self.contact_matrix = contact_matrix
+		self.population = population
+		self.C= C
 		self.name= name
 		self.state = State(population, **state)
 		self.parameters = parameters
@@ -19,12 +21,9 @@ class Agent(ABC):
 	
 	def update_history(self, state):
 
-		#print(state.to_array)
-
 		self.__history.append(state.to_array)
 
 	def set_state(self, state):
-		#print(self.state)
 
 		self.state=state
 
@@ -49,14 +48,9 @@ class Agent(ABC):
 
 		new_state= State(self.state.set_value('-',value), *self.state.SEAIRDV)
 
-		#np.append(self.state.SEAIRDV)
-
-
-		#print(self.state.SEAIRDV)
-
-		print(new_state)
 
 		self.replace_state(new_state)
+
 
 		return self
 
@@ -65,7 +59,7 @@ class Agent(ABC):
 		calc_new_seir = ((mig_agent.state.SEAIRDV * value) + (self.state.SEAIRDV * self.state.N)) / (value + self.state.N)
 
 
-		new_state = State(*calc_new_seir,  value + self.state.N)
+		new_state = State(value + self.state.N, *calc_new_seir)
 
 		return new_state
 

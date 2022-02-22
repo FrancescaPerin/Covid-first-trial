@@ -1,4 +1,3 @@
 {"Italy": ["Germany"],
-	"Germany":["Spain"],
-	"Spain":["Italy"]
+	"Germany":["Italy"]
 }

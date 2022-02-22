@@ -39,7 +39,6 @@ for agent in data_agents:
 
 		population = load_pop(agent['name'], settings['age_group'])
 
-		print(agent)
 
 		if settings['age_group'] == True:
 
@@ -49,13 +48,13 @@ for agent in data_agents:
 
 				agent['state'][key] = pop_perc*value
 
-		agent_obj = Nation(cont_matrix, population, **agent)
 
-		print(agent_obj)
+		C=summary_C(cont_matrix)
+		agent_obj = Nation(cont_matrix, population, C, **agent)
+
+		#print(agent_obj)
 
 		agents[agent_obj.name]=agent_obj
-
-		summary_C(agent_obj)
 
 
 

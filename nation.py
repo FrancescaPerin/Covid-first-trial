@@ -7,7 +7,6 @@ class Nation(Agent):
 
 	def interact(self, conn_agents, value):
 
-		print(self.state.N)
 		migration= self.state.N * value
 
 		self.emigrate(migration)
@@ -37,7 +36,7 @@ class Nation(Agent):
 		"""
 
 
-		S, E, A, I, R, D, V, N = self.state.to_array
+		N, S, E, A, I, R, D, V = self.state.to_array
 
 		b, n, c, s, g, d, e, k, w_a, w_i = [*self.parameters.values()]
 
@@ -52,10 +51,9 @@ class Nation(Agent):
 		next_V = w_a*A+w_i*I
 		"""
 
-		print('Next State being computed')
-		next_S= S - b * S * (C @ V + C @ ((A + I) /N[:2])) - n * S_i - n * (1 - D_i)
+		next_S= S - b * S * (self.C @ V + self.C @ ((A + I) /N.sum())) - n * S - n * (1 - D)
 
-		next_E = E_i + b * S * (C @ V + C @ ((A + I) /N[:2])) - (k + n) * E
+		next_E = E + b * S * ( self.C @ V +  self.C @ ((A + I) /N.sum())) - (k + n) * E
 
 		next_A= A + (1 - e) * k * E - (g + n) * A
 
@@ -67,4 +65,4 @@ class Nation(Agent):
 
 		next_V= (w_a * A) + (w_i * I) 
 		
-		return State(next_S, next_E, next_A, next_I, next_R, next_D, next_V, N)
+		return State(N, next_S, next_E, next_A, next_I, next_R, next_D, next_V)
