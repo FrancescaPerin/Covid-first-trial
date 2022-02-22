@@ -52,11 +52,7 @@ class Nation(Agent):
 		next_V = w_a*A+w_i*I
 		"""
 
-		print(S)
-
-		print('\n\n\n\n\n\n\n\n\n\n\n\n\n PORCODIO \n\n\n\n\n\n\n\n\n\n\n\n')
-
-		exit(0)
+		print('Next State being computed')
 		next_S= S - b * S * (C @ V + C @ ((A + I) /N[:2])) - n * S_i - n * (1 - D_i)
 
 		next_E = E_i + b * S * (C @ V + C @ ((A + I) /N[:2])) - (k + n) * E
