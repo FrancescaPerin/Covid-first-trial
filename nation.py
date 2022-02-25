@@ -30,8 +30,8 @@ class Nation(Agent):
 		s= measuring effect of isolation policy
 		g=infected/aymptomatic recovery rate
 		d=infected die rate
-		e=
-		k=
+		e= p
+		k= alpha
 		w_a, w_m= environment transmission
 		"""
 

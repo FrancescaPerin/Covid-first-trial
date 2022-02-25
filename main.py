@@ -52,8 +52,6 @@ for agent in data_agents:
 		C=summary_C(cont_matrix)
 		agent_obj = Nation(cont_matrix, population, C, **agent)
 
-		#print(agent_obj)
-
 		agents[agent_obj.name]=agent_obj
 
 
