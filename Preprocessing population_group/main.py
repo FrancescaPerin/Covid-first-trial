@@ -31,6 +31,8 @@ for country in common:
 
 	pop_table=population[population['Country Name']== country].drop(columns=['Country Code', 'Series Code'])
 
+	pop_table.sort_values(by=['Series Name'], inplace=True)
+
 	new_path=os.path.join(path,'Preprocessing population_group', 'Tables', country)
 	os.makedirs(new_path, exist_ok = True)
 
@@ -39,6 +41,8 @@ for country in common:
 for country in rem_countries:
 
 	pop_table=population[population['Country Name']== country].drop(columns=['Country Code', 'Series Code'])
+
+	pop_table.sort_values(by=['Series Name'], inplace=True)
 
 	new_path=os.path.join(path,'Preprocessing population_group', 'Tables', countries_fix[country])
 	os.makedirs(new_path, exist_ok = True)
