@@ -33,15 +33,7 @@ class Nation(Agent):
 		e= p
 		k= alpha
 		w_a, w_m= environment transmission
-		"""
 
-
-		N, S, E, A, I, R, D, V = self.state.to_array
-
-		b, n, c, s, g, d, e, k, w_a, w_i = [*self.parameters.values()]
-
-
-		"""
 		next_S = S - (b * S * c) * (s * I + E + A) - (n * S) + (n * (1 - D))  # Add fraction of recovered compartment.
 		next_E = E + (b * c * S) * (s * I + E + A) - (k + n)*E
 		next_A = A + (1 - e) * k * E - (g + n) * A
@@ -51,18 +43,38 @@ class Nation(Agent):
 		next_V = w_a*A+w_i*I
 		"""
 
-		next_S= S - b * S * (self.C @ V + self.C @ ((A + I) /N.sum())) - n * S - n * (1 - D)
 
-		next_E = E + b * S * ( self.C @ V +  self.C @ ((A + I) /N.sum())) - (k + n) * E
+		N, S, E, A, I, R, D, V = self.state.to_array
 
-		next_A= A + (1 - e) * k * E - (g + n) * A
+		b, n, c, s, g, d, e, k, w_a, w_i = [*self.parameters.values()]
 
-		next_I= I + (e * k * E) - (g +d + n)* I
+		if len([self.C])==1:
 
-		next_R= R +(g * (A + I)) - (n * R)
+			next_S = S - b[1] * S * (self.C * V + self.C *(A + I)) - n * S - n * (1 - D)
 
-		next_D= D + d * I 
+			next_E = E + b[1] * S * ( self.C * V +  self.C * (A + I)) - (k + n) * E
 
-		next_V= (w_a * A) + (w_i * I) 
+			
+
+		else:
+
+			next_S = S - b * S * (self.C @ V + self.C @ ((A + I) /N.sum())) - n * S - n * (1 - D)
+
+			next_E = E + b * S * ( self.C @ V +  self.C @ ((A + I) /N.sum())) - (k + n) * E
+
+
+		next_A = A + (1 - e) * k * E - (g + n) * A
+
+		next_I = I + (e * k * E) - (g +d + n)* I
+
+		next_R = R +(g * (A + I)) - (n * R)
+
+		next_D = D + d * I 
+
+		next_V = (w_a * A) + (w_i * I) 
+
+		#if next_S+next_E+next_A+next_I+next_R+next_D>1:
+
+			#exit(0)
 		
 		return State(N, next_S, next_E, next_A, next_I, next_R, next_D, next_V)

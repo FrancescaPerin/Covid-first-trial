@@ -1,5 +1,5 @@
 {"iterations": 200,
 "pop_migration": 0.02,
 "nation_def": "Nation",
-"age_group": true
+"age_group": false
 }

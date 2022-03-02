@@ -7,7 +7,7 @@ from nation import Nation
 from agent import Agent
 
 from utils import check_file, load_JSON, load_contact, load_pop, summary_C
-from plots import plot_compartment_comparison
+from plots import plot_age_compartment_comparison, plot_compartment_comparison
 
 
 parser = argparse.ArgumentParser(description='Passing arguments to code.')
@@ -39,7 +39,6 @@ for agent in data_agents:
 
 		population = load_pop(agent['name'], settings['age_group'])
 
-
 		if settings['age_group'] == True:
 
 			pop_perc = population/population.sum()
@@ -48,8 +47,12 @@ for agent in data_agents:
 
 				agent['state'][key] = pop_perc*value
 
+		C=summary_C(cont_matrix,alpha=0.2)
 
-		C=summary_C(cont_matrix)
+		if settings['age_group'] == False:
+
+			C=0.8
+
 		agent_obj = Nation(cont_matrix, population, C, **agent)
 
 		agents[agent_obj.name]=agent_obj
@@ -68,9 +71,16 @@ for i in range(settings['iterations']):
 		agents[agent].set_state(agents[agent].next_state)
 		
 
-plot_compartment_comparison(agents, 0, "susceptible")
-plot_compartment_comparison(agents, 1, "Exposed")
-plot_compartment_comparison(agents, 3, "Infected")
+if settings['age_group']==True:
+	plot_age_compartment_comparison( agents, 0, "Susceptible")
+	plot_age_compartment_comparison( agents, 1, "Exposed")
+	plot_age_compartment_comparison( agents, 3, "Infected")
+
+else:
+	plot_compartment_comparison( agents, 0, "Susceptible")
+	plot_compartment_comparison( agents, 1, "Exposed")
+	plot_compartment_comparison( agents, 3, "Infected")
+
 
 
 
