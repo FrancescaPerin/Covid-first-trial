@@ -13,8 +13,6 @@ def plot_age_compartment_comparison(agents, idx, comp_name):
     # Plot desired compartment
     for i, curr_agent in enumerate(agents):
 
-        print(f'{curr_agent}--{agents[curr_agent].population}')
-
         arr_filter = np.asarray(agents[curr_agent].history[:,1:,:])[:,idx:, :] > 0.001
 
         axs[i].plot(agents[curr_agent].history[:,1:,:][:,idx, 0])
@@ -38,8 +36,6 @@ def plot_compartment_comparison(agents, idx, comp_name):
 
     # Plot desired compartment
     for curr_agent in agents:
-
-        #print(np.asarray(agents[curr_agent].history[:,1:])[:, idx])
 
         arr_filter = np.asarray(agents[curr_agent].history[:,1:])[:, idx] > 0.001
 
