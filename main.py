@@ -18,6 +18,8 @@ parser.add_argument('--topology', type=check_file, default='topology.json',
                     help='JSON file with topology definition of model')
 parser.add_argument('--settings', type=check_file, default='settings.json',
                     help='JSON file with settings of outer model')
+parser.add_argument('--cont_params', type=check_file, default='contact_settings.json',
+                    help='JSON file with settings of outer model')
 
 args = parser.parse_args()
 
@@ -28,6 +30,8 @@ data_agents = load_JSON(args.agent_params)
 connections=  load_JSON(args.topology)
 
 settings = load_JSON(args.settings)
+
+cont_params = np.asarray(list(load_JSON(args.cont_params).values()))
 
 # Saving dictionary containing Agent objects 
 
@@ -54,9 +58,9 @@ for agent in data_agents:
 			C = np.array(0.8)
 		else:
 
-			C=summary_C(cont_matrix,alpha=0.2)
+			C=summary_C(cont_matrix, cont_params, alpha=0.2)
 
-		agent_obj = Nation(cont_matrix, population, C, **agent)
+		agent_obj = Nation(cont_matrix, cont_params, population, C, **agent)
 
 		agents[agent_obj.name]=agent_obj
 

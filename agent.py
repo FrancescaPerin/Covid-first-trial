@@ -5,9 +5,10 @@ from abc import ABC
 
 class Agent(ABC):
 
-	def __init__(self, contact_matrix, population, C, name, state, parameters):
+	def __init__(self, contact_matrix, cont_param, population, C,  name, state, parameters):
 
 		self.contact_matrix = contact_matrix
+		self.cont_param = cont_param
 		self.population = population
 		self.C= C
 		self.name= name

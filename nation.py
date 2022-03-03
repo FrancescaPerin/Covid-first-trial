@@ -26,13 +26,15 @@ class Nation(Agent):
 		"""
 		ß= rate of transmission
 		n= natural death rate
-		c(t)=mitigation policies factor
+		alpha / c(t)= containment policy 
 		s= measuring effect of isolation policy
 		g=infected/aymptomatic recovery rate
 		d=infected die rate
-		e= p
-		k= alpha
-		w_a, w_m= environment transmission
+		e= 
+		k= 
+		w_a, w_m= environment contamination
+		f = lost immunity ratio
+		rho= removal environment contamination
 
 		next_S = S - (b * S * c) * (s * I + E + A) - (n * S) + (n * (1 - D))  # Add fraction of recovered compartment.
 		next_E = E + (b * c * S) * (s * I + E + A) - (k + n)*E
@@ -46,19 +48,22 @@ class Nation(Agent):
 
 		N, S, E, A, I, R, D, V = self.state.to_array
 
-		b, n, c, s, g, d, e, k, w_a, w_i, p = [*self.parameters.values()]
+		p = self.cont_param
+
+
+		b, n, c, s, g, d, e, k, w_a, w_i, f , rho = [*self.parameters.values()]
 
 		if self.C.shape!=(3,3):
 
-			next_S = S - sum(b) * S * (self.C * V + self.C * (A + I)) - n * S - n * (1 - D) + 0.0035 * R
+			p = p[1] #select p value of adult since without age groups all populations will be considered adult of working age 
+
+			next_S = S - sum(b) * S * (self.C * V + self.C * (A + I)) - n * S - n * (1 - D) + f * R
 
 			next_E = E + sum(b) * S * (self.C * V + self.C * (A + I)) - (k + n) * E
 
-
 		else:
 
-
-			next_S = S - b * S * (self.C @ V + self.C @ ((A + I) / N.sum())) - n * S - n * (1 - D) + 0.0035 * R 
+			next_S = S - b * S * (self.C @ V + self.C @ ((A + I) / N.sum())) - n * S - n * (1 - D) + f * R 
 
 			next_E = E + b * S * (self.C @ V + self.C @ ((A + I) / N.sum())) - (k + n) * E
 
@@ -66,11 +71,11 @@ class Nation(Agent):
 
 		next_I = I + (e * k * E) - (g + d + n) * I
 
-		next_R = R + (g * (A + I)) - (n * R) - 0.0035 * R
+		next_R = R + (g * (A + I)) - (n * R) - f * R
 
 		next_D = D + d * I 
 
-		next_V = (w_a * A) + (w_i * I) - p * V
+		next_V = (w_a * (1-p) * A) + (w_i * (1-p) * I) - rho * V
 
 		#if next_S+next_E+next_A+next_I+next_R+next_D>1:
 

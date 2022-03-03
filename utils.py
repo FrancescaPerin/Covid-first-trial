@@ -85,26 +85,22 @@ def norm_home(country, path):
 
 	return sum_home_hh
 
-def summary_C(contact_matrix, alpha=0.2):
+def summary_C(contact_matrix, cont_params, alpha=0.2):
 
-	dict=load_JSON('contact_settings.json')
+	p = cont_params * alpha
 
-	p_mom=np.asarray(list(dict.values()))
+	X = np.diag(1-p)
 
-	p=p_mom * alpha
+	k = ['school','work','other']
 
-	X=np.diag(1-p)
-
-	k=['school','work','other']
-
-	C=contact_matrix.home
+	C = contact_matrix.home
 
 	for i in k:
 
-		m_i=getattr(contact_matrix,i)
+		m_i = getattr(contact_matrix,i)
 
-		C_i=X@(m_i@X)
+		C_i = X @ (m_i @ X)
 
-		C+=C_i
+		C += C_i
 
 	return C
