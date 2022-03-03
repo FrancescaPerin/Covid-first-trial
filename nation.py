@@ -46,32 +46,31 @@ class Nation(Agent):
 
 		N, S, E, A, I, R, D, V = self.state.to_array
 
-		b, n, c, s, g, d, e, k, w_a, w_i = [*self.parameters.values()]
+		b, n, c, s, g, d, e, k, w_a, w_i, p = [*self.parameters.values()]
 
-		if len([self.C])==1:
+		if self.C.shape!=(3,3):
 
-			next_S = S - b[1] * S * (self.C * V + self.C *(A + I)) - n * S - n * (1 - D)
+			next_S = S - sum(b) * S * (self.C * V + self.C * (A + I)) - n * S - n * (1 - D) + 0.0035 * R
 
-			next_E = E + b[1] * S * ( self.C * V +  self.C * (A + I)) - (k + n) * E
+			next_E = E + sum(b) * S * (self.C * V + self.C * (A + I)) - (k + n) * E
 
-			
 
 		else:
 
-			next_S = S - b * S * (self.C @ V + self.C @ ((A + I) /N.sum())) - n * S - n * (1 - D)
 
-			next_E = E + b * S * ( self.C @ V +  self.C @ ((A + I) /N.sum())) - (k + n) * E
+			next_S = S - b * S * (self.C @ V + self.C @ ((A + I) / N.sum())) - n * S - n * (1 - D) + 0.0035 * R 
 
+			next_E = E + b * S * (self.C @ V + self.C @ ((A + I) / N.sum())) - (k + n) * E
 
-		next_A = A + (1 - e) * k * E - (g + n) * A
+		next_A = A + (1 - e) * k * E - (g + n) * A 
 
-		next_I = I + (e * k * E) - (g +d + n)* I
+		next_I = I + (e * k * E) - (g + d + n) * I
 
-		next_R = R +(g * (A + I)) - (n * R)
+		next_R = R + (g * (A + I)) - (n * R) - 0.0035 * R
 
 		next_D = D + d * I 
 
-		next_V = (w_a * A) + (w_i * I) 
+		next_V = (w_a * A) + (w_i * I) - p * V
 
 		#if next_S+next_E+next_A+next_I+next_R+next_D>1:
 

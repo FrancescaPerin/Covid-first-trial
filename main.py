@@ -47,11 +47,14 @@ for agent in data_agents:
 
 				agent['state'][key] = pop_perc*value
 
-		C=summary_C(cont_matrix,alpha=0.2)
+		
 
 		if settings['age_group'] == False:
 
-			C=0.8
+			C = np.array(0.8)
+		else:
+
+			C=summary_C(cont_matrix,alpha=0.2)
 
 		agent_obj = Nation(cont_matrix, population, C, **agent)
 
@@ -75,6 +78,7 @@ if settings['age_group']==True:
 	plot_age_compartment_comparison( agents, 0, "Susceptible")
 	plot_age_compartment_comparison( agents, 1, "Exposed")
 	plot_age_compartment_comparison( agents, 3, "Infected")
+	plot_age_compartment_comparison( agents, 4, "Recovered")
 
 else:
 	plot_compartment_comparison( agents, 0, "Susceptible")
