@@ -77,8 +77,5 @@ class Nation(Agent):
 
 		next_V = (w_a * (1-p) * A) + (w_i * (1-p) * I) - rho * V
 
-		#if next_S+next_E+next_A+next_I+next_R+next_D>1:
-
-			#exit(0)
 		
 		return State(N, next_S, next_E, next_A, next_I, next_R, next_D, next_V)
