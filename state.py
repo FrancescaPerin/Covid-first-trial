@@ -2,14 +2,14 @@ import numpy as np
 
 class State:
 
-	def __init__(self, N, S, E, A, I, R, D, V):
+	def __init__(self, N, S, E, A, I, R, D, V, loss):
 
-		self._state = np.array([ N, S, E, A, I, R, D, V])
+		self._state = np.array([ N, S, E, A, I, R, D, V, loss])
 		#self._state = [N, self.SEAIRDV()/ self.SEAIRDV.sum()] 
 
 	def __repr__(self):
 
-		return "Population:  %s \n \t SEAIRDV:	%s" % (self.N, self.SEAIRDV )
+		return "Population:  %s \n \t SEAIRDV:	%s \n \t Loss: %s" % (self.N, self.SEAIRDV, self.loss)
 
 	@property
 	def N(self):
@@ -40,8 +40,12 @@ class State:
 		return self._state[6]
 
 	@property
-	def D(self):
+	def V(self):
 		return self._state[7]
+
+	@property
+	def loss(self):
+		return self._state[8]
 
 
 	def set_N(self, N):

@@ -1,5 +1,7 @@
-{"iterations": 200,
-"pop_migration": 0.02,
+{"iterations": 400,
+"pop_migration": 0.01,
 "nation_def": "Nation",
-"age_group": false
+"age_group": false,
+"age_group_summary": true,
+"economy": true
 }

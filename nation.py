@@ -2,6 +2,7 @@ import numpy as np
 
 from state import State
 from agent import Agent
+from utils import calc_loss_GDP
 
 class Nation(Agent):
 
@@ -21,10 +22,10 @@ class Nation(Agent):
 
 		return self,conn_agents
 
-	@property
-	def next_state(self):
+	
+	def next_state(self, t):
 		"""
-		ß= rate of transmission
+		b= rate of transmission
 		n= natural death rate
 		alpha / c(t)= containment policy 
 		s= measuring effect of isolation policy
@@ -45,13 +46,12 @@ class Nation(Agent):
 		next_V = w_a*A+w_i*I
 		"""
 
-
-		N, S, E, A, I, R, D, V = self.state.to_array
+		N, S, E, A, I, R, D, V, loss = self.state.to_array
 
 		p = self.cont_param
 
 
-		b, n, c, s, g, d, e, k, w_a, w_i, f , rho = [*self.parameters.values()]
+		b, n, c, s, g, d, e, k, w_a, w_i, f, rho = [*self.parameters.values()]
 
 		if self.C.shape!=(3,3):
 
@@ -77,5 +77,8 @@ class Nation(Agent):
 
 		next_V = (w_a * (1-p) * A) + (w_i * (1-p) * I) - rho * V
 
+
+		next_loss = loss + calc_loss_GDP(self, t)
+
 		
-		return State(N, next_S, next_E, next_A, next_I, next_R, next_D, next_V)
+		return State(N, next_S, next_E, next_A, next_I, next_R, next_D, next_V, next_loss)

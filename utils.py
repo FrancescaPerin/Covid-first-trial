@@ -104,3 +104,29 @@ def summary_C(contact_matrix, cont_params, alpha=0.2):
 		C += C_i
 
 	return C
+
+def calc_loss_GDP(agent, t, r=0.0001, sigma=2, teta=0.33, a= 18000, alpha=0.2):
+
+	loss = np.exp(-r*t)*(V(P(agent)) + a*agent.state.D)
+
+	return loss
+
+def G(alpha=0.2, teta=0.5):
+
+	return (alpha)**teta
+
+
+def P(agent, alpha=0.2, teta= 0.33):
+
+	P= G(alpha,teta)*(agent.state.S + agent.state.E + agent.state.A + agent.state.R)
+
+	return P
+
+def V(P, sigma=2):
+
+	V=-(( P**(1- sigma)-1)/(1-sigma))
+
+	return V
+
+
+
