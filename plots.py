@@ -74,10 +74,6 @@ def plot_loss_GDP(agents):
     # Plot desired compartment
     for curr_agent in agents:
 
-        print(agents[curr_agent].history[:,-1])
-
-        #exit(0)
-
         plt.plot(agents[curr_agent].history[:,-1])
         
 
