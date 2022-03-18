@@ -8,19 +8,33 @@ class Nation(Agent):
 
 	def interact(self, conn_agents, value):
 
-		migration= self.state.N * value
+		if type(value) is not dict:
 
-		self.emigrate(migration)
+			migration = self.state.N * value
 
-		for agent in conn_agents:
+			self.emigrate(migration)
 
-			new_state_agent = agent.immigrate(self, migration/len(conn_agents))
+			for agent in conn_agents:
 
+				new_state_agent = agent.immigrate(self, migration/len(conn_agents))
 
-			agent.replace_state(new_state_agent)
+				agent.replace_state(new_state_agent)
 
+			return self, conn_agents
 
-		return self,conn_agents
+		else:
+
+			for agent in conn_agents:
+
+				migration = int(value[agent.name].get('departures')/365)
+
+				self.emigrate(migration)
+
+				new_state_agent = agent.immigrate(self, migration)
+
+				agent.replace_state(new_state_agent)
+
+			return self, conn_agents
 
 	
 	def next_state(self, t):

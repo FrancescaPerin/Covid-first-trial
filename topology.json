@@ -1,4 +1,4 @@
-{"Italy": ["Germany"],
-	"Germany":["Spain"],
-	"Spain":["Italy"]
+{"Italy": ["Germany","Spain"],
+	"Germany":["Spain","Italy"],
+	"Spain":["Italy","Germany"]
 }

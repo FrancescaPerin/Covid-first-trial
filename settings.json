@@ -1,4 +1,5 @@
 {"iterations": 400,
+"fixed_migration": false,
 "pop_migration": 0.01,
 "nation_def": "Nation",
 "age_group": false,

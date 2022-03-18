@@ -23,7 +23,6 @@ parser.add_argument('--cont_params', type=check_file, default='contact_settings.
 parser.add_argument('--economy_params', type=check_file, default='economy_settings.json',
                     help='JSON file with settings of outer model')
 
-
 args = parser.parse_args()
 
 # Loading agents from JSON file
@@ -75,27 +74,20 @@ loss=np.zeros((len(agents),2))
 for i in range(settings['iterations']):
 
 	for agent in agents:
-	    
-		agents[agent].interact([agents.get(key) for key in connections[agent]], settings['pop_migration'])
 
-		#if settings['economy'] == True:
-			#new_loss=[loss[idx][-1]+ calc_loss_GDP(agents[agent], i, *economy_params.values(), alpha=0.2)]
-			#np.append(loss[idx][:], new_loss)
+		if settings['fixed_migration']:
+	    
+			agents[agent].interact([agents.get(key) for key in connections[agent]], settings['pop_migration'])
+
+		else:
+			avia_data=load_JSON('Aviation/json_data.json')
+
+			agents[agent].interact([agents.get(key) for key in connections[agent]], avia_data[agent])
 
 	for agent in agents:
 
-		#if settings['economy'] == True:
-
-			#print(agents[agent].state.loss)
-			#new_loss = agents[agent].state.loss+ calc_loss_GDP(agents[agent], i, *economy_params.values(), alpha=0.2)
-			
-
 		agents[agent].set_state(agents[agent].next_state(i))
 
-
-
-		
-#print(agents['Italy'].history)
 
 if settings['age_group']==True:
 

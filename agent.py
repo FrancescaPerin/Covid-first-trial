@@ -49,9 +49,7 @@ class Agent(ABC):
 
 		new_state= State(self.state.set_value('-',value), *self.state.SEAIRDV)
 
-
 		self.replace_state(new_state)
-
 
 		return self
 
