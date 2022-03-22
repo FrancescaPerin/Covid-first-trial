@@ -43,6 +43,8 @@ agents = {}
 
 for agent in data_agents:
 
+		alpha = 0.2
+
 		cont_matrix = load_contact(agent['name'])
 
 		population = load_pop(agent['name'], settings['age_group'])
@@ -55,14 +57,13 @@ for agent in data_agents:
 
 				agent['state'][key] = pop_perc*value
 
-		
-
 		if settings['age_group'] == False:
 
-			C = np.array(0.8)
+			C = np.array(1 - alpha)
+
 		else:
 
-			C=summary_C(cont_matrix, cont_params, alpha=0.2)
+			C=summary_C(cont_matrix, cont_params, alpha)
 
 		agent_obj = Nation(cont_matrix, cont_params, population, C, **agent)
 
@@ -74,6 +75,19 @@ loss=np.zeros((len(agents),2))
 for i in range(settings['iterations']):
 
 	for agent in agents:
+
+		alpha=agents[agent].policy(alpha=0.2)
+
+		#print(alpha)
+
+		if settings['age_group'] == False:
+
+			agents[agent]=agents[agent].update_C(np.array(1- alpha))
+
+		else:
+			C=summary_C(cont_matrix, cont_params, alpha)
+
+			agents[agent]=agents[agent].update_C(C)
 
 		if settings['fixed_migration']:
 	    
@@ -91,14 +105,21 @@ for i in range(settings['iterations']):
 
 if settings['age_group']==True:
 
-	plot_loss_GDP(agents)
+	if settings['economy']==True:
+
+		plot_loss_GDP(agents)
+
 	plot_age_compartment_comparison( agents, 0, "Susceptible", settings['age_group_summary'])
 	plot_age_compartment_comparison( agents, 1, "Exposed", settings['age_group_summary'])
 	plot_age_compartment_comparison( agents, 3, "Infected", settings['age_group_summary'])
 	plot_age_compartment_comparison( agents, 4, "Recovered", settings['age_group_summary'])
 
 else:
-	plot_loss_GDP(agents)
+
+	if settings['economy']==True:
+
+		plot_loss_GDP(agents)
+		
 	plot_compartment_comparison( agents, 0, "Susceptible")
 	plot_compartment_comparison( agents, 1, "Exposed")
 	plot_compartment_comparison( agents, 3, "Infected")

@@ -101,7 +101,7 @@ def summary_C(contact_matrix, cont_params, alpha=0.2):
 
 		C_i = X @ (m_i @ X)
 
-		C += C_i
+		C = C + C_i
 
 	return C
 

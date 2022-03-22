@@ -96,3 +96,8 @@ class Nation(Agent):
 
 		
 		return State(N, next_S, next_E, next_A, next_I, next_R, next_D, next_V, next_loss)
+
+	def policy(self, alpha):
+
+		return alpha
+

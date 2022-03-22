@@ -1,5 +1,8 @@
 import numpy as np
+import os
 from matplotlib import pyplot as plt
+
+
 
 def plot_age_compartment_comparison(agents, idx, comp_name, summary = False):
     
@@ -40,6 +43,10 @@ def plot_age_compartment_comparison(agents, idx, comp_name, summary = False):
         axs[i].set_title(agents[curr_agent].name)
 
     # Add information
+    final_path='results/age_group/'
+    if not os.path.isdir(final_path):
+        os.makedirs(final_path)
+    
     plt.savefig(f"results/age_group/{comp_name}_comparison.png")
     plt.show()
 
@@ -62,7 +69,12 @@ def plot_compartment_comparison(agents, idx, comp_name):
     plt.ylabel("Population fraction")
     plt.xlabel("Time (days)")
     plt.title(f"{comp_name} comparison for agents")
-    plt.savefig(f"results//{comp_name}_comparison.png")
+
+    final_path='results/no_age_group/'
+    if not os.path.isdir(final_path):
+        os.makedirs(final_path)
+
+    plt.savefig(f"results/no_age_group/{comp_name}_comparison.png")
     plt.show()
 
 

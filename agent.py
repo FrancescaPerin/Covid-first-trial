@@ -40,6 +40,12 @@ class Agent(ABC):
 
 		return self
 
+	def update_C(self, C):
+
+		self.C = C
+
+		return self
+
 	@property
 	def history(self):
 
@@ -68,6 +74,10 @@ class Agent(ABC):
 
 	#@property
 	def next_state(self):
+		pass
+
+	def policy(self, alpha):
+
 		pass
 
 
