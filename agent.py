@@ -32,7 +32,7 @@ class Agent(ABC):
 
 		self.__replaybuffer.append(transition)
 
-		print(len(self.__replaybuffer))
+		#print(len(self.__replaybuffer))
 
 		self.state = next_state
 
@@ -88,6 +88,8 @@ class Agent(ABC):
 
 		pass
 
+	def update():
+		pass
 
 
 

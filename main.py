@@ -103,6 +103,15 @@ for i in range(settings['iterations']):
 		agents[agent].set_state(alpha, reward, agents[agent].next_state(i))
 
 
+	if i!=0 and i%settings['updatePeriod']==0:
+
+		for n in range(settings['updateN']):
+
+			for agent in agents:
+
+				agents[agent].update()
+
+
 if settings['age_group']==True:
 
 	if settings['economy']==True:

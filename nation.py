@@ -101,3 +101,7 @@ class Nation(Agent):
 
 		return alpha
 
+	def update(self):
+
+		print('Updating Agent')
+

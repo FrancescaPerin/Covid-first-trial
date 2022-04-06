@@ -5,5 +5,7 @@
 "age_group": true,
 "age_group_summary": true,
 "economy": false,
-"maxMemSize": 300
+"maxMemSize": 300,
+"updatePeriod":100,
+"updateN":5
 }
