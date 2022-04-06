@@ -1,11 +1,12 @@
 import numpy as np
 
 from state import State
+from replayBuffer import replayBuffer
 from abc import ABC
 
 class Agent(ABC):
 
-	def __init__(self, contact_matrix, cont_param, population, C,  name, state, parameters):
+	def __init__(self, config_par, contact_matrix, cont_param, population, C,  name, state, parameters):
 
 		self.contact_matrix = contact_matrix
 		self.cont_param = cont_param
@@ -15,6 +16,7 @@ class Agent(ABC):
 		self.state = State(population, **state)
 		self.parameters = parameters
 		self.__history = [self.state.to_array, self.state.to_array]
+		self.__replaybuffer = replayBuffer(config_par['maxMemSize'])
 	
 	def __repr__ (self):
 
@@ -24,11 +26,17 @@ class Agent(ABC):
 
 		self.__history.append(state.to_array)
 
-	def set_state(self, state):
+	def set_state(self, action, reward ,next_state):
 
-		self.state=state
+		transition = (self.state, action, reward, next_state)
 
-		self.update_history(state)
+		self.__replaybuffer.append(transition)
+
+		print(len(self.__replaybuffer))
+
+		self.state = next_state
+
+		self.update_history(self.state)
 
 		return self
 

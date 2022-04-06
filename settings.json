@@ -4,5 +4,6 @@
 "nation_def": "Nation",
 "age_group": true,
 "age_group_summary": true,
-"economy": false
+"economy": false,
+"maxMemSize": 300
 }

@@ -65,7 +65,7 @@ for agent in data_agents:
 
 			C=summary_C(cont_matrix, cont_params, alpha)
 
-		agent_obj = Nation(cont_matrix, cont_params, population, C, **agent)
+		agent_obj = Nation(settings, cont_matrix, cont_params, population, C, **agent)
 
 		agents[agent_obj.name]=agent_obj
 
@@ -77,8 +77,6 @@ for i in range(settings['iterations']):
 	for agent in agents:
 
 		alpha=agents[agent].policy(alpha=0.2)
-
-		#print(alpha)
 
 		if settings['age_group'] == False:
 
@@ -100,7 +98,9 @@ for i in range(settings['iterations']):
 
 	for agent in agents:
 
-		agents[agent].set_state(agents[agent].next_state(i))
+		reward=0
+
+		agents[agent].set_state(alpha, reward, agents[agent].next_state(i))
 
 
 if settings['age_group']==True:
