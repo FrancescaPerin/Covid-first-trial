@@ -35,7 +35,9 @@ class Net(nn.Module):
 
             # Add activation function if provided
             if activation_function is not None:
-                self.__net.add_module(getattr(nn, activation_function)())
+                self.__net.add_module(
+                    f"activation_{idx}", getattr(nn, activation_function)()
+                )
 
     def forward(self, state):
         return self.__net(state)
@@ -67,6 +69,10 @@ class NationRL(Nation):
 
         self.__replaybuffer = replayBuffer(**config_par["bufferSettings"])
         self.__net = Net(**config_par["networkParameters"])
+
+    def policy(self, alpha):
+        # TODO alpha should be a parameter passed in constructor and saved in self.__alpha or something similar
+        return alpha
 
     def set_state(self, action, reward, next_state):
 

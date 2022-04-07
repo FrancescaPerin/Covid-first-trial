@@ -7,7 +7,7 @@
     "age_group_summary": true,
     "economy": false,
     "bufferSettings": {
-        "maxMemSize": 300
+        "maxSize": 300
     },
     "networkParameters": {
         "state_size": 1,
