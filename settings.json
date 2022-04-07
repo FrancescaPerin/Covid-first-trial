@@ -1,11 +1,20 @@
-{"iterations": 400,
-"fixed_migration": true,
-"pop_migration": 0.02,
-"nation_def": "Nation",
-"age_group": true,
-"age_group_summary": true,
-"economy": false,
-"maxMemSize": 300,
-"updatePeriod":100,
-"updateN":5
+{
+    "iterations": 400,
+    "fixed_migration": true,
+    "pop_migration": 0.02,
+    "nation_def": "Nation",
+    "age_group": true,
+    "age_group_summary": true,
+    "economy": false,
+    "bufferSettings": {
+        "maxMemSize": 300
+    },
+    "networkParameters": {
+        "state_size": 1,
+        "action_size": 1,
+        "neurons": [128, 64, 32],
+        "activations": "ReLU"
+    },
+    "updatePeriod": 100,
+    "updateN": 5
 }
