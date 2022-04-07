@@ -1,7 +1,6 @@
 import numpy as np
 
 from state import State
-from replayBuffer import replayBuffer
 from abc import ABC
 
 class Agent(ABC):
@@ -16,7 +15,6 @@ class Agent(ABC):
 		self.state = State(population, **state)
 		self.parameters = parameters
 		self.__history = [self.state.to_array, self.state.to_array]
-		self.__replaybuffer = replayBuffer(config_par['maxMemSize'])
 	
 	def __repr__ (self):
 
@@ -27,12 +25,6 @@ class Agent(ABC):
 		self.__history.append(state.to_array)
 
 	def set_state(self, action, reward ,next_state):
-
-		transition = (self.state, action, reward, next_state)
-
-		self.__replaybuffer.append(transition)
-
-		#print(len(self.__replaybuffer))
 
 		self.state = next_state
 
@@ -88,7 +80,7 @@ class Agent(ABC):
 
 		pass
 
-	def update():
+	def update(self):
 		pass
 
 

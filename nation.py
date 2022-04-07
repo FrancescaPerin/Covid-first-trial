@@ -98,10 +98,5 @@ class Nation(Agent):
 		return State(N, next_S, next_E, next_A, next_I, next_R, next_D, next_V, next_loss)
 
 	def policy(self, alpha):
-
+		# TODO alpha should be a parameter passed in constructor and saved in self.__alpha or something similar
 		return alpha
-
-	def update(self):
-
-		print('Updating Agent')
-
