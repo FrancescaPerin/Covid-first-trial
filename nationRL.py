@@ -1,4 +1,5 @@
 import torch.nn as nn
+from torch import Tensor
 
 from nation import Nation
 from replayBuffer import replayBuffer
@@ -11,6 +12,7 @@ class Net(nn.Module):
         action_size,
         neurons=[128, 64, 32],
         activations="ReLU",
+        out_activation=None,
     ):
 
         super().__init__()
@@ -21,7 +23,7 @@ class Net(nn.Module):
 
         # Append input and output size to neurons
         neurons = [state_size] + neurons + [action_size]
-        activations = [None] + activations + [None]
+        activations = [None] + activations + [out_activation]
 
         # Initialize neural network
         self.__net = nn.Sequential()
@@ -70,9 +72,18 @@ class NationRL(Nation):
         self.__replaybuffer = replayBuffer(**config_par["bufferSettings"])
         self.__net = Net(**config_par["networkParameters"])
 
+        print("Neural Model:")
+        print(self.__net)
+
     def policy(self, alpha):
-        # TODO alpha should be a parameter passed in constructor and saved in self.__alpha or something similar
-        return alpha
+
+        # Get state from SEAIRDV
+        state = self.state.SEAIRDV.flatten().astype(float)
+
+        # Get output from network
+        alpha = self.__net(Tensor(state))
+
+        return alpha.cpu().detach().numpy()
 
     def set_state(self, action, reward, next_state):
 

@@ -10,10 +10,11 @@
         "maxSize": 300
     },
     "networkParameters": {
-        "state_size": 1,
+        "state_size": 24,
         "action_size": 1,
         "neurons": [128, 64, 32],
-        "activations": "ReLU"
+        "activations": "ReLU",
+        "out_activation": "Sigmoid"
     },
     "updatePeriod": 100,
     "updateN": 5
