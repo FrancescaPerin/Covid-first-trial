@@ -12,24 +12,35 @@
         "shuffle_data": true
     },
     "networkParameters": {
+        "gamma": 0.98,
         "actor": {
-            "state_size": 24,
-            "output_size": 1,
-            "neurons": [128, 64, 32],
-            "activations": "ReLU",
-            "out_activation": "ReLU",
-            "n_heads": 2
+            "optim": {
+                "lr": 0.001
+            },
+            "net": {
+                "state_size": 24,
+                "output_size": 1,
+                "neurons": [128, 64, 32],
+                "activations": "ReLU",
+                "out_activation": "ReLU",
+                "n_heads": 2
+            }
         },
         "critic": {
-            "state_size": 24,
-            "output_size": 1,
-            "neurons": [128, 64, 32],
-            "activations": "ReLU",
-            "out_activation": "Sigmoid",
-            "n_heads": 1
+            "optim": {
+                "lr": 0.001
+            },
+            "net": {
+                "state_size": 24,
+                "output_size": 1,
+                "neurons": [128, 64, 32],
+                "activations": "ReLU",
+                "out_activation": "Sigmoid",
+                "n_heads": 1
+            }
         }
     },
-    "updatePeriod": 100,
-    "updateN": 5,
+    "updatePeriod": 30,
+    "updateN": 100,
     "alpha": 0.2
 }

@@ -1,6 +1,7 @@
 import torch.nn as nn
 from torch import Tensor
 from torch.distributions.beta import Beta
+from torch.optim import Adam
 
 from nation import Nation
 from replayBuffer import replayBuffer
@@ -96,9 +97,25 @@ class NationRL(Nation):
             parameters,
         )
 
+        # Memory
         self.__replaybuffer = replayBuffer(**config_par["bufferSettings"])
-        self.__actor = Net(**config_par["networkParameters"]["actor"])
-        self.__critic = Net(**config_par["networkParameters"]["critic"])
+
+        # Actor
+        self.__actor = Net(**config_par["networkParameters"]["actor"]["net"])
+        self.__actor_optimizer = Adam(
+            self.__actor.parameters(),
+            **config_par["networkParameters"]["actor"]["optim"],
+        )
+
+        # Critic
+        self.__critic = Net(**config_par["networkParameters"]["critic"]["net"])
+        self.__critic_optimizer = Adam(
+            self.__critic.parameters(),
+            **config_par["networkParameters"]["critic"]["optim"],
+        )
+
+        # Parameters
+        self.__gamma = config_par["networkParameters"]["gamma"]
 
     # Give experience to agent
 
@@ -149,8 +166,29 @@ class NationRL(Nation):
 
         for step, t in zip(range(n), self.__replaybuffer):
 
-            # Perform update on single batch
-            self.update_batch(t)
+            # Reset gradients
+            self.__actor_optimizer.zero_grad()
+            self.__critic_optimizer.zero_grad()
+
+            # Compute loss
+            actor_loss, critic_loss = self.update_batch(t)
+
+            # Differentiate loss w.r.t. parameters
+            if actor_loss is not None and critic_loss is not None:
+                actor_loss.backward()
+                critic_loss.backward()
+
+                # Update parameters
+                self.__actor_optimizer.step()
+                self.__critic_optimizer.step()
 
     def update_batch(self, t):
-        pass
+
+        s1, a, r, s2 = t
+
+        TD_target = r + self.__gamma * self.__critic(s2)
+        delta = (self.__critic(s1) - TD_target)**2
+
+        actor_loss = -self.get_log_probs(s1, a) * delta.detach()
+
+        return actor_loss.mean(), delta.mean()
