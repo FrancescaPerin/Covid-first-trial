@@ -1,132 +1,143 @@
 import json
 import numpy as np
-import os 
+import os
 import pandas as pd
 
 from sys import exit
 
 from contact_m import contactMatrix
 
+
 def check_file(file_name):
 
+    if not isinstance(file_name, str):
+        raise TypeError("File name not a string")
 
-	if not isinstance(file_name, str):
-		raise TypeError("File name not a string")
+    elif file_name.endswith(".json"):
+        return file_name
 
-	elif file_name.endswith('.json'):
-		return file_name
-
-	else:
-		return file_name + '.json'
+    else:
+        return file_name + ".json"
 
 
 def load_JSON(file_name):
 
-	with open(file_name, 'rt') as agents_json:
-		return json.load(agents_json)
+    with open(file_name, "rt") as agents_json:
+        return json.load(agents_json)
+
 
 def load_contact(country):
 
-	path = 'Preprocessing/new_matrices_152_countries'
+    path = "Preprocessing/new_matrices_152_countries"
 
-	name = 'age_matrix.npy'
+    name = "age_matrix.npy"
 
-	home = norm_home(country, os.path.join(path,'home',country, name))
-	work = np.load(os.path.join(path,'work',country, name))
-	school = np.load(os.path.join(path,'school',country, name))
-	other = np.load(os.path.join(path,'other_locations',country, name))
-	env = np.load(os.path.join(path,'environment',country, name))
-	all_l = np.load(os.path.join(path,'all_locations',country, name))
+    home = norm_home(country, os.path.join(path, "home", country, name))
+    work = np.load(os.path.join(path, "work", country, name))
+    school = np.load(os.path.join(path, "school", country, name))
+    other = np.load(os.path.join(path, "other_locations", country, name))
+    env = np.load(os.path.join(path, "environment", country, name))
+    all_l = np.load(os.path.join(path, "all_locations", country, name))
 
-	return contactMatrix(country, home, work, school, other,env, all_l)
+    return contactMatrix(country, home, work, school, other, env, all_l)
+
 
 def load_pop(country, age_group=False):
 
-	path = 'Preprocessing population_group/Tables'
+    path = "Preprocessing population_group/Tables"
 
-	name = 'population_table.npy'
+    name = "population_table.npy"
 
-	pop = np.load(os.path.join(path, country, name), allow_pickle=True)
+    pop = np.load(os.path.join(path, country, name), allow_pickle=True)
 
-	df = pd.DataFrame(pop, columns = ['Country','Group','2016','2017','2018','2019','2020'])
-	df = df.replace('..', np.nan) #remplace emty cells with NaN values
+    df = pd.DataFrame(
+        pop, columns=["Country", "Group", "2016", "2017", "2018", "2019", "2020"]
+    )
+    df = df.replace("..", np.nan)  # remplace emty cells with NaN values
 
-	empty_row = 0
+    empty_row = 0
 
-	for index,row in df.iterrows():
+    for index, row in df.iterrows():
 
-		assert empty_row <= 2, f'No data for {country}. Select different country.' # not enough data present for population according to age
+        assert (
+            empty_row <= 2
+        ), f"No data for {country}. Select different country."  # not enough data present for population according to age
 
-		if row.count() < 3:
-			empty_row +=1
+        if row.count() < 3:
+            empty_row += 1
 
-	return df['2020'].to_numpy()[:3] if age_group else df['2020'].to_numpy()[-1]
+    return df["2020"].to_numpy()[:3] if age_group else df["2020"].to_numpy()[-1]
 
 
 def norm_home(country, path):
 
-	hh_path = 'Preprocessing population_group/Household data/Tables'
+    hh_path = "Preprocessing population_group/Household data/Tables"
 
-	home = np.load(path)
+    home = np.load(path)
 
-	hh_table= pd.DataFrame(np.load(os.path.join(hh_path, country,'avg_table.npy'), allow_pickle=True))
+    hh_table = pd.DataFrame(
+        np.load(os.path.join(hh_path, country, "avg_table.npy"), allow_pickle=True)
+    )
 
-	if len(hh_table.columns)>2:
+    if len(hh_table.columns) > 2:
 
-		sum_home_hh=np.divide(home, hh_table.to_numpy()[0][2:].reshape(3,1))
+        sum_home_hh = np.divide(home, hh_table.to_numpy()[0][2:].reshape(3, 1))
 
-	else:
-		
-		avg=hh_table.to_numpy()[0][1]
+    else:
 
-		arr= np.repeat(avg/3, 3) # child, adult, senior, distributed equally across households (Assumption)
+        avg = hh_table.to_numpy()[0][1]
 
-		sum_home_hh= np.divide(home, arr.reshape(3,1))
+        arr = np.repeat(
+            avg / 3, 3
+        )  # child, adult, senior, distributed equally across households (Assumption)
 
-	return sum_home_hh
+        sum_home_hh = np.divide(home, arr.reshape(3, 1))
+
+    return sum_home_hh
+
 
 def summary_C(contact_matrix, cont_params, alpha=0.2):
 
-	p = cont_params * alpha
+    p = cont_params * alpha
 
-	X = np.diag(1-p)
+    X = np.diag(1 - p)
 
-	k = ['school','work','other']
+    k = ["school", "work", "other"]
 
-	C = contact_matrix.home
+    C = contact_matrix.home
 
-	for i in k:
+    for i in k:
 
-		m_i = getattr(contact_matrix,i)
+        m_i = getattr(contact_matrix, i)
 
-		C_i = X @ (m_i @ X)
+        C_i = X @ (m_i @ X)
 
-		C = C + C_i
+        C = C + C_i
 
-	return C
+    return C
 
-def calc_loss_GDP(agent, t, r=0.0001, sigma=2, teta=0.33, a= 18000, alpha=0.2):
 
-	loss = np.exp(-r*t)*(V(P(agent)) + a*agent.state.D)
+def calc_loss_GDP(agent, t, r=0.0001, sigma=2, teta=0.33, a=18000, alpha=0.2):
 
-	return loss
+    loss = np.exp(-r * t) * (V(P(agent)) + a * agent.state.D)
+
+    return loss
+
 
 def G(alpha=0.2, teta=0.5):
 
-	return (alpha)**teta
+    return (alpha) ** teta
 
 
-def P(agent, alpha=0.2, teta= 0.33):
+def P(agent, alpha=0.2, teta=0.33):
 
-	P= G(alpha,teta)*(agent.state.S + agent.state.E + agent.state.A + agent.state.R)
+    P = G(alpha, teta) * (agent.state.S + agent.state.E + agent.state.A + agent.state.R)
 
-	return P
+    return P
+
 
 def V(P, sigma=2):
 
-	V=-(( P**(1- sigma)-1)/(1-sigma))
+    V = -((P ** (1 - sigma) - 1) / (1 - sigma))
 
-	return V
-
-
-
+    return V

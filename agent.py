@@ -3,110 +3,98 @@ import numpy as np
 from state import State
 from abc import ABC
 
+
 class Agent(ABC):
+    def __init__(
+        self,
+        config_par,
+        contact_matrix,
+        cont_param,
+        population,
+        C,
+        name,
+        state,
+        parameters,
+    ):
 
-	def __init__(self, config_par, contact_matrix, cont_param, population, C,  name, state, parameters):
+        self.contact_matrix = contact_matrix
+        self.cont_param = cont_param
+        self.population = population
+        self.C = C
+        self.name = name
+        self.state = State(population, **state)
+        self.parameters = parameters
+        self.alpha = config_par["alpha"]
+        self.__history = [self.state.to_array, self.state.to_array]
 
-		self.contact_matrix = contact_matrix
-		self.cont_param = cont_param
-		self.population = population
-		self.C= C
-		self.name= name
-		self.state = State(population, **state)
-		self.parameters = parameters
-		self.alpha = config_par["alpha"]
-		self.__history = [self.state.to_array, self.state.to_array]
-	
-	def __repr__ (self):
+    def __repr__(self):
 
-		return "\nAgent %s :\n\t Contact matrix:\n\t %s \n\n\t %s,\n\t " % (self.name, self.contact_matrix, self.state)
-	
-	def update_history(self, state):
+        return "\nAgent %s :\n\t Contact matrix:\n\t %s \n\n\t %s,\n\t " % (
+            self.name,
+            self.contact_matrix,
+            self.state,
+        )
 
-		self.__history.append(state.to_array)
+    def update_history(self, state):
 
-	def set_state(self, action, reward ,next_state):
+        self.__history.append(state.to_array)
 
-		self.state = next_state
+    def set_state(self, action, reward, next_state):
 
-		self.update_history(self.state)
+        self.state = next_state
 
-		return self
+        self.update_history(self.state)
 
-	def replace_state(self, state):
+        return self
 
-		self.state=state
+    def replace_state(self, state):
 
-		self.__history[-1]=state.to_array
+        self.state = state
 
-		return self
+        self.__history[-1] = state.to_array
 
-	def update_C(self, C):
+        return self
 
-		self.C = C
+    def update_C(self, C):
 
-		return self
+        self.C = C
 
-	@property
-	def history(self):
+        return self
 
-		return np.asarray(self.__history)
+    @property
+    def history(self):
 
-	def emigrate (self, value):
+        return np.asarray(self.__history)
 
-		new_state= State(self.state.set_value('-',value), *self.state.SEAIRDV)
+    def emigrate(self, value):
 
-		self.replace_state(new_state)
+        new_state = State(self.state.set_value("-", value), *self.state.SEAIRDV)
 
-		return self
+        self.replace_state(new_state)
 
-	def immigrate (self, mig_agent, value):
+        return self
 
-		calc_new_seir = ((mig_agent.state.SEAIRDV * value) + (self.state.SEAIRDV * self.state.N)) / (value + self.state.N)
+    def immigrate(self, mig_agent, value):
 
+        calc_new_seir = (
+            (mig_agent.state.SEAIRDV * value) + (self.state.SEAIRDV * self.state.N)
+        ) / (value + self.state.N)
 
-		new_state = State(value + self.state.N, *calc_new_seir)
+        new_state = State(value + self.state.N, *calc_new_seir)
 
-		return new_state
+        return new_state
 
-	def interact(self):
+    def interact(self):
 
-		pass
+        pass
 
-	#@property
-	def next_state(self):
-		pass
+    # @property
+    def next_state(self):
+        pass
 
-	def policy(self):
+    def policy(self):
 
-		pass
+        pass
 
-	def update(self):
-		pass
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    def update(self):
+        pass

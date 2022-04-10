@@ -1,75 +1,78 @@
 import numpy as np
 
+
 class State:
+    def __init__(self, N, S, E, A, I, R, D, V, loss):
 
-	def __init__(self, N, S, E, A, I, R, D, V, loss):
+        self._state = np.array([N, S, E, A, I, R, D, V, loss])
+        # self._state = [N, self.SEAIRDV()/ self.SEAIRDV.sum()]
 
-		self._state = np.array([ N, S, E, A, I, R, D, V, loss])
-		#self._state = [N, self.SEAIRDV()/ self.SEAIRDV.sum()] 
+    def __repr__(self):
 
-	def __repr__(self):
+        return "Population:  %s \n \t SEAIRDV:	%s \n \t Loss: %s" % (
+            self.N,
+            self.SEAIRDV,
+            self.loss,
+        )
 
-		return "Population:  %s \n \t SEAIRDV:	%s \n \t Loss: %s" % (self.N, self.SEAIRDV, self.loss)
+    @property
+    def N(self):
+        return self._state[0]
 
-	@property
-	def N(self):
-		return self._state[0]
+    @property
+    def S(self):
+        return self._state[1]
 
-	@property
-	def S(self):
-		return self._state[1]
+    @property
+    def E(self):
+        return self._state[2]
 
-	@property
-	def E(self):
-		return self._state[2]
+    @property
+    def A(self):
+        return self._state[3]
 
-	@property
-	def A(self):
-		return self._state[3]
+    @property
+    def I(self):
+        return self._state[4]
 
-	@property
-	def I(self):
-		return self._state[4]
+    @property
+    def R(self):
+        return self._state[5]
 
-	@property
-	def R(self):
-		return self._state[5]
+    @property
+    def D(self):
+        return self._state[6]
 
-	@property
-	def D(self):
-		return self._state[6]
+    @property
+    def V(self):
+        return self._state[7]
 
-	@property
-	def V(self):
-		return self._state[7]
+    @property
+    def loss(self):
+        return self._state[8]
 
-	@property
-	def loss(self):
-		return self._state[8]
+    def set_N(self, N):
 
+        self._state = N
 
-	def set_N(self, N):
+        return self
 
-		self._state=N
+    def set_value(self, sign, value):
 
-		return self
+        if sign == "+":
 
-	def set_value(self, sign, value):
+            value = self.N + value
 
-		if sign=='+':
+        elif sign == "-":
 
-			value = self.N + value
+            value = self.N - value
 
-		elif sign=='-':
+        return value
 
-			value = self.N - value
-		
-		return value
+    @property
+    def to_array(self):
+        return self._state
 
-	@property
-	def to_array(self):
-		return self._state
-
-	@property
-	def SEAIRDV(self):
-		return np.row_stack(self._state[1:])
+    @property
+    def SEAIRDV(self):
+        return np.row_stack(self._state[1:])
