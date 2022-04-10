@@ -100,7 +100,18 @@ class NationRL(Nation):
         self.__actor = Net(**config_par["networkParameters"]["actor"])
         self.__critic = Net(**config_par["networkParameters"]["critic"])
 
-    def policy(self, alpha):
+    # Give experience to agent
+
+    def set_state(self, action, reward, next_state):
+
+        transition = (self.state, action, reward, next_state)
+        self.__replaybuffer.append(transition)
+
+        return super().set_state(action, reward, next_state)
+
+    # Acting
+
+    def policy(self):
 
         # Get state from SEAIRDV
         state = self.state.SEAIRDV.flatten().astype(float)
@@ -123,13 +134,6 @@ class NationRL(Nation):
         dist = self.get_dist(state)
         return dist.log_prob(action)
 
-    @property
-    def net(self):
-        return self.__net
-
-    def set_state(self, action, reward, next_state):
-
-        transition = (self.state, action, reward, next_state)
-        self.__replaybuffer.append(transition)
-
-        return super().set_state(action, reward, next_state)
+    # Learning
+    def update(self):
+        pass

@@ -14,6 +14,7 @@ class Agent(ABC):
 		self.name= name
 		self.state = State(population, **state)
 		self.parameters = parameters
+		self.alpha = config_par["alpha"]
 		self.__history = [self.state.to_array, self.state.to_array]
 	
 	def __repr__ (self):
@@ -76,7 +77,7 @@ class Agent(ABC):
 	def next_state(self):
 		pass
 
-	def policy(self, alpha):
+	def policy(self):
 
 		pass
 

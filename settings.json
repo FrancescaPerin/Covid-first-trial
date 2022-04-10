@@ -28,5 +28,6 @@
         }
     },
     "updatePeriod": 100,
-    "updateN": 5
+    "updateN": 5,
+    "alpha": 0.2
 }

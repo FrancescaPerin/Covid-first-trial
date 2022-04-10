@@ -3,6 +3,7 @@ import json
 import argparse 
 import os
 
+from nationRL import NationRL
 from nation import Nation
 from agent import Agent
 
@@ -65,7 +66,7 @@ for agent in data_agents:
 
 			C=summary_C(cont_matrix, cont_params, alpha)
 
-		agent_obj = Nation(settings, cont_matrix, cont_params, population, C, **agent)
+		agent_obj = NationRL(settings, cont_matrix, cont_params, population, C, **agent)
 
 		agents[agent_obj.name]=agent_obj
 
@@ -74,9 +75,10 @@ loss=np.zeros((len(agents),2))
 
 for i in range(settings['iterations']):
 
+    # Act in the environment
 	for agent in agents:
 
-		alpha=agents[agent].policy(alpha=0.2)
+		alpha=agents[agent].policy()
 
 		if settings['age_group'] == False:
 
@@ -96,13 +98,14 @@ for i in range(settings['iterations']):
 
 			agents[agent].interact([agents.get(key) for key in connections[agent]], avia_data[agent])
 
+    # Set new state for agents
 	for agent in agents:
 
 		reward=0
 
 		agents[agent].set_state(alpha, reward, agents[agent].next_state(i))
 
-
+    # Train agents
 	if i!=0 and i%settings['updatePeriod']==0:
 
 		for n in range(settings['updateN']):
