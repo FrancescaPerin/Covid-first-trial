@@ -104,17 +104,26 @@ class NationRL(Nation):
 
     def set_state(self, action, reward, next_state):
 
-        transition = (self.state, action, reward, next_state)
+        transition = (
+            self.extract_state(self.state),
+            action,
+            [reward],
+            self.extract_state(next_state),
+        )
         self.__replaybuffer.append(transition)
 
         return super().set_state(action, reward, next_state)
+
+    def extract_state(self, SEAIRDV):
+        # TODO maybe give the option to concatenate the SEIARDV of all nations
+        return SEAIRDV.SEAIRDV.flatten().astype(float)
 
     # Acting
 
     def policy(self):
 
         # Get state from SEAIRDV
-        state = self.state.SEAIRDV.flatten().astype(float)
+        state = self.extract_state(self.state)
 
         # Get alpha from actor
         alpha = self.get_dist(state).sample()
@@ -135,5 +144,6 @@ class NationRL(Nation):
         return dist.log_prob(action)
 
     # Learning
+
     def update(self):
         pass
