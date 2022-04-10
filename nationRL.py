@@ -145,5 +145,12 @@ class NationRL(Nation):
 
     # Learning
 
-    def update(self):
+    def update(self, n=1):
+
+        for step, t in zip(range(n), self.__replaybuffer):
+
+            # Perform update on single batch
+            self.update_batch(t)
+
+    def update_batch(self, t):
         pass

@@ -96,5 +96,5 @@ class Agent(ABC):
 
         pass
 
-    def update(self):
+    def update(self, n=1):
         pass

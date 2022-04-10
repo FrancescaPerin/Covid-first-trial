@@ -8,14 +8,20 @@ class replayBuffer:
     class BatchedIterator:
         def __init__(self, l, batchSize, shuffle_data=True):
 
-            self.__l = copy.copy(l)
+            self.__l = []
+            self.__l_ori = l
 
-            if shuffle_data:
-                shuffle(self.__l)
-
+            self.__shuffle_data = shuffle_data
             self.__batchSize = batchSize
 
         def __next__(self):
+
+            if len(self.__l) < 1:
+
+                self.__l = copy.copy(self.__l_ori)
+
+                if self.__shuffle_data:
+                    shuffle(self.__l)
 
             batch = self.__l[: self.__batchSize]
             self.__l = self.__l[self.__batchSize :]

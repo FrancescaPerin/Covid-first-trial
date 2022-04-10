@@ -144,11 +144,9 @@ for i in range(settings["iterations"]):
         # Train agents
     if i != 0 and i % settings["updatePeriod"] == 0:
 
-        for n in range(settings["updateN"]):
+        for agent in agents:
 
-            for agent in agents:
-
-                agents[agent].update()
+            agents[agent].update(n=settings["updateN"])
 
 
 if settings["age_group"] == True:
