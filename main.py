@@ -148,7 +148,6 @@ for i in range(settings["iterations"]):
 
             agents[agent].update(n=settings["updateN"])
 
-
 if settings["age_group"] == True:
 
     if settings["economy"] == True:

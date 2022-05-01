@@ -7,12 +7,13 @@
     "age_group_summary": true,
     "economy": false,
     "bufferSettings": {
-        "maxSize": 300,
-        "batchSize": 2,
+        "maxSize": 5000,
+        "batchSize": 150,
         "shuffle_data": true
     },
     "networkParameters": {
         "gamma": 0.98,
+        "device": "cpu",
         "actor": {
             "optim": {
                 "lr": 0.001
@@ -40,7 +41,7 @@
             }
         }
     },
-    "updatePeriod": 30,
-    "updateN": 100,
+    "updatePeriod": 80,
+    "updateN": 500,
     "alpha": 0.2
 }
