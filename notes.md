@@ -20,6 +20,7 @@
         * What parameters to use?
             * The _mean_ is the value you are currently using (on average it should be close to that)
             * The _variance_ 
+                * The best option is to have the _std_ be a percentage of the _mean_ (see example below)
                 * Can manually set to a low value to add a bit of noise
                 * Can be set to the actual variance of the data
                     * Not really adviseable because there aren't enough values
@@ -31,9 +32,9 @@
             * you can do this in `numpy` with the following function
             ```python
             import numpy as np
-            def add_noise(value, d):
-                return value + d*np.random.normal(1)
+            def add_noise(mean, percentace_std):
+                return mean + np.random.normal(scale=percentage_std*mean, size=1)
             ```
-            where `np.random.normal(1)` will sample _1_ value from `N(0,1)`
+            where `np.random.normal(1)` will sample _1_ value from `N(0,1)`, and `size=1` because `mean` is a value (_float_) and not an array, otherwise I can do `size=mean.shape`
         
         
