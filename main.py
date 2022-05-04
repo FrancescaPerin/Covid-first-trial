@@ -104,18 +104,15 @@ for agent in data_agents:
             # readjust SEIARDV values to account for splitting in age groups
             agent["state"][key] = pop_perc * value
 
+        # Initialize contact matrix
+        C = summary_C(cont_matrix, cont_params, alpha)
     
-    if settings["age_group"] == False:
-
+    else: 
+        # Initialize contact matrix
         C = np.array(1 - alpha)
 
-    else:
-
-        C = summary_C(cont_matrix, cont_params, alpha) # TODO: Move in if statment before
-
-
     # Define agent 
-    agent_obj = NationRL(settings, cont_matrix, cont_params, population, C, **agent)
+    agent_obj = Nation(settings, cont_matrix, cont_params, population, C, **agent)
 
     agents[agent_obj.name] = agent_obj
 
