@@ -141,3 +141,18 @@ def V(P, sigma=2):
     V = -((P ** (1 - sigma) - 1) / (1 - sigma))
 
     return V
+
+# Add normally ditributed noise to aviation migration mean 
+def add_noise(mean, percentage_std):
+
+    if isinstance(mean, float):
+
+        return float(mean + np.random.normal(scale=percentage_std*mean, size=1))
+
+    else:
+
+        pop_perc=mean/mean.sum()
+
+        noise = np.random.normal(scale=percentage_std*mean.sum(), size=1)
+
+    return mean + pop_perc*noise

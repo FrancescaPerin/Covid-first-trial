@@ -2,39 +2,66 @@ import numpy as np
 
 from state import State
 from agent import Agent
-from utils import calc_loss_GDP
+from utils import calc_loss_GDP, add_noise
 
 
 class Nation(Agent):
+
+    # Interaction between agents ivolves migration of population from one agent to other(s)
     def interact(self, conn_agents, value):
 
-        if type(value) is not dict:
+        if type(value) is float: #if migration is fixed to a certain value
 
-            migration = self.state.N * value
+            previous_N = self.state.N
 
-            self.emigrate(migration)
+
+            # calculating the percentage of migration population scaled by the containment policy value
+            migration = self.alpha * (self.state.N * value) # TODO: double check if alpha or 1-alpha
+
+            # add noise to not have constatnt migrations (unrealistic)
+            migration_noise = add_noise(migration, 0.2)
+
+            # set new state
+            self.emigrate(migration_noise)
 
             for agent in conn_agents:
 
-                new_state_agent = agent.immigrate(self, migration / len(conn_agents))
-
+                #add noise to single self to agent migration
+                noise=add_noise(migration_noise / len(conn_agents), 0.1)
+                
+                #calculate new SEAIRDV value after immigration
+                new_state_agent = agent.immigrate(self, noise)
+                
+                #set new state
                 agent.replace_state(new_state_agent)
 
             return self, conn_agents
 
-        else:
+        
+        else: #if the migration data is not fixed (aviation data)
 
             for agent in conn_agents:
 
-                migration = int(value[agent.name].get("departures") / 365)
+                # Calculate percentage of population travelling out the country every day
+                pop_perc = int(value[agent.name].get("departures") / 365) / self.state.N.sum()
 
-                self.emigrate(migration)
+                # Calcuate number from percantage and scale by the containment policy value
+                migration = self.alpha * (self.state.N * pop_perc)
 
-                new_state_agent = agent.immigrate(self, migration)
+                # Add noise
+                migration_noise = add_noise(migration, 0.2)
 
+                # Set new state
+                self.emigrate(migration_noise)
+
+                # Calculate new SEAIRDV values for state receiving population
+                new_state_agent = agent.immigrate(self, migration_noise)
+
+                # Set new state (SEAIRDV receiving state)
                 agent.replace_state(new_state_agent)
 
             return self, conn_agents
+        
 
     def next_state(self, t):
         """

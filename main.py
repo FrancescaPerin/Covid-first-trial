@@ -104,11 +104,11 @@ for agent in data_agents:
             # readjust SEIARDV values to account for splitting in age groups
             agent["state"][key] = pop_perc * value
 
-        # Initialize contact matrix
+        # Initialize final contact matrix
         C = summary_C(cont_matrix, cont_params, alpha)
     
     else: 
-        # Initialize contact matrix
+        # Initialize final contact matrix
         C = np.array(1 - alpha)
 
     # Define agent 
@@ -155,8 +155,8 @@ for i in range(settings["iterations"]):
             agents[agent].interact(
                 [agents.get(key) for key in connections[agent]], avia_data[agent]
             )
+            
 
-            # Set new state for agents
     for agent in agents:
 
         reward = 0
