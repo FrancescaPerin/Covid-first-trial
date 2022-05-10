@@ -3,7 +3,7 @@
     "fixed_migration": false,
     "pop_migration": 0.02,
     "nation_def": "Nation",
-    "age_group": false,
+    "age_group": true,
     "age_group_summary": true,
     "economy": false,
     "bufferSettings": {
@@ -19,7 +19,7 @@
                 "lr": 0.001
             },
             "net": {
-                "state_size": 24,
+                "state_size": 8,
                 "output_size": 1,
                 "neurons": [128, 64, 32],
                 "activations": "ReLU",
@@ -32,7 +32,7 @@
                 "lr": 0.001
             },
             "net": {
-                "state_size": 24,
+                "state_size": 8,
                 "output_size": 1,
                 "neurons": [128, 64, 32],
                 "activations": "ReLU",

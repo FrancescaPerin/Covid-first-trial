@@ -83,6 +83,11 @@ economy_params = load_JSON(args.cont_params)
 # Saving dictionary containing Agent objects
 agents = {}
 
+# if age group is used state size of the network needs to be changed despite any other parameter
+if settings["age_group"]:
+    settings["networkParameters"]["actor"]["net"]["state_size"]=24
+    settings["networkParameters"]["critic"]["net"]["state_size"]=24
+
 for agent in data_agents:
 
     alpha = 0.2
@@ -112,7 +117,7 @@ for agent in data_agents:
         C = np.array(1 - alpha)
 
     # Define agent 
-    agent_obj = Nation(settings, cont_matrix, cont_params, population, C, **agent)
+    agent_obj = NationRL(settings, cont_matrix, cont_params, population, C, **agent)
 
     agents[agent_obj.name] = agent_obj
 
@@ -155,7 +160,7 @@ for i in range(settings["iterations"]):
             agents[agent].interact(
                 [agents.get(key) for key in connections[agent]], avia_data[agent]
             )
-            
+
 
     for agent in agents:
 
