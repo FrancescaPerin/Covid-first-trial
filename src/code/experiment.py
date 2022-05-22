@@ -1,27 +1,23 @@
-import numpy as np
-import json
 import argparse
+import json
 import os
 from datetime import datetime
+from os.path import join as joinpath
 
-from nationRL import NationRL
-from nation import Nation
+import numpy as np
+import torch
+
 from agent import Agent
-
+from nation import Nation
+from nationRL import NationRL
 from utils import (
+    calc_loss_GDP,
     check_file,
-    load_JSON,
     load_contact,
+    load_JSON,
     load_pop,
     summary_C,
-    calc_loss_GDP,
 )
-from plots import (
-    plot_age_compartment_comparison,
-    plot_compartment_comparison,
-    plot_loss_GDP,
-)
-
 
 parser = argparse.ArgumentParser(description="Passing arguments to code.")
 
@@ -67,27 +63,27 @@ parser.add_argument(
 args = parser.parse_args()
 
 # Loading agents from JSON file
-data_agents = load_JSON('../json/' + args.agent_params)
+data_agents = load_JSON("../json/" + args.agent_params)
 
 # Loading topology from JSON file
-connections = load_JSON('../json/' + args.topology)
+connections = load_JSON("../json/" + args.topology)
 
 # Loading environment and RL settings from JSON file
-settings = load_JSON('../json/' + args.settings)
+settings = load_JSON("../json/" + args.settings)
 
 # Loading contact matrices settings from JSON file
-cont_params = np.asarray(list(load_JSON('../json/' + args.cont_params).values()))
+cont_params = np.asarray(list(load_JSON("../json/" + args.cont_params).values()))
 
 # Loading economy settings from JSON file
-economy_params = load_JSON('../json/' + args.cont_params)
+economy_params = load_JSON("../json/" + args.cont_params)
 
 # Saving dictionary containing Agent objects
 agents = {}
 
 # if age group is used state size of the network needs to be changed despite any other parameter
 if settings["age_group"]:
-    settings["networkParameters"]["actor"]["net"]["state_size"]=24
-    settings["networkParameters"]["critic"]["net"]["state_size"]=24
+    settings["networkParameters"]["actor"]["net"]["state_size"] = 24
+    settings["networkParameters"]["critic"]["net"]["state_size"] = 24
 
 for agent in data_agents:
 
@@ -112,17 +108,17 @@ for agent in data_agents:
 
         # Initialize final contact matrix
         C = summary_C(cont_matrix, cont_params, alpha)
-    
-    else: 
+
+    else:
         # Initialize final contact matrix
         C = np.array(1 - alpha)
 
-    # Define agent 
+    # Define agent
     agent_obj = NationRL(settings, cont_matrix, cont_params, population, C, **agent)
 
     agents[agent_obj.name] = agent_obj
 
-#Initiate loss with 0 values
+# Initiate loss with 0 values
 loss = np.zeros((len(agents), 2))
 
 for i in range(settings["iterations"]):
@@ -135,12 +131,14 @@ for i in range(settings["iterations"]):
 
         if settings["age_group"] == False:
 
-            #Recompute C according to new alpha
+            # Recompute C according to new alpha
 
-            agents[agent] = agents[agent].update_C(np.array(1 - alpha)) #TODO: should also use summary_C to recompute
+            agents[agent] = agents[agent].update_C(
+                np.array(1 - alpha)
+            )  # TODO: should also use summary_C to recompute
 
         else:
-            #Recompute C according to new alpha and update it 
+            # Recompute C according to new alpha and update it
             C = summary_C(cont_matrix, cont_params, alpha)
 
             agents[agent] = agents[agent].update_C(C)
@@ -162,7 +160,6 @@ for i in range(settings["iterations"]):
                 [agents.get(key) for key in connections[agent]], avia_data[agent]
             )
 
-
     for agent in agents:
 
         reward = 0
@@ -177,33 +174,17 @@ for i in range(settings["iterations"]):
             agents[agent].update(n=settings["updateN"])
 
 
-#Plotting based on verious settings
+# Save data
 
-results_dir = datetime.now().strftime("%Y_%b_%d_%H_%M_%S")
+results_path = datetime.now().strftime("%Y_%b_%d_%H_%M_%S")
+final_results_path = joinpath("../../results", results_path)
 
-if settings["age_group"] == True:
+if not os.path.isdir(final_results_path):
+    os.makedirs(final_results_path)
 
-    if settings["economy"] == True:
+# settings
+with open(joinpath(final_results_path, "settings.json"), "wt") as f:
+    json.dump(settings, f)
 
-        plot_loss_GDP(agents, sub_dir=results_dir)
-
-    plot_age_compartment_comparison(
-        agents, 0, "Susceptible", settings["age_group_summary"], sub_dir=results_dir
-    )
-    plot_age_compartment_comparison(agents, 1, "Exposed", settings["age_group_summary"], sub_dir=results_dir)
-    plot_age_compartment_comparison(
-        agents, 3, "Infected", settings["age_group_summary"], sub_dir=results_dir
-    )
-    plot_age_compartment_comparison(
-        agents, 4, "Recovered", settings["age_group_summary"], sub_dir=results_dir
-    )
-
-else:
-
-    if settings["economy"] == True:
-
-        plot_loss_GDP(agents, sub_dir=results_dir)
-
-    plot_compartment_comparison(agents, 0, "Susceptible", sub_dir=results_dir)
-    plot_compartment_comparison(agents, 1, "Exposed", sub_dir=results_dir)
-    plot_compartment_comparison(agents, 3, "Infected", sub_dir=results_dir)
+# agents
+torch.save(agents, joinpath(final_results_path, "agents.pth"))
