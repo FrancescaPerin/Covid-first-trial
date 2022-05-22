@@ -54,8 +54,7 @@ for idx, result_dir in enumerate(args.result_dirs):
     )
     if output_dir is None:
         output_dir = result_dir
-
-    output_dir = relpath(output_dir, "../../results/")
+        output_dir = relpath(output_dir, "../../results/")
 
     # Plotting based on verious settings
 
