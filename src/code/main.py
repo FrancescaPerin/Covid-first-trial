@@ -2,6 +2,7 @@ import numpy as np
 import json
 import argparse
 import os
+from datetime import datetime
 
 from nationRL import NationRL
 from nation import Nation
@@ -178,29 +179,31 @@ for i in range(settings["iterations"]):
 
 #Plotting based on verious settings
 
+results_dir = datetime.now().strftime("%Y_%b_%d_%H_%M_%S")
+
 if settings["age_group"] == True:
 
     if settings["economy"] == True:
 
-        plot_loss_GDP(agents)
+        plot_loss_GDP(agents, sub_dir=results_dir)
 
     plot_age_compartment_comparison(
-        agents, 0, "Susceptible", settings["age_group_summary"]
+        agents, 0, "Susceptible", settings["age_group_summary"], sub_dir=results_dir
     )
-    plot_age_compartment_comparison(agents, 1, "Exposed", settings["age_group_summary"])
+    plot_age_compartment_comparison(agents, 1, "Exposed", settings["age_group_summary"], sub_dir=results_dir)
     plot_age_compartment_comparison(
-        agents, 3, "Infected", settings["age_group_summary"]
+        agents, 3, "Infected", settings["age_group_summary"], sub_dir=results_dir
     )
     plot_age_compartment_comparison(
-        agents, 4, "Recovered", settings["age_group_summary"]
+        agents, 4, "Recovered", settings["age_group_summary"], sub_dir=results_dir
     )
 
 else:
 
     if settings["economy"] == True:
 
-        plot_loss_GDP(agents)
+        plot_loss_GDP(agents, sub_dir=results_dir)
 
-    plot_compartment_comparison(agents, 0, "Susceptible")
-    plot_compartment_comparison(agents, 1, "Exposed")
-    plot_compartment_comparison(agents, 3, "Infected")
+    plot_compartment_comparison(agents, 0, "Susceptible", sub_dir=results_dir)
+    plot_compartment_comparison(agents, 1, "Exposed", sub_dir=results_dir)
+    plot_compartment_comparison(agents, 3, "Infected", sub_dir=results_dir)

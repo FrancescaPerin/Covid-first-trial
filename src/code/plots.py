@@ -1,9 +1,10 @@
 import numpy as np
 import os
+from os.path import join as joinpath
 from matplotlib import pyplot as plt
 
 
-def plot_age_compartment_comparison(agents, idx, comp_name, summary=False):
+def plot_age_compartment_comparison(agents, idx, comp_name, summary=False, sub_dir="."):
 
     plt.rcParams["figure.figsize"] = (15, 9)
     fig, axs = plt.subplots(len(agents), 1)
@@ -41,15 +42,15 @@ def plot_age_compartment_comparison(agents, idx, comp_name, summary=False):
         axs[i].set_title(agents[curr_agent].name)
 
     # Add information
-    final_path = "../../results/age_group/"
+    final_path = joinpath("../../results", sub_dir, "age_group")
     if not os.path.isdir(final_path):
         os.makedirs(final_path)
 
-    plt.savefig(f"../../results/age_group/{comp_name}_comparison.png")
+    plt.savefig(joinpath(final_path, f"{comp_name}_comparison.png"))
     plt.show()
 
 
-def plot_compartment_comparison(agents, idx, comp_name):
+def plot_compartment_comparison(agents, idx, comp_name, sub_dir="."):
 
     plt.rcParams["figure.figsize"] = (15, 5)
 
@@ -66,15 +67,15 @@ def plot_compartment_comparison(agents, idx, comp_name):
     plt.xlabel("Time (days)")
     plt.title(f"{comp_name} comparison for agents")
 
-    final_path = "../../results/no_age_group/"
+    final_path = joinpath("../../results", sub_dir, "no_age_group")
     if not os.path.isdir(final_path):
         os.makedirs(final_path)
 
-    plt.savefig(f"../../results/no_age_group/{comp_name}_comparison.png")
+    plt.savefig(joinpath(final_path, f"{comp_name}_comparison.png"))
     plt.show()
 
 
-def plot_loss_GDP(agents):
+def plot_loss_GDP(agents, sub_dir="."):
 
     plt.rcParams["figure.figsize"] = (15, 5)
 
@@ -88,5 +89,11 @@ def plot_loss_GDP(agents):
     plt.ylabel("Population fraction")
     plt.xlabel("Time (days)")
     plt.title(f"Loss comparison for agents")
-    plt.savefig(f"../../results//loss_comparison.png")
+
+    final_path = joinpath("../../results", sub_dir)
+
+    if not os.path.isdir(final_path):
+        os.makedirs(final_path)
+
+    plt.savefig(joinpath(final_path, "loss_comparison.png"))
     plt.show()
