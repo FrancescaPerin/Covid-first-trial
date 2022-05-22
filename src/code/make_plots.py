@@ -29,6 +29,13 @@ parser.add_argument(
     help="Directories in which to save plots, if not given plots are saved in the result directory",
 )
 
+parser.add_argument(
+    "--show",
+    default=False,
+    action="store_true",
+    help="Set this flag to show the plots while saving them",
+)
+
 args = parser.parse_args()
 
 if not isinstance(args.result_dirs, (list, tuple)):
@@ -58,31 +65,53 @@ for idx, result_dir in enumerate(args.result_dirs):
 
     # Plotting based on verious settings
 
+    if settings["economy"] == True:
+
+        plot_loss_GDP(agents, sub_dir=output_dir, show=args.show)
+
     if settings["age_group"] == True:
 
-        if settings["economy"] == True:
-
-            plot_loss_GDP(agents, sub_dir=output_dir)
-
         plot_age_compartment_comparison(
-            agents, 0, "Susceptible", settings["age_group_summary"], sub_dir=output_dir
+            agents,
+            0,
+            "Susceptible",
+            settings["age_group_summary"],
+            sub_dir=output_dir,
+            show=args.show,
         )
         plot_age_compartment_comparison(
-            agents, 1, "Exposed", settings["age_group_summary"], sub_dir=output_dir
+            agents,
+            1,
+            "Exposed",
+            settings["age_group_summary"],
+            sub_dir=output_dir,
+            show=args.show,
         )
         plot_age_compartment_comparison(
-            agents, 3, "Infected", settings["age_group_summary"], sub_dir=output_dir
+            agents,
+            3,
+            "Infected",
+            settings["age_group_summary"],
+            sub_dir=output_dir,
+            show=args.show,
         )
         plot_age_compartment_comparison(
-            agents, 4, "Recovered", settings["age_group_summary"], sub_dir=output_dir
+            agents,
+            4,
+            "Recovered",
+            settings["age_group_summary"],
+            sub_dir=output_dir,
+            show=args.show,
         )
 
     else:
 
-        if settings["economy"] == True:
-
-            plot_loss_GDP(agents, sub_dir=output_dir)
-
-        plot_compartment_comparison(agents, 0, "Susceptible", sub_dir=output_dir)
-        plot_compartment_comparison(agents, 1, "Exposed", sub_dir=output_dir)
-        plot_compartment_comparison(agents, 3, "Infected", sub_dir=output_dir)
+        plot_compartment_comparison(
+            agents, 0, "Susceptible", sub_dir=output_dir, show=args.show
+        )
+        plot_compartment_comparison(
+            agents, 1, "Exposed", sub_dir=output_dir, show=args.show
+        )
+        plot_compartment_comparison(
+            agents, 3, "Infected", sub_dir=output_dir, show=args.show
+        )

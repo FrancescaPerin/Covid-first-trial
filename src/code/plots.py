@@ -4,7 +4,9 @@ from os.path import join as joinpath
 from matplotlib import pyplot as plt
 
 
-def plot_age_compartment_comparison(agents, idx, comp_name, summary=False, sub_dir="."):
+def plot_age_compartment_comparison(
+    agents, idx, comp_name, summary=False, sub_dir=".", show=False
+):
 
     plt.rcParams["figure.figsize"] = (15, 9)
     fig, axs = plt.subplots(len(agents), 1)
@@ -47,10 +49,12 @@ def plot_age_compartment_comparison(agents, idx, comp_name, summary=False, sub_d
         os.makedirs(final_path)
 
     plt.savefig(joinpath(final_path, f"{comp_name}_comparison.png"))
-    plt.show()
+
+    if show:
+        plt.show()
 
 
-def plot_compartment_comparison(agents, idx, comp_name, sub_dir="."):
+def plot_compartment_comparison(agents, idx, comp_name, sub_dir=".", show=False):
 
     plt.rcParams["figure.figsize"] = (15, 5)
 
@@ -72,10 +76,12 @@ def plot_compartment_comparison(agents, idx, comp_name, sub_dir="."):
         os.makedirs(final_path)
 
     plt.savefig(joinpath(final_path, f"{comp_name}_comparison.png"))
-    plt.show()
+
+    if show:
+        plt.show()
 
 
-def plot_loss_GDP(agents, sub_dir="."):
+def plot_loss_GDP(agents, sub_dir=".", show=False):
 
     plt.rcParams["figure.figsize"] = (15, 5)
 
@@ -96,4 +102,6 @@ def plot_loss_GDP(agents, sub_dir="."):
         os.makedirs(final_path)
 
     plt.savefig(joinpath(final_path, "loss_comparison.png"))
-    plt.show()
+
+    if show:
+        plt.show()
