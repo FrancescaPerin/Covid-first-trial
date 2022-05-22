@@ -186,5 +186,14 @@ if not os.path.isdir(final_results_path):
 with open(joinpath(final_results_path, "settings.json"), "wt") as f:
     json.dump(settings, f)
 
+with open(joinpath(final_results_path, "cont_params.json"), "wt") as f:
+    json.dump(args.cont_params, f)
+
+with open(joinpath(final_results_path, "economy_params.json"), "wt") as f:
+    json.dump(economy_params, f)
+
+with open(joinpath(final_results_path, "agent_params.json"), "wt") as f:
+    json.dump(args.agent_params, f)
+
 # agents
 torch.save(agents, joinpath(final_results_path, "agents.pth"))

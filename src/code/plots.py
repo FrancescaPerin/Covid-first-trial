@@ -2,46 +2,84 @@ import numpy as np
 import os
 from os.path import join as joinpath
 from matplotlib import pyplot as plt
+from collections import defaultdict
+from itertools import groupby
 
 
 def plot_age_compartment_comparison(
-    agents, idx, comp_name, summary=False, sub_dir=".", show=False
+    experiments, idx, comp_name, summary=False, sub_dir=".", show=False, group_vals=None
 ):
 
+    # Either don't give group values or give one value of each experiment (dictionary of agents)
+    assert group_vals is None or len(group_vals) == len(experiments)
+
+    # If no grouping is given, create a single "fake" group with parameter value `0`
+    if group_vals is None:
+        groups = {0: experiments}
+    else:
+
+        # Sort by value
+        sorted_pairs = sorted(zip(experiments, group_vals), key=lambda x: x[1])
+
+        # Group by value
+        groups = {
+            par_val : [x[0] for x in group_experiments]
+            for par_val, group_experiments in groupby(sorted_pairs, key=lambda x: x[1])
+        }
+
     plt.rcParams["figure.figsize"] = (15, 9)
-    fig, axs = plt.subplots(len(agents), 1)
+    fig, axs = plt.subplots(
+        len(experiments[0]), 1
+    )  # get the number of agents from the first experiment
     fig.subplots_adjust(hspace=0.5, wspace=0.001)
 
     fig.suptitle(f"{comp_name} comparison for agents")
 
     axs = axs.ravel()
 
+    agent_namses = list(
+        experiments[0].keys()
+    )  # get the key order from the first experiment
+
     # Plot desired compartment
-    for i, curr_agent in enumerate(agents):
+    for group_val, group in groups.items():
 
-        arr_filter = (
-            np.asarray(agents[curr_agent].history[:, 1:, :])[:, idx:, :] > 0.001
-        )
+        # Compute average history per agent
 
-        axs[i].plot(agents[curr_agent].history[:, 1:, :][:, idx, 0])  # child
+        for i, agent_name in enumerate(agent_namses):
 
-        axs[i].plot(agents[curr_agent].history[:, 1:, :][:, idx, 1])  # adult
+            # Average histories accross experiments for agents with the same name
+            history = np.mean(
+                [agents[agent_name].history[:, 1:, :] for agents in group], axis=0
+            )
 
-        axs[i].plot(agents[curr_agent].history[:, 1:, :][:, idx, 2])  # senior
+            arr_filter = history[:, idx:, :] > 0.001
 
-        if summary == True:
+            axs[i].plot(
+                history[:, idx, 0],
+                label=f"Child {'' if group_vals is None else group_val}",
+            )  # child
 
-            # print (np.sum(agents[curr_agent].history[:,1:,:][:,idx, :], axis = 1))
+            axs[i].plot(
+                history[:, idx, 1],
+                label=f"Adult {'' if group_vals is None else group_val}",
+            )  # adult
 
-            axs[i].plot(np.sum(agents[curr_agent].history[:, 1:, :][:, idx, :], axis=1))
-            axs[i].legend(["Child", "Adult", "Senior", "Total"])
-        else:
+            axs[i].plot(
+                history[:, idx, 2],
+                label=f"Senior {'' if group_vals is None else group_val}",
+            )  # senior
 
-            axs[i].legend(["Child", "Adult", "Senior"])
+            if summary:
+                axs[i].plot(
+                    np.sum(history[:, idx, :], axis=1),
+                    label=f"Total {'' if group_vals is None else group_val}",
+                )
 
-        axs[i].set_ylabel("Population fraction")
-        axs[i].set_xlabel("Time (days)")
-        axs[i].set_title(agents[curr_agent].name)
+            axs[i].set_ylabel("Population fraction")
+            axs[i].set_xlabel("Time (days)")
+            axs[i].set_title(agent_name)
+            axs[i].legend()
 
     # Add information
     final_path = joinpath("../../results", sub_dir, "age_group")
@@ -59,11 +97,11 @@ def plot_compartment_comparison(agents, idx, comp_name, sub_dir=".", show=False)
     plt.rcParams["figure.figsize"] = (15, 5)
 
     # Plot desired compartment
-    for curr_agent in agents:
+    for curr_agent in agents.values():
 
-        arr_filter = np.asarray(agents[curr_agent].history[:, 1:])[:, idx] > 0.001
+        arr_filter = np.asarray(curr_agent.history[:, 1:])[:, idx] > 0.001
 
-        plt.plot(np.asarray(agents[curr_agent].history[:, 1:])[:, idx])
+        plt.plot(np.asarray(curr_agent.history[:, 1:])[:, idx])
 
     # Add information
     plt.legend([agent for agent in agents])
@@ -86,9 +124,8 @@ def plot_loss_GDP(agents, sub_dir=".", show=False):
     plt.rcParams["figure.figsize"] = (15, 5)
 
     # Plot desired compartment
-    for curr_agent in agents:
-
-        plt.plot(agents[curr_agent].history[:, -1])
+    for curr_agent in agents.values():
+        plt.plot(curr_agent.history[:, -1])
 
     # Add information
     plt.legend([agent for agent in agents])

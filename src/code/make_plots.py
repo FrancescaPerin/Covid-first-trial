@@ -11,6 +11,63 @@ from plots import (
     plot_loss_GDP,
 )
 
+
+def all_plots(settings, agents, output_dir, show, values=None):
+
+    if settings["economy"] == True:
+
+        plot_loss_GDP(agents[0], sub_dir=output_dir, show=show)
+
+    if settings["age_group"] == True:
+
+        plot_age_compartment_comparison(
+            agents,
+            0,
+            "Susceptible",
+            settings["age_group_summary"],
+            sub_dir=output_dir,
+            show=show,
+            group_vals=values,
+        )
+        plot_age_compartment_comparison(
+            agents,
+            1,
+            "Exposed",
+            settings["age_group_summary"],
+            sub_dir=output_dir,
+            show=show,
+            group_vals=values,
+        )
+        plot_age_compartment_comparison(
+            agents,
+            3,
+            "Infected",
+            settings["age_group_summary"],
+            sub_dir=output_dir,
+            show=show,
+            group_vals=values,
+        )
+        plot_age_compartment_comparison(
+            agents,
+            4,
+            "Recovered",
+            settings["age_group_summary"],
+            sub_dir=output_dir,
+            show=show,
+            group_vals=values,
+        )
+
+    else:
+
+        plot_compartment_comparison(
+            agents, 0, "Susceptible", sub_dir=output_dir, show=show
+        )
+        plot_compartment_comparison(agents, 1, "Exposed", sub_dir=output_dir, show=show)
+        plot_compartment_comparison(
+            agents, 3, "Infected", sub_dir=output_dir, show=show
+        )
+
+
 parser = ArgumentParser()
 
 parser.add_argument(
@@ -36,6 +93,10 @@ parser.add_argument(
     help="Set this flag to show the plots while saving them",
 )
 
+# TODO make this configurable
+aggregate = True
+values = [1, 2, 1, 2]
+
 args = parser.parse_args()
 
 if not isinstance(args.result_dirs, (list, tuple)):
@@ -46,72 +107,38 @@ if not isinstance(args.output_dirs, (list, tuple)):
 
 assert len(args.output_dirs) == 1 or len(args.output_dirs) == len(args.result_dirs)
 
-for idx, result_dir in enumerate(args.result_dirs):
+if not aggregate:
+
+    for idx, result_dir in enumerate(args.result_dirs):
+
+        # Load settings
+        with open(joinpath(result_dir, "settings.json"), "rt") as f:
+            settings = json.load(f)
+
+        # Load agents
+        agents = torch.load(joinpath(result_dir, "agents.pth"))
+
+        # Get output directory
+        output_dir = (
+            args.output_dirs[idx] if len(args.output_dirs) > 1 else args.output_dirs[0]
+        )
+        if output_dir is None:
+            output_dir = result_dir
+            output_dir = relpath(output_dir, "../../results/")
+
+        # Plotting based on verious settings
+        all_plots(settings, [agents], output_dir, args.show)
+else:
 
     # Load settings
-    with open(joinpath(result_dir, "settings.json"), "rt") as f:
+    with open(joinpath(args.result_dirs[0], "settings.json"), "rt") as f:
         settings = json.load(f)
 
-    # Load agents
-    agents = torch.load(joinpath(result_dir, "agents.pth"))
-
     # Get output directory
-    output_dir = (
-        args.output_dirs[idx] if len(args.output_dirs) > 1 else args.output_dirs[0]
-    )
-    if output_dir is None:
-        output_dir = result_dir
-        output_dir = relpath(output_dir, "../../results/")
+    output_dir = args.output_dirs[0]
+    assert output_dir is not None
+
+    agents = [torch.load(joinpath(result_dir, "agents.pth")) for result_dir in args.result_dirs]
 
     # Plotting based on verious settings
-
-    if settings["economy"] == True:
-
-        plot_loss_GDP(agents, sub_dir=output_dir, show=args.show)
-
-    if settings["age_group"] == True:
-
-        plot_age_compartment_comparison(
-            agents,
-            0,
-            "Susceptible",
-            settings["age_group_summary"],
-            sub_dir=output_dir,
-            show=args.show,
-        )
-        plot_age_compartment_comparison(
-            agents,
-            1,
-            "Exposed",
-            settings["age_group_summary"],
-            sub_dir=output_dir,
-            show=args.show,
-        )
-        plot_age_compartment_comparison(
-            agents,
-            3,
-            "Infected",
-            settings["age_group_summary"],
-            sub_dir=output_dir,
-            show=args.show,
-        )
-        plot_age_compartment_comparison(
-            agents,
-            4,
-            "Recovered",
-            settings["age_group_summary"],
-            sub_dir=output_dir,
-            show=args.show,
-        )
-
-    else:
-
-        plot_compartment_comparison(
-            agents, 0, "Susceptible", sub_dir=output_dir, show=args.show
-        )
-        plot_compartment_comparison(
-            agents, 1, "Exposed", sub_dir=output_dir, show=args.show
-        )
-        plot_compartment_comparison(
-            agents, 3, "Infected", sub_dir=output_dir, show=args.show
-        )
+    all_plots(settings, agents, output_dir, args.show, values)
