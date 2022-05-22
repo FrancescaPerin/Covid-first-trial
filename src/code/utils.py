@@ -71,7 +71,7 @@ def load_pop(country, age_group=False):
 
 def norm_home(country, path):
 
-    hh_path = "../../data/Population_group/Household data/Tables"
+    hh_path = "../../data/Population_group/Household_data/Tables"
 
     home = np.load(path)
 
