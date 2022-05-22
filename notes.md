@@ -37,4 +37,26 @@
             ```
             where `np.random.normal(1)` will sample _1_ value from `N(0,1)`, and `size=1` because `mean` is a value (_float_) and not an array, otherwise I can do `size=mean.shape`
         
+# Plotting
+
+* Aggregation missing 
+    * Add aggregation code to non-age group plots
+        * group agents by value if given
+            * same as the other function (with age groups)
+        * remove passing labels to legend manually
+            * e.g. remove `plt.legend([agent for agent in agents])`, use only `plt.legend`, and the labels when calling `plot`
+    * Add aggregation to loss plots
+        * group agents by value if given
+            * same as the other function (with age groups)
+        * remove passing labels to legend manually
+            * e.g. remove `plt.legend([agent for agent in agents])`, use only `plt.legend`, and the labels when calling `plot`
+
+* Configuration for parameter sweep
+    * remove harcoded aggregated boolean in `make_plots.py`
+    * add command line argument to specify what parameter to sweep on
+        * from this construct the `vals` list
         
+* Add standard error 
+    * compute standard devitation (very similar to mean)
+    * from standard deviation compute [Standard Error](https://www.scribbr.com/statistics/standard-error/)
+    * use [fill_between](https://www.scribbr.com/statistics/standard-error/) function to plot between `mean - 2*standard_error` and `mean + 2*standard_error`
