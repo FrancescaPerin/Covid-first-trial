@@ -26,6 +26,12 @@ df.replace(":", np.nan, inplace=True)  # replacing invalid characters
 df.replace(
     "Germany (until 1990 former territory of the FRG)", "Germany", inplace=True
 )  # replacing invalid characters
+df.replace(
+    "Czechia", "Czech Republic", inplace=True
+)
+df.replace(
+    "United Kingdom", "United Kingdom of Great Britain", inplace=True
+)
 
 
 df.dropna(

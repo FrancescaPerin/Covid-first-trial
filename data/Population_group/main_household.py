@@ -5,15 +5,15 @@ import json
 
 from utils import load_json, summary_table
 
-save_json = True
+save_json = False
 
 old_countries = load_json(
-    "/Users/francescaperin/Desktop/MSc Thesis/My code start/Covid-first-trial/Preprocessing/countries.json"
+    "../Contact_matrices/countries.json"
 )
 current_countries = load_json("list_countries.json")
 
-path = "/Users/francescaperin/Desktop/MSc Thesis/My code start/Covid-first-trial/Preprocessing population_group/"
-file_name = os.path.join(path, "Household data/household_size.xlsx")
+path = "Covid-first-trial/Population_group/"
+file_name = "Household_data/household_size.xlsx"
 
 xls = pd.ExcelFile(file_name)
 data = pd.read_excel(xls, "UN HH Size and Composition 2019", header=None)
@@ -37,8 +37,8 @@ rest_old = list((set(old_countries) ^ set(new_countries)) & set(old_countries))
 
 rest_new = list((set(old_countries) ^ set(new_countries)) & set(new_countries))
 
-file_names_fix = "Household data/name_fix_household.json"
-countries_fix = load_json(path + file_names_fix)
+file_names_fix = "Household_data/name_fix_household.json"
+countries_fix = load_json(file_names_fix)
 
 countries_list = list()
 
@@ -51,7 +51,7 @@ for country in common:
 
     if not avg_table.empty:
 
-        new_path = os.path.join(path, "Household data", "Tables", country)
+        new_path = os.path.join(path, "Household_data", "Tables", country)
         os.makedirs(new_path, exist_ok=True)
 
         np.save(new_path + "/hh_table", hh_table)
@@ -73,7 +73,7 @@ for country in rest_old:
 
         if not avg_table.empty:
 
-            new_path = os.path.join(path, "Household data", "Tables", country)
+            new_path = os.path.join(path, "Household_data", "Tables", country)
             os.makedirs(new_path, exist_ok=True)
 
             np.save(new_path + "/hh_table", hh_table)
@@ -87,5 +87,5 @@ for country in rest_old:
 
 
 if save_json == True:
-    with open("Household data/hh_countries.json", "w") as f:
+    with open("Household_data/hh_countries.json", "w") as f:
         json.dump(countries_list, f)

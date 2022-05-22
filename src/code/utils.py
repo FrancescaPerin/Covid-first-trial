@@ -28,7 +28,7 @@ def load_JSON(file_name):
 
 def load_contact(country):
 
-    path = "Preprocessing/new_matrices_152_countries"
+    path = "../../data/Contact_matrices/new_matrices_152_countries"
 
     name = "age_matrix.npy"
 
@@ -44,7 +44,7 @@ def load_contact(country):
 
 def load_pop(country, age_group=False):
 
-    path = "Preprocessing population_group/Tables"
+    path = "../../data/Population_group/Tables"
 
     name = "population_table.npy"
 
@@ -71,7 +71,7 @@ def load_pop(country, age_group=False):
 
 def norm_home(country, path):
 
-    hh_path = "Preprocessing population_group/Household data/Tables"
+    hh_path = "../../data/Population_group/Household data/Tables"
 
     home = np.load(path)
 

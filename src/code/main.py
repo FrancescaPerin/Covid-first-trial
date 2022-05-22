@@ -66,19 +66,19 @@ parser.add_argument(
 args = parser.parse_args()
 
 # Loading agents from JSON file
-data_agents = load_JSON(args.agent_params)
+data_agents = load_JSON('../json/' + args.agent_params)
 
 # Loading topology from JSON file
-connections = load_JSON(args.topology)
+connections = load_JSON('../json/' + args.topology)
 
 # Loading environment and RL settings from JSON file
-settings = load_JSON(args.settings)
+settings = load_JSON('../json/' + args.settings)
 
 # Loading contact matrices settings from JSON file
-cont_params = np.asarray(list(load_JSON(args.cont_params).values()))
+cont_params = np.asarray(list(load_JSON('../json/' + args.cont_params).values()))
 
 # Loading economy settings from JSON file
-economy_params = load_JSON(args.cont_params)
+economy_params = load_JSON('../json/' + args.cont_params)
 
 # Saving dictionary containing Agent objects
 agents = {}
@@ -154,7 +154,7 @@ for i in range(settings["iterations"]):
 
         else:
             # otherwise load aviation data
-            avia_data = load_JSON("Aviation/json_data.json")
+            avia_data = load_JSON("../../data/Aviation/json_data.json")
 
             # interaction is based on agent aviation data (not fixed)
             agents[agent].interact(

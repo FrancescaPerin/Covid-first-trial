@@ -3,9 +3,9 @@
     "fixed_migration": false,
     "pop_migration": 0.02,
     "nation_def": "Nation",
-    "age_group": true,
+    "age_group": false,
     "age_group_summary": true,
-    "economy": false,
+    "economy": true,
     "bufferSettings": {
         "maxSize": 5000,
         "batchSize": 150,
