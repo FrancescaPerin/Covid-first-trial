@@ -94,8 +94,8 @@ parser.add_argument(
 )
 
 # TODO make this configurable
-aggregate = True
-values = [1, 2, 1, 2]
+aggregate = False
+values = [1]
 
 args = parser.parse_args()
 

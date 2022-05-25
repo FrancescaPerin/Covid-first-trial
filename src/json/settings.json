@@ -1,9 +1,9 @@
 {
-    "iterations": 400,
+    "iterations": 1000,
     "fixed_migration": false,
     "pop_migration": 0.02,
     "nation_def": "Nation",
-    "age_group": false,
+    "age_group": true,
     "age_group_summary": true,
     "economy": true,
     "bufferSettings": {

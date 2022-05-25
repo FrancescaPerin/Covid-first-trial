@@ -162,7 +162,7 @@ for i in range(settings["iterations"]):
 
     for agent in agents:
 
-        reward = 0
+        reward = agents[agent].state.D * agents[agent].state.loss
 
         agents[agent].set_state(alpha, reward, agents[agent].next_state(i))
 
