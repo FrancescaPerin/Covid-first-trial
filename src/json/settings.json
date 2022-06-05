@@ -3,7 +3,7 @@
     "fixed_migration": false,
     "pop_migration": 0.02,
     "nation_def": "Nation",
-    "age_group": false,
+    "age_group": true,
     "age_group_summary": false,
     "economy": false,
     "bufferSettings": {

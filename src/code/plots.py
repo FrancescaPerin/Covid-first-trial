@@ -50,26 +50,53 @@ def plot_age_compartment_comparison(
         for i, agent_name in enumerate(agent_names):
 
             # Average histories accross experiments for agents with the same name
-            history = np.mean(
-                [agents[agent_name].history[:, 1:, :] for agents in group], axis=0
+            history = np.asarray(
+                [agents[agent_name].history[:, 1:, :] for agents in group], dtype=np.float64
             )
 
-            arr_filter = history[:, idx:, :] > 0.001
+            history_mean = np.mean(
+                    history, axis=0
+                )
+
+            history_std = np.std(
+                    history, axis=0
+                )
+
+            history_se = history_std/math.sqrt(history_std.shape[0])
+
+
+            sel_mean = np.asarray(history_mean[:, idx, :])
+            sel_se = np.asarray(history_se[:, idx, :])
+
+            #arr_filter = history[:, idx:, :] > 0.001
 
             axs[i].plot(
-                history[:, idx, 0],
+                sel_mean[:,0],
                 label=f"Child {'' if group_vals is None else group_val}",
             )  # child
+            axs[i].fill_between(range(len(sel_mean)), 
+                sel_mean[:, 0] - 2*sel_se[:, 0], 
+                sel_mean[:, 0] + 2*sel_se[:, 0]
+            )
 
             axs[i].plot(
-                history[:, idx, 1],
+                sel_mean[:,1],
                 label=f"Adult {'' if group_vals is None else group_val}",
             )  # adult
+            axs[i].fill_between(range(len(sel_mean)), 
+                sel_mean[:, 1] - 2*sel_se[:, 1], 
+                sel_mean[:, 1] + 2*sel_se[:, 1]
+            )
 
             axs[i].plot(
-                history[:, idx, 2],
+                sel_mean[:,2],
                 label=f"Senior {'' if group_vals is None else group_val}",
             )  # senior
+
+            axs[i].fill_between(range(len(sel_mean)), 
+                sel_mean[:, 2] - 2*sel_se[:, 2], 
+                sel_mean[:, 2] + 2*sel_se[:, 2]
+            )
 
             if summary:
                 axs[i].plot(
@@ -137,7 +164,6 @@ def plot_compartment_comparison(experiments, idx, comp_name, sub_dir=".", show=F
                     history, axis=0
                 )
 
-            #print(std.shape)
             history_se = history_std/math.sqrt(history_std.shape[0])
 
             # arr_filter = history[:, idx:] > 0.001
@@ -149,7 +175,6 @@ def plot_compartment_comparison(experiments, idx, comp_name, sub_dir=".", show=F
                 label=f"{agent_name} {'' if group_vals is None else group_val}"
                 )
 
-            #print((sel_history - (2 * se[idx])))
             plt.fill_between(range(len(sel_mean)), sel_mean - 2*sel_se, sel_mean + 2*sel_se)
 
     # Add information
