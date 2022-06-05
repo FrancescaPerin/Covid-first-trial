@@ -96,13 +96,13 @@ def norm_home(country, path):
     return sum_home_hh
 
 
-def summary_C(contact_matrix, cont_params, alpha=0.2):
+def summary_C(contact_matrix, cont_params, alpha):
 
     p = cont_params * alpha
 
     X = np.diag(1 - p)
 
-    k = ["school", "work", "other"]
+    k = ["school", "work", "other", "env"]
 
     C = contact_matrix.home
 
@@ -112,12 +112,16 @@ def summary_C(contact_matrix, cont_params, alpha=0.2):
 
         C_i = X @ (m_i @ X)
 
+        if i == "env":
+            C_i = m_i @ np.diag(1 - np.full((3),alpha)) 
+
         C = C + C_i
+        
 
     return C
 
 
-def calc_loss_GDP(agent, t, r=0.0001, sigma=2, teta=0.33, a=18000, alpha=0.2):
+def calc_loss_GDP(agent, t, r=0.0001, sigma=2, teta=0.33, a=18000, alpha=1):
 
     loss = np.exp(-r * t) * (V(P(agent)) + a * agent.state.D)
 

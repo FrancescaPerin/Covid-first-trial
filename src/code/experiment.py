@@ -87,7 +87,7 @@ if settings["age_group"]:
 
 for agent in data_agents:
 
-    alpha = 0.2
+    alpha = 1
 
     # Loading contact matrix of agent
     cont_matrix = load_contact(agent["name"])
@@ -111,10 +111,10 @@ for agent in data_agents:
 
     else:
         # Initialize final contact matrix
-        C = np.array(1 - alpha)
+        C = np.array(alpha)
 
     # Define agent
-    agent_obj = NationRL(settings, cont_matrix, cont_params, population, C, **agent)
+    agent_obj = Nation(settings, cont_matrix, cont_params, population, C, **agent)
 
     agents[agent_obj.name] = agent_obj
 
@@ -134,7 +134,7 @@ for i in range(settings["iterations"]):
             # Recompute C according to new alpha
 
             agents[agent] = agents[agent].update_C(
-                np.array(1 - alpha)
+                np.array(alpha)
             )  # TODO: should also use summary_C to recompute
 
         else:

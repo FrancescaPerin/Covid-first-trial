@@ -4,8 +4,12 @@ import numpy as np
 class State:
     def __init__(self, N, S, E, A, I, R, D, V, loss):
 
-        self._state = np.array([N, S, E, A, I, R, D, V, loss])
-        # self._state = [N, self.SEAIRDV()/ self.SEAIRDV.sum()]
+        self._state = np.array(
+            list(map(
+                lambda x: x if isinstance(x, np.ndarray) else np.array([x]), 
+                [N, S, E, A, I, R, D, V, loss]
+            ))
+        )
 
     def __repr__(self):
 
@@ -53,7 +57,7 @@ class State:
 
     def set_N(self, N):
 
-        self._state = N
+        self._state[0] = N
 
         return self
 

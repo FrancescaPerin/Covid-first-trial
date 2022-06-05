@@ -60,11 +60,13 @@ def all_plots(settings, agents, output_dir, show, values=None):
     else:
 
         plot_compartment_comparison(
-            agents, 0, "Susceptible", sub_dir=output_dir, show=show
+            agents, 0, "Susceptible", sub_dir=output_dir, show=show, group_vals=values
         )
-        plot_compartment_comparison(agents, 1, "Exposed", sub_dir=output_dir, show=show)
         plot_compartment_comparison(
-            agents, 3, "Infected", sub_dir=output_dir, show=show
+            agents, 1, "Exposed", sub_dir=output_dir, show=show, group_vals=values
+        )
+        plot_compartment_comparison(
+            agents, 3, "Infected", sub_dir=output_dir, show=show, group_vals=values
         )
 
 
@@ -94,8 +96,8 @@ parser.add_argument(
 )
 
 # TODO make this configurable
-aggregate = False
-values = [1]
+aggregate = True
+values = [1,2,1,2]
 
 args = parser.parse_args()
 
