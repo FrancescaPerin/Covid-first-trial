@@ -114,7 +114,7 @@ for agent in data_agents:
         C = np.array(alpha)
 
     # Define agent
-    agent_obj = Nation(settings, cont_matrix, cont_params, population, C, **agent)
+    agent_obj = NationRL(settings, cont_matrix, cont_params, population, C, **agent)
 
     agents[agent_obj.name] = agent_obj
 
