@@ -110,10 +110,6 @@ parser.add_argument(
     help="Json file and values according to which to aggregate",
 )
 
-# TODO make this configurable
-#aggregate = True
-#values = [1,2,1,2]
-
 args = parser.parse_args()
 
 if not isinstance(args.result_dirs, (list, tuple)):
