@@ -16,7 +16,7 @@ def all_plots(settings, agents, output_dir, show, values=None):
 
     if settings["economy"] == True:
 
-        plot_loss_GDP(agents[0], sub_dir=output_dir, show=show)
+        plot_loss_GDP(agents, sub_dir=output_dir, show=show, group_vals= values)
 
     if settings["age_group"] == True:
 
