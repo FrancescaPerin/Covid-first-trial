@@ -28,28 +28,27 @@ countries_fix = load_json(file_names_fix)
 
 for country in common:
 
+
     pop_table = population[population["Country Name"] == country].drop(
         columns=["Country Code", "Series Code"]
     )
 
     pop_table.sort_values(by=["Series Name"], inplace=True)
 
-    new_path = os.path.join(path, "Population_group", "Tables", country)
+    new_path = os.path.join("Population_tables", country)
     os.makedirs(new_path, exist_ok=True)
 
     np.save(new_path + "/population_table", pop_table)
 
 for country in rem_countries:
 
-    pop_table = population[population["Country Name"] == country].drop(
+    pop_table = population[population["Country Name"] == countries_fix[country]].drop(
         columns=["Country Code", "Series Code"]
     )
 
     pop_table.sort_values(by=["Series Name"], inplace=True)
 
-    new_path = os.path.join(
-        path, "Population_group", "Tables", countries_fix[country]
-    )
+    new_path = os.path.join("Population_tables", country)
     os.makedirs(new_path, exist_ok=True)
 
     np.save(new_path + "/population_table", pop_table)

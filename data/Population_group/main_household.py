@@ -73,14 +73,10 @@ for country in rest_old:
 
         if not avg_table.empty:
 
-            print(country)
-            print(avg_table)
-
             new_path = os.path.join(path, "Tables", country)
             os.makedirs(new_path, exist_ok=True)
 
             np.save(new_path + "/hh_table", hh_table)
-            print(new_path)
             np.save(new_path + "/avg_table", avg_table)
 
             countries_list.append(countries_fix[country])

@@ -44,7 +44,7 @@ def load_contact(country):
 
 def load_pop(country, age_group=False):
 
-    path = "../../data/Population_group/Tables"
+    path = "../../data/Population_group/Population_tables"
 
     name = "population_table.npy"
 
@@ -154,7 +154,7 @@ def add_noise(mean, percentage_std):
         return float(mean + np.random.normal(scale=percentage_std*mean, size=1))
 
     else:
-
+        
         pop_perc=mean/mean.sum()
 
         noise = np.random.normal(scale=percentage_std*mean.sum(), size=1)

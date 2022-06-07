@@ -43,7 +43,7 @@ class Nation(Agent):
             for agent in conn_agents:
 
                 # Calculate percentage of population travelling out the country every day
-                pop_perc = int(value[agent.name].get("departures") / 365) / self.state.N.sum()
+                pop_perc = (value[agent.name].get("departures") / 365) / self.state.N.sum()
 
                 # Calcuate number from percantage and scale by the containment policy value
                 migration = self.alpha * (self.state.N * pop_perc)
