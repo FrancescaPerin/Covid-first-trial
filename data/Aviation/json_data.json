@@ -757,7 +757,7 @@
         },
         "Luxembourg": {
             "on_board": 62.5,
-            "arrivals": NaN,
+            "arrivals": 19.5,
             "departures": 43.0
         },
         "Hungary": {
@@ -3042,7 +3042,7 @@
         "Estonia": {
             "on_board": 43.5,
             "arrivals": 43.5,
-            "departures": NaN
+            "departures": 0.0
         },
         "Ireland": {
             "on_board": 200239.2,

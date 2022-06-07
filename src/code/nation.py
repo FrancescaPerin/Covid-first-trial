@@ -42,6 +42,10 @@ class Nation(Agent):
 
             for agent in conn_agents:
 
+                if np.isclose(value[agent.name].get("departures"), 0):
+
+                    continue
+
                 # Calculate percentage of population travelling out the country every day
                 pop_perc = (value[agent.name].get("departures") / 365) / self.state.N.sum()
 

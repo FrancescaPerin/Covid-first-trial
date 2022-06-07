@@ -9,7 +9,7 @@ class State:
                 lambda x: x if isinstance(x, np.ndarray) else np.array([x]), 
                 [N, S, E, A, I, R, D, V, loss]
             ))
-        )
+        ).astype(np.float32)
 
     def __repr__(self):
 

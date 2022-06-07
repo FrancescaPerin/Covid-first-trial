@@ -2,6 +2,7 @@ import json
 import numpy as np
 import os
 import pandas as pd
+import math
 
 from sys import exit
 
@@ -65,6 +66,21 @@ for geo in countries:
                 "arrivals": avg_arrivals,
                 "departures": avg_departures,
             }
+
+
+            if any(math.isnan(val) for val in summary_dict[geo][partner].values()):
+
+                keys_nan = [k for k, v in summary_dict[geo][partner].items() if math.isnan(v)]
+
+                other_keys = summary_dict[geo][partner].keys() - keys_nan
+
+                if keys_nan != 'on_board' and len(keys_nan)== 1:
+
+                    summary_dict[geo][partner][keys_nan[0]] = max(
+                        summary_dict[geo][partner].values()
+                    ) - min(
+                        summary_dict[geo][partner].values()
+                    )
 
 
 with open("countries.json", "w") as outfile:  # save json with countries available
