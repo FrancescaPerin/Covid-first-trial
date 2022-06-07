@@ -12,10 +12,10 @@ old_countries = load_json(
 )
 current_countries = load_json("list_countries.json")
 
-path = "Covid-first-trial/Population_group/"
-file_name = "Household_data/household_size.xlsx"
+path = "Household_data/"
+file_name = "household_size.xlsx"
 
-xls = pd.ExcelFile(file_name)
+xls = pd.ExcelFile(os.path.join(path, file_name))
 data = pd.read_excel(xls, "UN HH Size and Composition 2019", header=None)
 
 data.drop([0, 1, 2, 3], inplace=True)
@@ -51,7 +51,7 @@ for country in common:
 
     if not avg_table.empty:
 
-        new_path = os.path.join(path, "Household_data", "Tables", country)
+        new_path = os.path.join(path, "Tables", country)
         os.makedirs(new_path, exist_ok=True)
 
         np.save(new_path + "/hh_table", hh_table)
@@ -73,11 +73,15 @@ for country in rest_old:
 
         if not avg_table.empty:
 
-            new_path = os.path.join(path, "Household_data", "Tables", country)
+            print(country)
+            print(avg_table)
+
+            new_path = os.path.join(path, "Tables", country)
             os.makedirs(new_path, exist_ok=True)
 
             np.save(new_path + "/hh_table", hh_table)
-            np.save(new_path + "/summary_table", avg_table)
+            print(new_path)
+            np.save(new_path + "/avg_table", avg_table)
 
             countries_list.append(countries_fix[country])
 
