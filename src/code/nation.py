@@ -15,9 +15,8 @@ class Nation(Agent):
             previous_N = self.state.N
 
             # calculating the percentage of migration population scaled by the containment policy value
-            migration = self.alpha * (
-                self.state.N * value
-            )  # TODO: double check if alpha or 1-alpha
+            # NOTE here we use alpha and not alpha*compliance because here compliance does not matter as full lockdown can be enforced
+            migration = (1 - self.alpha) * (self.state.N * value)
 
             # add noise to not have constatnt migrations (unrealistic)
             migration_noise = add_noise(migration, 0.2)
@@ -52,7 +51,8 @@ class Nation(Agent):
                 ) / self.state.N.sum()
 
                 # Calcuate number from percantage and scale by the containment policy value
-                migration = self.alpha * (self.state.N * pop_perc)
+                # NOTE here we use alpha and not alpha*compliance because here compliance does not matter as full lockdown can be enforced
+                migration = (1 - self.alpha) * (self.state.N * pop_perc)
 
                 # Add noise
                 migration_noise = add_noise(migration, 0.2)

@@ -127,13 +127,14 @@ def summary_C_1D(cont_params, alpha):
     return C, C_env, X
 
 
-def calc_loss_GDP(agent, t, r=0.0001, sigma=2, teta=0.33, a=18000, alpha=1):
+def calc_loss_GDP(agent, t, r=0.0001, sigma=2, teta=0.33, a=18000, alpha=0.0):
 
     loss = np.exp(-r * t) * (V(P(agent)) + a * agent.state.D)
 
     return loss
 
 
+# TODO revisit alpha for GDP formulas
 def G(alpha=0.2, teta=0.5):
 
     return (alpha) ** teta
