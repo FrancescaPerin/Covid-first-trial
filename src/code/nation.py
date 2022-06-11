@@ -77,7 +77,7 @@ class Nation(Agent):
         d=infected die rate
         e=
         k=
-        w_a, w_m= environment contamination
+        w_a, w_i= environment contamination
         f = lost immunity ratio
         rho= removal environment contamination
 

@@ -89,8 +89,8 @@ def age_to_group(age_matrix):
 
     temporary_matrix = pd.DataFrame(
         {
-            "c": age_matrix.iloc[:, 0:4].sum(axis=1),  # 0 to 19
-            "a": age_matrix.iloc[:, 4:13].sum(axis=1),  # 20 to 64
+            "c": age_matrix.iloc[:, 0:4].sum(axis=1),  # 0 to 14
+            "a": age_matrix.iloc[:, 4:13].sum(axis=1),  # 15 to 64
             "s": age_matrix.iloc[:, 13:16].sum(axis=1),  # 65 to 80
         }
     )
