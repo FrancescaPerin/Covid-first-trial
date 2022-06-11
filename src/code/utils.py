@@ -102,21 +102,19 @@ def summary_C(contact_matrix, cont_params, alpha):
 
     X = np.diag(1 - p)
 
-    k = ["school", "work", "other", "env"]
-
     C = contact_matrix.home
 
-    for i in k:
+    # for k in ["school", "work", "other", "env"]:
+    for k in ["school", "work", "other"]:
 
-        m_i = getattr(contact_matrix, i)
+        m_i = getattr(contact_matrix, k)
 
-        C_i = X @ (m_i @ X)
-
-        if i == "env":
-            C_i = m_i @ np.diag(1 - np.full((3),alpha)) 
+        if k != "env":
+            C_i = X @ (m_i @ X)
+        else:
+            C_i = X @ m_i
 
         C = C + C_i
-        
 
     return C
 
