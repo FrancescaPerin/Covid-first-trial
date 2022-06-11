@@ -10,13 +10,14 @@ class Nation(Agent):
     # Interaction between agents ivolves migration of population from one agent to other(s)
     def interact(self, conn_agents, value):
 
-        if type(value) is float: #if migration is fixed to a certain value
+        if type(value) is float:  # if migration is fixed to a certain value
 
             previous_N = self.state.N
 
-
             # calculating the percentage of migration population scaled by the containment policy value
-            migration = self.alpha * (self.state.N * value) # TODO: double check if alpha or 1-alpha
+            migration = self.alpha * (
+                self.state.N * value
+            )  # TODO: double check if alpha or 1-alpha
 
             # add noise to not have constatnt migrations (unrealistic)
             migration_noise = add_noise(migration, 0.2)
@@ -26,19 +27,18 @@ class Nation(Agent):
 
             for agent in conn_agents:
 
-                #add noise to single self to agent migration
-                noise=add_noise(migration_noise / len(conn_agents), 0.1)
-                
-                #calculate new SEAIRDV value after immigration
+                # add noise to single self to agent migration
+                noise = add_noise(migration_noise / len(conn_agents), 0.1)
+
+                # calculate new SEAIRDV value after immigration
                 new_state_agent = agent.immigrate(self, noise)
-                
-                #set new state
+
+                # set new state
                 agent.replace_state(new_state_agent)
 
             return self, conn_agents
 
-        
-        else: #if the migration data is not fixed (aviation data)
+        else:  # if the migration data is not fixed (aviation data)
 
             for agent in conn_agents:
 
@@ -47,7 +47,9 @@ class Nation(Agent):
                     continue
 
                 # Calculate percentage of population travelling out the country every day
-                pop_perc = (value[agent.name].get("departures") / 365) / self.state.N.sum()
+                pop_perc = (
+                    value[agent.name].get("departures") / 365
+                ) / self.state.N.sum()
 
                 # Calcuate number from percantage and scale by the containment policy value
                 migration = self.alpha * (self.state.N * pop_perc)
@@ -65,7 +67,6 @@ class Nation(Agent):
                 agent.replace_state(new_state_agent)
 
             return self, conn_agents
-        
 
     def next_state(self, t):
         """
@@ -90,52 +91,94 @@ class Nation(Agent):
         next_V = w_a*A+w_i*I
         """
 
+        # Extract components of current state
         N, S, E, A, I, R, D, V, loss = self.state.to_array
 
-        p = self.cont_param
+        # Get total and environment contact matrices (with alpha/lockdown strength already incorporated)
+        C, C_v, inv_p = self.C
 
+        # Get parameters of model
         b, n, c, s, g, d, e, k, w_a, w_i, f, rho = [*self.parameters.values()]
+        b = np.array(b)
 
-        if self.C.shape != (3, 3):
+        # Make b one dimensional if there are no age groups
+        if C.shape != (3, 3):
+            b = b.sum()
 
-            p = p[
-                1
-            ]  # select p value of adult since without age groups all populations will be considered adult of working age
+        # Update Susceptible
 
-            next_S = (
-                S
-                - sum(b) * S * (self.C * V + self.C * (A + I))
-                - n * S
-                - n * (1 - D)
-                + f * R
-            )
+        # people moving from Susceptible to Exposed
+        S_to_E = b * S * (C_v @ V + C @ ((A + I) / N))
 
-            next_E = E + sum(b) * S * (self.C * V + self.C * (A + I)) - (k + n) * E
+        R_to_S = f * R
 
-        else:
+        next_S = (
+            S
+            + n * (1 - D)  # replenish the natural deaths in S, E, A, I, and R
+            + R_to_S  # people moving from Recovered to Susceptible
+            - S_to_E  # people moving from Susceptible to Exposed
+            - n * S  # natural deaths
+        )
 
-            next_S = (
-                S
-                - b * S * (self.C @ V + self.C @ ((A + I) / N.sum()))
-                - n * S
-                - n * (1 - D)
-                + f * R
-            )
+        # Update Exposed
 
-            next_E = (
-                E + b * S * (self.C @ V + self.C @ ((A + I) / N.sum())) - (k + n) * E
-            )
+        E_to_AI = k * E  # people moving from E to either A or I
 
-        next_A = A + (1 - e) * k * E - (g + n) * A
+        next_E = (
+            E
+            + S_to_E  # people moving from Susceptible to Exposed
+            - E_to_AI  # people moving from E to either A or I
+            - n * E  # natural deaths
+        )
 
-        next_I = I + (e * k * E) - (g + d + n) * I
+        # Update Asymptomatic
 
-        next_R = R + (g * (A + I)) - (n * R) - f * R
+        A_to_R = g * A  # people moving from Asymptomatic to Recovered
 
-        next_D = D + d * I
+        next_A = (
+            A
+            + (1 - e) * E_to_AI  # people moving from Exposed to Asymptomatic
+            - A_to_R  # people moving from Asymptomatic to Recovered
+            - n * A  # natural deaths
+        )
 
-        next_V = (w_a * (1 - p) * A) + (w_i * (1 - p) * I) - rho * V
+        # Update Infected
 
+        I_to_R = g * I  # people moving from Infected to Recovered
+        I_to_D = d * I  # people moving from Infected to Dead
+
+        next_I = (
+            I
+            + e * E_to_AI  # people moving from Exposed to Infected
+            - I_to_R  # people moving from infected to Recovered
+            - I_to_D  # people moving from Infected to Dead
+            - n * I  # natural deaths
+        )
+
+        # Update Recovered
+
+        next_R = (
+            R
+            + A_to_R  # people moving from Asymptomatic to Recovered
+            + I_to_R  # people moving from Infected to Recovered
+            - R_to_S  # people moving from Recovered to Susceptible
+            - n * R  # natural deaths
+        )
+
+        # Update Deaths
+
+        next_D = D + I_to_D  # people moving from Infected to Dead
+
+        # Update Environment
+
+        next_V = (
+            V
+            + (w_a * inv_p * A)  # environment contaminants from Asymptomatic
+            + (w_i * inv_p * I)  # environment contaminants from Infected
+            - rho * V  # normal rate of environment decontamination
+        )
+
+        # TODO check calc loss
         next_loss = loss + calc_loss_GDP(self, t)
 
         return State(

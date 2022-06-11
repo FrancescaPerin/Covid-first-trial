@@ -98,25 +98,33 @@ def norm_home(country, path):
 
 def summary_C(contact_matrix, cont_params, alpha):
 
+    # TODO check using single cont_params for all k
+
     p = cont_params * alpha
 
     X = np.diag(1 - p)
 
     C = contact_matrix.home
 
-    # for k in ["school", "work", "other", "env"]:
     for k in ["school", "work", "other"]:
 
         m_i = getattr(contact_matrix, k)
+        C = C + X @ (m_i @ X)
 
-        if k != "env":
-            C_i = X @ (m_i @ X)
-        else:
-            C_i = X @ m_i
+    C_env = X @ contact_matrix.env
 
-        C = C + C_i
+    return C, C_env, np.diag(X)
 
-    return C
+
+def summary_C_1D(cont_params, alpha):
+
+    X = 1 - (np.array([alpha]) * cont_params[1])
+
+    C = X
+    # TODO modify this if using multiple cont_params for different environment
+    C_env = C
+
+    return C, C_env, X
 
 
 def calc_loss_GDP(agent, t, r=0.0001, sigma=2, teta=0.33, a=18000, alpha=1):
@@ -144,17 +152,18 @@ def V(P, sigma=2):
 
     return V
 
-# Add normally ditributed noise to aviation migration mean 
+
+# Add normally ditributed noise to aviation migration mean
 def add_noise(mean, percentage_std):
 
     if isinstance(mean, float):
 
-        return float(mean + np.random.normal(scale=percentage_std*mean, size=1))
+        return float(mean + np.random.normal(scale=percentage_std * mean, size=1))
 
     else:
-        
-        pop_perc=mean/mean.sum()
 
-        noise = np.random.normal(scale=percentage_std*mean.sum(), size=1)
+        pop_perc = mean / mean.sum()
 
-    return mean + pop_perc*noise
+        noise = np.random.normal(scale=percentage_std * mean.sum(), size=1)
+
+    return mean + pop_perc * noise

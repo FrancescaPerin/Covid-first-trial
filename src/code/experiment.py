@@ -17,6 +17,7 @@ from utils import (
     load_JSON,
     load_pop,
     summary_C,
+    summary_C_1D,
 )
 
 parser = argparse.ArgumentParser(description="Passing arguments to code.")
@@ -110,8 +111,8 @@ for agent in data_agents:
         C = summary_C(cont_matrix, cont_params, alpha)
 
     else:
-        # Initialize final contact matrix
-        C = np.array(alpha)
+        # Initialize final contact matrix (use adult compliance)
+        C = summary_C_1D(cont_params, alpha)
 
     # Define agent
     agent_obj = NationRL(settings, cont_matrix, cont_params, population, C, **agent)
@@ -132,10 +133,7 @@ for i in range(settings["iterations"]):
         if settings["age_group"] == False:
 
             # Recompute C according to new alpha
-
-            agents[agent] = agents[agent].update_C(
-                np.array(alpha)
-            )  # TODO: should also use summary_C to recompute
+            agents[agent] = agents[agent].update_C(summary_C_1D(cont_params, alpha))
 
         else:
             # Recompute C according to new alpha and update it
