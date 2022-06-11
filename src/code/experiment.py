@@ -87,7 +87,7 @@ if settings["age_group"]:
 
 for agent in data_agents:
 
-    alpha = 1
+    alpha = 0.0
 
     # Loading contact matrix of agent
     cont_matrix = load_contact(agent["name"])
