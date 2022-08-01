@@ -1,11 +1,68 @@
 import numpy as np
 
-from state import State
 from agent import Agent
-from utils import calc_loss_GDP, add_noise
+from state import State
+from utils import add_noise, calc_loss_GDP
 
 
 class Nation(Agent):
+    def __init__(
+        self,
+        config_par,
+        contact_matrix,
+        cont_param,
+        population,
+        C,
+        name,
+        state,
+        parameters,
+    ):
+
+        super().__init__(config_par=config_par, name=name)
+
+        self.contact_matrix = contact_matrix
+        self.cont_param = cont_param
+        self.population = population
+        self.C = C
+        self.state = State(population, **state)
+        self.parameters = parameters
+        self.alpha = config_par["alpha"]
+        self._history = [self.state.to_array, self.state.to_array]
+
+    def __repr__(self):
+
+        return "\nNation %s :\n\t Contact matrix:\n\t %s \n\n\t %s,\n\t " % (
+            self.name,
+            self.contact_matrix,
+            self.state,
+        )
+
+    def state_to_array(self, state):
+        return state.to_array
+
+    def update_C(self, C):
+
+        self.C = C
+
+        return self
+
+    def immigrate(self, mig_agent, value):
+
+        calc_new_seir = (
+            (mig_agent.state.SEAIRDV * value) + (self.state.SEAIRDV * self.state.N)
+        ) / (value + self.state.N)
+
+        new_state = State(value + self.state.N, *calc_new_seir)
+
+        return new_state
+
+    def emigrate(self, value):
+
+        new_state = State(self.state.set_value("-", value), *self.state.SEAIRDV)
+
+        self.replace_state(new_state)
+
+        return self
 
     # Interaction between agents ivolves migration of population from one agent to other(s)
     def interact(self, conn_agents, value):

@@ -1,4 +1,4 @@
-from nationRL import NationRL
+from agentRL import MultinomialAgent
 import gym
 from matplotlib import pyplot as plt
 from rich.progress import track
@@ -19,42 +19,36 @@ config = {
         "gamma": 0.98,
         "device": "cpu",
         "actor": {
-            "optim": {"lr": 0.001},
+            "optim": {"lr": 0.01},
             "net": {
                 "state_size": 4,
                 "output_size": 2,
-                "neurons": [256, 128, 64, 32],
+                "neurons": [128],
                 "activations": "ReLU",
                 "out_activation": "ReLU",
                 "n_heads": 1,
             },
         },
         "critic": {
-            "optim": {"lr": 0.001},
+            "optim": {"lr": 0.01},
             "net": {
                 "state_size": 4,
                 "output_size": 1,
-                "neurons": [256, 128, 64, 32],
+                "neurons": [128],
                 "activations": "ReLU",
-                "out_activation": "Sigmoid",
+                "out_activation": None,
                 "n_heads": 1,
             },
         },
     },
-    "updatePeriod": 80,
+    "updatePeriod": 30,
     "updateN": 500,
     "alpha": 0.2,
 }
 
-agent = NationRL(
+agent = MultinomialAgent(
     config_par=config,
-    contact_matrix=None,
-    population=None,
-    C=None,
-    name=None,
-    state=None,
-    parameters=None,
-    cont_param=None,
+    name="agent",
 )
 
 counter_update_period = 0
