@@ -170,6 +170,8 @@ class AgentRL(Agent):
                 self._actor_optimizer.step()
                 self._critic_optimizer.step()
 
+        return actor_loss.detach().numpy(), critic_loss.detach().numpy()
+
     def extract_transition(self, t):
 
         return map(lambda x: x.to(self._device), t)

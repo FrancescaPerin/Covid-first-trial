@@ -58,9 +58,11 @@ env = gym.make("CartPole-v1")
 
 # Stats
 returns = []
+actor_loss=[]
+critic_loss=[]
 
 # Training loop
-for episode in track(range(1000)):
+for episode in track(range(62)):
 # for episode in range(100):
 
     # Initialize state
@@ -87,19 +89,40 @@ for episode in track(range(1000)):
 
         # Update if necessary
         if counter_update_period >= config["updatePeriod"]:
-            agent.update(config["updateN"])
+            actor_t, critic_t = agent.update(config["updateN"])
             counter_update_period = 0
+            actor_loss.append(actor_t)
+            critic_loss.append(critic_t)
         else:
             counter_update_period += 1
+            #actor_loss.append(actor_t)
+            #critic_loss.append(critic_t)
 
         if done:
             break
 
     returns.append(G)
 
+
+actor_loss = np.array(actor_loss)
+critic_loss = np.array(critic_loss)
+
+print(actor_loss)
+print(critic_loss)
+
 returns = np.array(returns)
 
-plt.plot(returns, label="Raw")
-plt.plot(np.cumsum(returns)/(np.arange(returns.shape[0])+1), label="Avg")
-plt.legend()
+
+fig, axs = plt.subplots(2)
+axs[0].plot(returns, label="Raw")
+axs[0].plot(np.cumsum(returns)/(np.arange(returns.shape[0])+1), label="Avg")
+axs[0].legend()
+
+axs[1].plot(actor_loss, label="Actor")
+axs[1].plot(critic_loss, label="Critic")
+axs[1].legend()
+
 plt.show()
+
+
+
