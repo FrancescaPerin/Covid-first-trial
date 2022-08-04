@@ -1,12 +1,14 @@
+from abc import abstractmethod
+
+import numpy as np
+import torch
 import torch.nn as nn
 from torch import Tensor
 from torch.distributions.beta import Beta
 from torch.distributions.multinomial import Multinomial
 from torch.optim import Adam
-from agent import Agent
-from abc import abstractmethod
-import torch
 
+from agent import Agent
 from replayBuffer import replayBuffer
 
 
@@ -218,3 +220,15 @@ class MultinomialAgent(AgentRL):
 
         # Create multinomial distribution
         return Multinomial(probs=log_probs)
+
+    def greedy_policy(self):
+
+        # Get state vector
+        state = Tensor(self.extract_state(self.state)).to(self._device)
+
+        # Get alpha from actor
+        probs = self.get_dist(state).probs.cpu().detach().numpy()
+
+        I = np.eye(probs.shape[-1])
+
+        return I[np.argmax(probs)]

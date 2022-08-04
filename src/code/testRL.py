@@ -19,7 +19,7 @@ config = {
         "gamma": 0.98,
         "device": "cpu",
         "actor": {
-            "optim": {"lr": 0.01},
+            "optim": {"lr": 0.001},
             "net": {
                 "state_size": 4,
                 "output_size": 2,
@@ -30,7 +30,7 @@ config = {
             },
         },
         "critic": {
-            "optim": {"lr": 0.01},
+            "optim": {"lr": 0.001},
             "net": {
                 "state_size": 4,
                 "output_size": 1,
@@ -42,7 +42,7 @@ config = {
         },
     },
     "updatePeriod": 30,
-    "updateN": 500,
+    "updateN": 100,
     "alpha": 0.2,
 }
 
@@ -58,12 +58,12 @@ env = gym.make("CartPole-v1")
 
 # Stats
 returns = []
-actor_loss=[]
-critic_loss=[]
+actor_loss = []
+critic_loss = []
 
 # Training loop
-for episode in track(range(62)):
 # for episode in range(100):
+for episode in track(range(500)):
 
     # Initialize state
     state = env.reset()
@@ -95,15 +95,40 @@ for episode in track(range(62)):
             critic_loss.append(critic_t)
         else:
             counter_update_period += 1
-            #actor_loss.append(actor_t)
-            #critic_loss.append(critic_t)
+            # actor_loss.append(actor_t)
+            # critic_loss.append(critic_t)
 
         if done:
             break
 
     returns.append(G)
 
+# Testing loop
+for episode in track(range(20)):
 
+    # Initialize state
+    state = env.reset()
+
+    for i in range(config["iterations"]):
+
+        # Set agent current state
+        agent.state = state
+
+        # Get the action the agent would do
+        action = np.argmax(agent.policy())
+
+        # Pass action to environment and get new state
+        state, reward, done, other = env.step(action)
+
+        # Render environment
+        env.render()
+
+        if done:
+            break
+
+    print("END OF EPISODE: ", i)
+
+# Plot loss and returns
 actor_loss = np.array(actor_loss)
 critic_loss = np.array(critic_loss)
 
@@ -115,7 +140,7 @@ returns = np.array(returns)
 
 fig, axs = plt.subplots(2)
 axs[0].plot(returns, label="Raw")
-axs[0].plot(np.cumsum(returns)/(np.arange(returns.shape[0])+1), label="Avg")
+axs[0].plot(np.cumsum(returns) / (np.arange(returns.shape[0]) + 1), label="Avg")
 axs[0].legend()
 
 axs[1].plot(actor_loss, label="Actor")
@@ -123,6 +148,3 @@ axs[1].plot(critic_loss, label="Critic")
 axs[1].legend()
 
 plt.show()
-
-
-
