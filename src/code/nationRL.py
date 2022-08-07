@@ -22,7 +22,10 @@ class NationRL(BetaAgent, Nation):
         parameters,
     ):
 
-        super().__init__(
+        BetaAgent.__init__(self, config_par=config_par, name=name)
+
+        Nation.__init__(
+            self,
             config_par,
             contact_matrix,
             cont_param,
@@ -32,8 +35,6 @@ class NationRL(BetaAgent, Nation):
             state,
             parameters,
         )
-
-        BetaAgent.__init__(self, config_par=config_par, name=name)
 
     # Give experience to agent
 

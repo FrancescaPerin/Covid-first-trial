@@ -50,6 +50,5 @@ class Agent(ABC):
 
         pass
 
-    @abstractmethod
     def update(self, n=1):
         pass

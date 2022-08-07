@@ -18,7 +18,7 @@ class Nation(Agent):
         parameters,
     ):
 
-        super().__init__(config_par=config_par, name=name)
+        Agent.__init__(self, config_par=config_par, name=name)
 
         self.contact_matrix = contact_matrix
         self.cont_param = cont_param

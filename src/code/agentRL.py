@@ -90,7 +90,7 @@ class AgentRL(Agent):
         config_par,
     ):
 
-        super().__init__(config_par=config_par, name=name)
+        Agent.__init__(self, config_par=config_par, name=name)
 
         # Parameters
         self.__gamma = config_par["networkParameters"]["gamma"]
@@ -127,7 +127,7 @@ class AgentRL(Agent):
         )
         self.__replaybuffer.append(transition)
 
-        return super().set_state(action, reward, next_state)
+        return Agent.set_state(self, action, reward, next_state)
 
     def extract_state(self, state_info):
         return state_info
@@ -203,7 +203,7 @@ class BetaAgent(AgentRL):
 class MultinomialAgent(AgentRL):
     def extract_transition(self, t):
 
-        s1, a, r, s2 = super().extract_transition(t)
+        s1, a, r, s2 = AgentRL.extract_transition(self, t)
 
         # convert a to one-hot encoding
         I = torch.eye(
