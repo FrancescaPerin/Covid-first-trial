@@ -6,6 +6,7 @@ from os.path import join as joinpath
 
 import numpy as np
 import torch
+from rich.progress import track
 
 from agent import Agent
 from nation import Nation
@@ -94,7 +95,7 @@ if settings["age_group"]:
     settings["networkParameters"]["actor"]["net"]["state_size"] = 24
     settings["networkParameters"]["critic"]["net"]["state_size"] = 24
 
-for agent in data_agents:
+for agent in track(data_agents, description="Initializing agents"):
 
     alpha = 0.0
 
@@ -131,7 +132,7 @@ for agent in data_agents:
 # Initiate loss with 0 values
 loss = np.zeros((len(agents), 2))
 
-for i in range(settings["iterations"]):
+for i in track(range(settings["iterations"]), description="Running simulation"):
 
     # Act in the environment
     for agent in agents:
