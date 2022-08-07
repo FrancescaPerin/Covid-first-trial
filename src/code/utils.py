@@ -127,31 +127,29 @@ def summary_C_1D(cont_params, alpha):
     return C, C_env, X
 
 
-def calc_loss_GDP(agent, t, r=0.0001, sigma=2, teta=0.33, a=18000, alpha=0.0):
+def calc_loss_GDP(agent, D_prime, t, r=0.0001, sigma=2, teta=0.33, a=18000, alpha=0.0):
 
-    loss = np.exp(-r * t) * (V(P(agent)) + a * agent.state.D)
-
-    return loss
+    return np.exp(-r * t) * (
+        V(P(agent, alpha=alpha, teta=teta), sigma=sigma) + a * D_prime
+    )
 
 
 # TODO revisit alpha for GDP formulas
 def G(alpha=0.2, teta=0.5):
 
-    return (alpha) ** teta
+    return (1-alpha) ** teta
 
 
 def P(agent, alpha=0.2, teta=0.33):
 
-    P = G(alpha, teta) * (agent.state.S + agent.state.E + agent.state.A + agent.state.R)
-
-    return P
+    return G(alpha, teta) * (
+        agent.state.S + agent.state.E + agent.state.A + agent.state.R
+    )
 
 
 def V(P, sigma=2):
 
-    V = -((P ** (1 - sigma) - 1) / (1 - sigma))
-
-    return V
+    return -((P ** (1 - sigma) - 1) / (1 - sigma))
 
 
 # Add normally ditributed noise to aviation migration mean

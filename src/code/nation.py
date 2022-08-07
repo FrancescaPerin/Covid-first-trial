@@ -231,7 +231,7 @@ class Nation(Agent):
         )
 
         # TODO check calc loss
-        next_loss = loss + calc_loss_GDP(self, t)
+        next_loss = loss + calc_loss_GDP(self, I_to_D, t)
 
         return State(
             N, next_S, next_E, next_A, next_I, next_R, next_D, next_V, next_loss
