@@ -47,6 +47,7 @@ class Nation(Agent):
         return self
 
     def immigrate(self, mig_agent, value):
+        # TODO make sure that this method and related methods get called
 
         calc_new_seir = (
             (mig_agent.state.SEAIRDV * value) + (self.state.SEAIRDV * self.state.N)
