@@ -61,6 +61,14 @@ parser.add_argument(
     help="JSON file with settings of outer model",
 )
 
+parser.add_argument(
+    "--agent_type",
+    type=str,
+    choices=["Nation", "NationRL"],
+    default="Nation",
+    help="Agent class to be used in experiment",
+)
+
 args = parser.parse_args()
 
 # Loading agents from JSON file
@@ -115,7 +123,8 @@ for agent in data_agents:
         C = summary_C_1D(cont_params, alpha)
 
     # Define agent
-    agent_obj = NationRL(settings, cont_matrix, cont_params, population, C, **agent)
+    NationClass = eval(args.agent_type)
+    agent_obj = NationClass(settings, cont_matrix, cont_params, population, C, **agent)
 
     agents[agent_obj.name] = agent_obj
 
