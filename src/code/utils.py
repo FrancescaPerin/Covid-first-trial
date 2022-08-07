@@ -168,3 +168,7 @@ def add_noise(mean, percentage_std):
         noise = np.random.normal(scale=percentage_std * mean.sum(), size=1)
 
     return mean + pop_perc * noise
+
+
+def reward_function(agent):
+    return agent.state.D * agent.state.loss

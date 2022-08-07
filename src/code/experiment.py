@@ -19,6 +19,7 @@ from utils import (
     load_pop,
     summary_C,
     summary_C_1D,
+    reward_function,
 )
 
 parser = argparse.ArgumentParser(description="Passing arguments to code.")
@@ -87,6 +88,9 @@ cont_params = np.asarray(list(load_JSON("../json/" + args.cont_params).values())
 # Loading economy settings from JSON file
 economy_params = load_JSON("../json/" + args.cont_params)
 
+# Load aviation data
+avia_data = load_JSON("../../data/Aviation/json_data.json")
+
 # Saving dictionary containing Agent objects
 agents = {}
 
@@ -134,45 +138,39 @@ loss = np.zeros((len(agents), 2))
 
 for i in track(range(settings["iterations"]), description="Running simulation"):
 
+    # Create dictionary sto store alphas
+    alphas = {agent: agents[agent].policy() for agent in agents}
+
     # Act in the environment
+
+    # Update C matrices for each agent
     for agent in agents:
 
-        # Calculate new alpha trough policy
-        alpha = agents[agent].policy()
-
-        if settings["age_group"] == False:
-
+        if not settings["age_group"]:
             # Recompute C according to new alpha
-            agents[agent] = agents[agent].update_C(summary_C_1D(cont_params, alpha))
-
+            C = summary_C_1D(cont_params, alphas[agent])
         else:
             # Recompute C according to new alpha and update it
-            C = summary_C(cont_matrix, cont_params, alpha)
+            C = summary_C(cont_matrix, cont_params, alphas[agent])
 
-            agents[agent] = agents[agent].update_C(C)
+        agents[agent].update_C(C)
 
-        if settings["fixed_migration"]:
-
-            # if migration value is fixed use settings value for all agents
-            agents[agent].interact(
-                [agents.get(key) for key in connections[agent]],
-                settings["pop_migration"],
-            )
-
-        else:
-            # otherwise load aviation data
-            avia_data = load_JSON("../../data/Aviation/json_data.json")
-
-            # interaction is based on agent aviation data (not fixed)
-            agents[agent].interact(
-                [agents.get(key) for key in connections[agent]], avia_data[agent]
-            )
-
+    # Immigrate/emigrate between each country
     for agent in agents:
 
-        reward = agents[agent].state.D * agents[agent].state.loss
+        # interaction is based on agent aviation data (not fixed)
+        agents[agent].interact(
+            [agents.get(key) for key in connections[agent]],
+            settings["pop_migration"]
+            if settings["fixed_migration"]
+            else avia_data[agent],
+        )
 
-        agents[agent].set_state(alpha, reward, agents[agent].next_state(i))
+    # Set transition in environment (and compute reward) for each agent
+    for agent in agents:
+        agents[agent].set_state(
+            alphas[agent], reward_function(agents[agent]), agents[agent].next_state(i)
+        )
 
         # Train agents
     if i != 0 and i % settings["updatePeriod"] == 0:
