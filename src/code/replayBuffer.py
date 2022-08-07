@@ -26,7 +26,7 @@ class replayBuffer:
             batch = self.__l[: self.__batchSize]
             self.__l = self.__l[self.__batchSize :]
 
-            return tuple((Tensor([t[i] for t in batch]) for i in range(len(batch[0]))))
+            return tuple((Tensor(np.array([t[i] for t in batch])) for i in range(len(batch[0]))))
 
         def __len__(self):
             return len(self.__l)
