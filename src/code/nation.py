@@ -26,7 +26,7 @@ class Nation(Agent):
         self.C = C
         self.state = State(population, **state)
         self.parameters = parameters
-        self.alpha = config_par["alpha"]
+        self._base_alpha = config_par["alpha"]
         self._history = [self.state.to_array, self.state.to_array]
 
     def __repr__(self):
@@ -54,8 +54,9 @@ class Nation(Agent):
         ) / (value + self.state.N)
 
         new_state = State(value + self.state.N, *calc_new_seir)
+        self.replace_state(new_state)
 
-        return new_state
+        return self
 
     def emigrate(self, value):
 
@@ -66,7 +67,7 @@ class Nation(Agent):
         return self
 
     # Interaction between agents ivolves migration of population from one agent to other(s)
-    def interact(self, conn_agents, value):
+    def interact(self, alpha, conn_agents, value):
 
         if type(value) is float:  # if migration is fixed to a certain value
 
@@ -74,7 +75,7 @@ class Nation(Agent):
 
             # calculating the percentage of migration population scaled by the containment policy value
             # NOTE here we use alpha and not alpha*compliance because here compliance does not matter as full lockdown can be enforced
-            migration = (1 - self.alpha) * (self.state.N * value)
+            migration = (1 - alpha) * (self.state.N * value)
 
             # add noise to not have constatnt migrations (unrealistic)
             migration_noise = add_noise(migration, 0.2)
@@ -88,10 +89,7 @@ class Nation(Agent):
                 noise = add_noise(migration_noise / len(conn_agents), 0.1)
 
                 # calculate new SEAIRDV value after immigration
-                new_state_agent = agent.immigrate(self, noise)
-
-                # set new state
-                agent.replace_state(new_state_agent)
+                agent.immigrate(self, noise)
 
             return self, conn_agents
 
@@ -100,7 +98,6 @@ class Nation(Agent):
             for agent in conn_agents:
 
                 if np.isclose(value[agent.name].get("departures"), 0):
-
                     continue
 
                 # Calculate percentage of population travelling out the country every day
@@ -110,7 +107,7 @@ class Nation(Agent):
 
                 # Calcuate number from percantage and scale by the containment policy value
                 # NOTE here we use alpha and not alpha*compliance because here compliance does not matter as full lockdown can be enforced
-                migration = (1 - self.alpha) * (self.state.N * pop_perc)
+                migration = (1 - alpha) * (self.state.N * pop_perc)
 
                 # Add noise
                 migration_noise = add_noise(migration, 0.2)
@@ -119,10 +116,7 @@ class Nation(Agent):
                 self.emigrate(migration_noise)
 
                 # Calculate new SEAIRDV values for state receiving population
-                new_state_agent = agent.immigrate(self, migration_noise)
-
-                # Set new state (SEAIRDV receiving state)
-                agent.replace_state(new_state_agent)
+                agent.immigrate(self, migration_noise)
 
             return self, conn_agents
 
@@ -244,4 +238,4 @@ class Nation(Agent):
         )
 
     def policy(self):
-        return self.alpha
+        return self._base_alpha

@@ -160,6 +160,7 @@ for i in track(range(settings["iterations"]), description="Running simulation"):
 
         # interaction is based on agent aviation data (not fixed)
         agents[agent].interact(
+            alphas[agent],
             [agents.get(key) for key in connections[agent]],
             settings["pop_migration"]
             if settings["fixed_migration"]
