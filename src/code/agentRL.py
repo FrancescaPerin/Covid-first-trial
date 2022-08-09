@@ -121,7 +121,7 @@ class AgentRL(Agent):
 
         transition = (
             self.extract_state(self.state),
-            action,
+            [action],
             [reward],
             self.extract_state(next_state),
         )
