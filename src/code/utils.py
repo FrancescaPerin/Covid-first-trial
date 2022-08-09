@@ -169,4 +169,4 @@ def add_noise(mean, percentage_std):
 
 def reward_function(agent):
     # TODO check reward function
-    return agent.state.D * agent.state.loss
+    return agent.state.D.sum() * agent.state.loss[1]
