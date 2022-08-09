@@ -40,4 +40,7 @@ class NationRL(BetaAgent, Nation):
     # Give experience to agent
 
     def extract_state(self, state_info):
-        return state_info.SEAIRDV.flatten().astype(float)[:-1]
+        return state_info.SEAIRDV.flatten().astype(float)
+
+    def policy(self):
+        return BetaAgent.policy(self)[0]

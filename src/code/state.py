@@ -79,4 +79,4 @@ class State:
 
     @property
     def SEAIRDV(self):
-        return np.row_stack(self._state[1:])
+        return np.row_stack(self._state[1:-1])

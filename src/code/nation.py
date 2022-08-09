@@ -53,14 +53,14 @@ class Nation(Agent):
             (mig_agent.state.SEAIRDV * value) + (self.state.SEAIRDV * self.state.N)
         ) / (value + self.state.N)
 
-        new_state = State(value + self.state.N, *calc_new_seir)
+        new_state = State(value + self.state.N, *calc_new_seir, self.state.loss)
         self.replace_state(new_state)
 
         return self
 
     def emigrate(self, value):
 
-        new_state = State(self.state.set_value("-", value), *self.state.SEAIRDV)
+        new_state = State(self.state.set_value("-", value), *self.state.SEAIRDV, self.state.loss)
 
         self.replace_state(new_state)
 
