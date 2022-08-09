@@ -71,6 +71,13 @@ parser.add_argument(
     help="Agent class to be used in experiment",
 )
 
+parser.add_argument(
+    "--debug",
+    default=False,
+    action="store_true",
+    help="Set to true to run debug mode",
+)
+
 args = parser.parse_args()
 
 # Loading agents from JSON file
@@ -97,10 +104,17 @@ agents = {}
 # if age group is used state size of the network needs to be changed despite any other parameter
 # TODO check where the 23 comes from
 if settings["age_group"]:
-    settings["networkParameters"]["actor"]["net"]["state_size"] = 23
-    settings["networkParameters"]["critic"]["net"]["state_size"] = 23
+    settings["networkParameters"]["actor"]["net"]["state_size"] = 21 # SEAIRDV x 3 age groups
+    settings["networkParameters"]["critic"]["net"]["state_size"] = 21
+else:
+    settings["networkParameters"]["actor"]["net"]["state_size"] = 7
+    settings["networkParameters"]["critic"]["net"]["state_size"] = 7
 
-for agent in track(data_agents, description="Initializing agents"):
+for agent in (
+    track(data_agents, description="Initializing agents")
+    if not args.debug
+    else data_agents
+):
 
     alpha = 0.0
 
@@ -137,7 +151,11 @@ for agent in track(data_agents, description="Initializing agents"):
 # Initiate loss with 0 values
 loss = np.zeros((len(agents), 2))
 
-for i in track(range(settings["iterations"]), description="Running simulation"):
+for i in (
+    track(range(settings["iterations"]), description="Running simulation")
+    if not args.debug
+    else range(settings["iterations"])
+):
 
     # Create dictionary sto store alphas
     alphas = {agent: agents[agent].policy() for agent in agents}
