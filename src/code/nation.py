@@ -47,7 +47,6 @@ class Nation(Agent):
         return self
 
     def immigrate(self, mig_agent, value):
-        # TODO make sure that this method and related methods get called
 
         calc_new_seir = (
             (mig_agent.state.SEAIRDV * value) + (self.state.SEAIRDV * self.state.N)
@@ -60,7 +59,9 @@ class Nation(Agent):
 
     def emigrate(self, value):
 
-        new_state = State(self.state.set_value("-", value), *self.state.SEAIRDV, self.state.loss)
+        new_state = State(
+            self.state.set_value("-", value), *self.state.SEAIRDV, self.state.loss
+        )
 
         self.replace_state(new_state)
 
@@ -230,7 +231,6 @@ class Nation(Agent):
             - rho * V  # normal rate of environment decontamination
         )
 
-        # TODO check calc loss
         next_loss = loss + calc_loss_GDP(self, I_to_D, t)
 
         return State(

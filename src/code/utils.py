@@ -134,7 +134,6 @@ def calc_loss_GDP(agent, D_prime, t, r=0.0001, sigma=2, teta=0.33, a=18000, alph
     )
 
 
-# TODO revisit alpha for GDP formulas
 def G(alpha=0.2, teta=0.5):
 
     return (1-alpha) ** teta
@@ -169,5 +168,5 @@ def add_noise(mean, percentage_std):
 
 
 def reward_function(agent):
-    # TODO check loss function
+    # TODO check reward function
     return agent.state.D * agent.state.loss

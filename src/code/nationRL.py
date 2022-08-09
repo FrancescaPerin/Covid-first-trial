@@ -10,7 +10,7 @@ from replayBuffer import replayBuffer
 
 
 class NationRL(BetaAgent, Nation):
-    # TODO ensure that neural policy gets called
+
     def __init__(
         self,
         config_par,
