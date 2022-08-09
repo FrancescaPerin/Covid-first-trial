@@ -102,7 +102,6 @@ avia_data = load_JSON("../../data/Aviation/json_data.json")
 agents = {}
 
 # if age group is used state size of the network needs to be changed despite any other parameter
-# TODO check where the 23 comes from
 if settings["age_group"]:
     settings["networkParameters"]["actor"]["net"]["state_size"] = 21 # SEAIRDV x 3 age groups
     settings["networkParameters"]["critic"]["net"]["state_size"] = 21
