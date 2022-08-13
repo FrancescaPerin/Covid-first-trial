@@ -210,8 +210,21 @@ class Nation(Agent):
 
         next_loss = loss + calc_loss_GDP(self, I_to_D, t)
 
+        # Renormalize SEAIRDV to account for numerical errors
+        SEAIRDV_tot = (
+            next_S + next_E + next_A + next_I + next_R + next_D + next_V
+        ).sum()
+
         return State(
-            N, next_S, next_E, next_A, next_I, next_R, next_D, next_V, next_loss
+            N,
+            next_S / SEAIRDV_tot,
+            next_E / SEAIRDV_tot,
+            next_A / SEAIRDV_tot,
+            next_I / SEAIRDV_tot,
+            next_R / SEAIRDV_tot,
+            next_D / SEAIRDV_tot,
+            next_V / SEAIRDV_tot,
+            next_loss,
         )
 
     def policy(self):
