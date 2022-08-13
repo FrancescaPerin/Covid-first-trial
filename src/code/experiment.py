@@ -103,12 +103,15 @@ agents = {}
 
 # if age group is used state size of the network needs to be changed despite any other parameter
 if settings["age_group"]:
-    settings["networkParameters"]["actor"]["net"]["state_size"] = 21 # SEAIRDV x 3 age groups
+    settings["networkParameters"]["actor"]["net"][
+        "state_size"
+    ] = 21  # SEAIRDV x 3 age groups
     settings["networkParameters"]["critic"]["net"]["state_size"] = 21
 else:
     settings["networkParameters"]["actor"]["net"]["state_size"] = 7
     settings["networkParameters"]["critic"]["net"]["state_size"] = 7
 
+# Initialize agents
 for agent in (
     track(data_agents, description="Initializing agents")
     if not args.debug
@@ -146,6 +149,12 @@ for agent in (
     agent_obj = NationClass(settings, cont_matrix, cont_params, population, C, **agent)
 
     agents[agent_obj.name] = agent_obj
+
+# Normalize aviation data
+for agent_name, agent in agents.items():
+    for travel_data in avia_data[agent_name].values():
+        for travel_type, val in travel_data.items():
+            travel_data[travel_type] = (val / 365) / agent.state.N.sum()
 
 # Initiate loss with 0 values
 loss = np.zeros((len(agents), 2))
@@ -200,7 +209,7 @@ for i in (
             alphas[agent], reward_function(agents[agent]), agents[agent].next_state(i)
         )
 
-        # Train agents
+    # Train agents
     if i != 0 and i % settings["updatePeriod"] == 0:
 
         if args.debug:
