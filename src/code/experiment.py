@@ -156,12 +156,17 @@ for i in (
     else range(settings["iterations"])
 ):
 
+    if args.debug:
+        print(f"Iteration: {i}")
+
     # Create dictionary sto store alphas
     alphas = {agent: agents[agent].policy() for agent in agents}
 
     # Act in the environment
 
     # Update C matrices for each agent
+    if args.debug:
+        print("Updating contact matrices")
     for agent in agents:
 
         if not settings["age_group"]:
@@ -174,6 +179,8 @@ for i in (
         agents[agent].update_C(C)
 
     # Immigrate/emigrate between each country
+    if args.debug:
+        print("Interaction between agents")
     for agent in agents:
 
         # interaction is based on agent aviation data (not fixed)
@@ -186,6 +193,8 @@ for i in (
         )
 
     # Set transition in environment (and compute reward) for each agent
+    if args.debug:
+        print("Updating buffer for agents")
     for agent in agents:
         agents[agent].set_state(
             alphas[agent], reward_function(agents[agent]), agents[agent].next_state(i)
@@ -193,6 +202,9 @@ for i in (
 
         # Train agents
     if i != 0 and i % settings["updatePeriod"] == 0:
+
+        if args.debug:
+            print("Updating agent policies")
 
         for agent in agents:
             # Update agents
