@@ -19,6 +19,8 @@ def all_plots(settings, agents, alphas, total_group, output_dir, show, values=No
 
     plot_alphas(agents, alphas, output_dir, show, group_vals=None)
 
+    quit()
+
     if settings["economy"] == True:
 
         plot_loss_GDP(agents, sub_dir=output_dir, show=show, group_vals= values)

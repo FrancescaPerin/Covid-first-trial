@@ -225,22 +225,27 @@ def plot_alphas(experiments, alphas, sub_dir=".", show=False, group_vals=None):
     )
 
     
-    plt.rcParams["figure.figsize"] = (15, 5)
+    plt.rcParams["figure.figsize"] = (15, 10)
+
+    fig, axs = plt.subplots(int(len(alphas[0].keys())+1/2), 2)  # get the number of agents from the first experiment
+
+    fig.subplots_adjust(hspace=0.6, wspace=0.4)
+
+    fig.suptitle(f"Alpha comparison for country over time")
+
+    axs = axs.ravel()
 
     # Plot desired compartment
     for group_val, group in groups.items():
 
         # Compute average history per agent
-        for agent_name in agent_names:
+        for i, agent_name in enumerate(agent_names):
 
             history_temp = np.array([i for i in list(map(lambda x: [x[agent_name]], alphas))], dtype=np.float64)
 
             history = history_temp.reshape(history_temp.shape[1], history_temp.shape[0])
 
             history.reshape(1, len(alphas))
-
-
-            print(history.shape)
 
             history_mean = np.mean(
                     history, axis=0
@@ -255,14 +260,20 @@ def plot_alphas(experiments, alphas, sub_dir=".", show=False, group_vals=None):
             sel_mean = np.squeeze(np.asarray(history_mean[:]))
             sel_se = np.squeeze(np.asarray(history_se[:]))
 
-            plt.plot(sel_mean,
+
+            ncols = 2
+            # calculate number of rows
+            nrows = len(alphas[0].keys()) // ncols + (len(alphas[0].keys()) % ncols > 0)
+
+            ax = plt.subplot(nrows, ncols, i + 1)
+
+            ax.plot(sel_mean,
                 label=f"{agent_name} {'' if group_vals is None else group_val}"
                 )
 
-            plt.fill_between(range(len(sel_mean)), sel_mean - 2*sel_se, sel_mean + 2*sel_se)
+            ax.fill_between(range(len(sel_mean)), sel_mean - 2*sel_se, sel_mean + 2*sel_se)
 
-
-
+            ax.set_ylim([-0.1,1.1])
     # Add information
     plt.legend()
     plt.ylabel("Value of state imposed closure")
