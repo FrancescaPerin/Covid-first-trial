@@ -1,4 +1,5 @@
 import json
+import numpy as np
 from argparse import ArgumentParser
 from os.path import join as joinpath
 from os.path import relpath
@@ -9,10 +10,14 @@ from plots import (
     plot_age_compartment_comparison,
     plot_compartment_comparison,
     plot_loss_GDP,
+    plot_alphas,
 )
 
 
-def all_plots(settings, agents, total_group, output_dir, show, values=None):
+def all_plots(settings, agents, alphas, total_group, output_dir, show, values=None):
+
+
+    plot_alphas(agents, alphas, output_dir, show, group_vals=None)
 
     if settings["economy"] == True:
 
@@ -137,6 +142,9 @@ if not args.aggregate:
         # Load agents
         agents = torch.load(joinpath(result_dir, "agents.pth"))
 
+        # Load agents alphas
+        alphas = np.load(joinpath(result_dir, "alphas_history.npy"), allow_pickle=True)
+
         # Get output directory
         output_dir = (
             args.output_dirs[idx] if len(args.output_dirs) > 1 else args.output_dirs[0]
@@ -146,7 +154,7 @@ if not args.aggregate:
             output_dir = relpath(output_dir, "../../results/")
 
         # Plotting based on verious settings
-        all_plots(settings, [agents], args.total_group, output_dir, args.show)
+        all_plots(settings, [agents], alphas, args.total_group, output_dir, args.show)
 else:
     values=[]
 
@@ -170,5 +178,7 @@ else:
 
     agents = [torch.load(joinpath(result_dir, "agents.pth")) for result_dir in args.result_dirs]
 
+    alphas = [np.load(joinpath(result_dir, "alphas_history.npy")) for result_dir in args.result_dirs]
+
     # Plotting based on verious settings
-    all_plots(settings, agents, args.total_group, output_dir, args.show, values)
+    all_plots(settings, agents, aplhas, args.total_group, output_dir, args.show, values)

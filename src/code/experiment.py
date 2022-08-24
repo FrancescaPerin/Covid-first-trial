@@ -101,6 +101,8 @@ avia_data = load_JSON("../../data/Aviation/json_data.json")
 # Saving dictionary containing Agent objects
 agents = {}
 
+alphas_history=[]
+
 # if age group is used state size of the network needs to be changed despite any other parameter
 if settings["age_group"]:
     settings["networkParameters"]["actor"]["net"][
@@ -168,8 +170,10 @@ for i in (
     if args.debug:
         print(f"Iteration: {i}")
 
-    # Create dictionary sto store alphas
+    # Create dictionary to store alphas
     alphas = {agent: agents[agent].policy() for agent in agents}
+
+    alphas_history.append(alphas)
 
     # Act in the environment
 
@@ -227,6 +231,10 @@ final_results_path = joinpath("../../results", results_path)
 
 if not os.path.isdir(final_results_path):
     os.makedirs(final_results_path)
+
+# save history of alphas for all agents
+
+np.save(joinpath(final_results_path, "alphas_history.npy"), alphas_history)
 
 # settings
 with open(joinpath(final_results_path, "settings.json"), "wt") as f:
