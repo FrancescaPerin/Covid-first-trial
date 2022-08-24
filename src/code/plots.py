@@ -28,17 +28,20 @@ def plot_age_compartment_comparison(
             for par_val, group_experiments in groupby(sorted_pairs, key=lambda x: x[1])
         }
 
-    plt.rcParams["figure.figsize"] = (15, 9)
+    age_groups = ["Child", "Adult", "Senior"]
+    plt.rcParams["figure.figsize"] = (18, 9)
 
-    fig, axs = plt.subplots(
-        len(experiments[0]), 1
-    )  # get the number of agents from the first experiment
+    n_plots= len(age_groups)+1 if summary is True else len(age_groups)
+
+    fig, axs = plt.subplots(n_plots, 1)  # get the number of agents from the first experiment
 
     fig.subplots_adjust(hspace=0.5, wspace=0.001)
 
     fig.suptitle(f"{comp_name} comparison for agents")
 
     axs = axs.ravel()
+
+    age_groups = ["Child", "Adult", "Senior"]
 
     agent_names = list(
         experiments[0].keys()
@@ -74,38 +77,48 @@ def plot_age_compartment_comparison(
 
             for j, name in enumerate(["Child", "Adult", "Senior"]):
 
-                axs[i].plot(
+                print(i)
+                print(f"j:{j}, name:{name}")
+
+                axs[j].plot(
                     sel_mean[:,j],
-                    label=f"{name} {'' if group_vals is None else group_val}",
+                    label=f"{agent_name} {'' if group_vals is None else group_val}",
                 )  # child
 
-                axs[i].fill_between(range(len(sel_mean)), 
+                axs[j].fill_between(range(len(sel_mean)), 
                     sel_mean[:, j] - 2*sel_se[:, j], 
                     sel_mean[:, j] + 2*sel_se[:, j],
                     alpha=0.5
                 )
-
-            
+                axs[j].set_ylabel("Population fraction")
+                axs[j].set_title(age_groups[j])
+   
             
             if summary:
-                axs[i].plot(
+                axs[len(age_groups)].plot(
                     np.sum(history_mean[:, idx, :], axis=1),
                     label=f"Total {'' if group_vals is None else group_val}",
                 )
 
-                axs[i].fill_between(range(len(history_mean)), 
+                axs[len(age_groups)].fill_between(range(len(history_mean)), 
                     np.sum(history_mean[:, idx, :], axis=1) - 2*np.sum(history_se[:, idx, :], axis=1), 
                     np.sum(history_mean[:, idx, :], axis=1) + 2*np.sum(history_se[:, idx, :], axis=1),
                     alpha=0.5
                 )
+                axs[len(age_groups)].set_ylabel("Population fraction")
+                axs[len(age_groups)].set_title("Total")
                 
-            
-            axs[i].set_ylabel("Population fraction")
-            axs[i].set_xlabel("Time (days)")
-            axs[i].set_title(agent_name)
-            axs[i].legend()
+        axs[n_plots-1].set_xlabel("Time (days)")
+        axs[0].legend(loc='upper right', bbox_to_anchor=(1.27, 0.5))
 
-            #plt.show()
+        plt.subplots_adjust(right=0.80)
+        plt.setp(axs, xlim=(0,history.shape[1]))
+
+        plt.show()
+
+        quit()
+
+
 
     # Add information
     final_path = joinpath("../../results", sub_dir, "age_group")

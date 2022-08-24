@@ -12,7 +12,7 @@ from plots import (
 )
 
 
-def all_plots(settings, agents, output_dir, show, values=None):
+def all_plots(settings, agents, total_group, output_dir, show, values=None):
 
     if settings["economy"] == True:
 
@@ -24,7 +24,7 @@ def all_plots(settings, agents, output_dir, show, values=None):
             agents,
             0,
             "Susceptible",
-            settings["age_group_summary"],
+            summary=total_group,
             sub_dir=output_dir,
             show=show,
             group_vals=values,
@@ -33,7 +33,7 @@ def all_plots(settings, agents, output_dir, show, values=None):
             agents,
             1,
             "Exposed",
-            settings["age_group_summary"],
+            summary=total_group,
             sub_dir=output_dir,
             show=show,
             group_vals=values,
@@ -42,7 +42,7 @@ def all_plots(settings, agents, output_dir, show, values=None):
             agents,
             3,
             "Infected",
-            settings["age_group_summary"],
+            summary=total_group,
             sub_dir=output_dir,
             show=show,
             group_vals=values,
@@ -51,7 +51,7 @@ def all_plots(settings, agents, output_dir, show, values=None):
             agents,
             4,
             "Recovered",
-            settings["age_group_summary"],
+            summary=total_group,
             sub_dir=output_dir,
             show=show,
             group_vals=values,
@@ -90,6 +90,12 @@ parser.add_argument(
 
 parser.add_argument(
     "--show",
+    default=False,
+    action="store_true",
+    help="Set this flag to show the plots while saving them",
+)
+parser.add_argument(
+    "--total_group",
     default=False,
     action="store_true",
     help="Set this flag to show the plots while saving them",
@@ -140,7 +146,7 @@ if not args.aggregate:
             output_dir = relpath(output_dir, "../../results/")
 
         # Plotting based on verious settings
-        all_plots(settings, [agents], output_dir, args.show)
+        all_plots(settings, [agents], args.total_group, output_dir, args.show)
 else:
     values=[]
 
@@ -165,4 +171,4 @@ else:
     agents = [torch.load(joinpath(result_dir, "agents.pth")) for result_dir in args.result_dirs]
 
     # Plotting based on verious settings
-    all_plots(settings, agents, output_dir, args.show, values)
+    all_plots(settings, agents, args.total_group, output_dir, args.show, values)
