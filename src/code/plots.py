@@ -111,12 +111,6 @@ def plot_age_compartment_comparison(
         plt.subplots_adjust(right=0.80)
         plt.setp(axs, xlim=(0,history.shape[1]))
 
-        plt.show()
-
-        quit()
-
-
-
     # Add information
     final_path = joinpath("../../results", sub_dir, "age_group")
     if not os.path.isdir(final_path):
