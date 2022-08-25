@@ -171,7 +171,7 @@ for i in (
         print(f"Iteration: {i}")
 
     # Create dictionary to store alphas
-    if i%15==0:
+    if i%settings["lockdown_period"]==0:
         alphas = {agent: agents[agent].policy() for agent in agents}
 
     alphas_history.append(alphas)
