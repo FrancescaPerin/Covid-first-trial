@@ -3,10 +3,10 @@
     "fixed_migration": true,
     "pop_migration": 2e-5,
     "nation_def": "Nation",
-    "age_group": true,
+    "age_group": false,
     "age_group_summary": false,
     "economy": false,
-    "lockdown_period": 15,
+    "lockdown_period": 1,
     "bufferSettings": {
         "maxSize": 5000,
         "batchSize": 150,
