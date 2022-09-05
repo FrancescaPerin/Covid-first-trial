@@ -4,7 +4,12 @@ from argparse import ArgumentParser
 from os.path import join as joinpath
 from os.path import relpath
 
+import os
+os.environ['KMP_DUPLICATE_LIB_OK']='True'
+
 import torch
+
+import seaborn as sns
 
 from plots import (
     plot_age_compartment_comparison,
@@ -16,8 +21,11 @@ from plots import (
 
 def all_plots(settings, agents, alphas, total_group, output_dir, show, values=None):
 
+    colors = sns.color_palette("hls", 13)
 
-    plot_alphas(agents, alphas, output_dir, show, group_vals=None)
+    plot_alphas(agents, alphas, colors, output_dir, show, group_vals=None)
+
+    #quit()
 
     if settings["economy"] == True:
 

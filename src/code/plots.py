@@ -124,6 +124,8 @@ def plot_age_compartment_comparison(
 
 def plot_compartment_comparison(experiments, idx, comp_name, sub_dir=".", show=False, group_vals=None):
 
+    plt.figure()
+
     # Either don't give group values or give one value of each experiment (dictionary of agents)
     assert group_vals is None or len(group_vals) == len(experiments)
 
@@ -184,6 +186,7 @@ def plot_compartment_comparison(experiments, idx, comp_name, sub_dir=".", show=F
     plt.ylabel("Population fraction")
     plt.xlabel("Time (days)")
     plt.title(f"{comp_name} comparison for agents")
+    plt.tight_layout()
 
     final_path = joinpath("../../results", sub_dir, "no_age_group")
     if not os.path.isdir(final_path):
@@ -194,7 +197,7 @@ def plot_compartment_comparison(experiments, idx, comp_name, sub_dir=".", show=F
     if show:
         plt.show()
 
-def plot_alphas(experiments, alphas, sub_dir=".", show=False, group_vals=None):
+def plot_alphas(experiments, alphas, colors, sub_dir=".", show=False, group_vals=None):
 
     # Either don't give group values or give one value of each experiment (dictionary of agents)
     assert group_vals is None or len(group_vals) == len(experiments)
@@ -225,7 +228,7 @@ def plot_alphas(experiments, alphas, sub_dir=".", show=False, group_vals=None):
 
     fig.subplots_adjust(hspace=0.6, wspace=0.4)
 
-    fig.suptitle(f"Alpha comparison for country over time")
+    fig.suptitle("State imposed closure values over time", size='x-large')
 
     axs = axs.ravel()
 
@@ -261,18 +264,24 @@ def plot_alphas(experiments, alphas, sub_dir=".", show=False, group_vals=None):
 
             ax = plt.subplot(nrows, ncols, i + 1)
 
-            ax.plot(sel_mean,
-                label=f"{agent_name} {'' if group_vals is None else group_val}"
-                )
+            ax.plot(sel_mean,color= colors[i%13],label=f"{agent_name}")
 
             ax.fill_between(range(len(sel_mean)), sel_mean - 2*sel_se, sel_mean + 2*sel_se)
 
             ax.set_ylim([-0.1,1.1])
+            ax.legend(loc='upper left', bbox_to_anchor=(1, 1))
+
     # Add information
-    plt.legend()
-    plt.ylabel("Value of state imposed closure")
+    fig.add_subplot(111, frameon=False)
+    # hide tick and tick label of the big axis
+    plt.tick_params(labelcolor='none', which='both', top=False, bottom=False, left=False, right=False)
+
+    #Add information
     plt.xlabel("Time (days)")
-    plt.title(f"State imposed closure values across time")
+    plt.ylabel("Value of state imposed closure (alpha)")
+
+    #plt.legend()
+    plt.tight_layout()
 
     final_path = joinpath("../../results", sub_dir)
 
@@ -287,6 +296,8 @@ def plot_alphas(experiments, alphas, sub_dir=".", show=False, group_vals=None):
 
 
 def plot_loss_GDP(experiments, sub_dir=".", show=False, group_vals=None):
+
+    plt.figure()
 
     # Either don't give group values or give one value of each experiment (dictionary of agents)
     assert group_vals is None or len(group_vals) == len(experiments)
@@ -347,6 +358,8 @@ def plot_loss_GDP(experiments, sub_dir=".", show=False, group_vals=None):
     plt.ylabel("Population fraction")
     plt.xlabel("Time (days)")
     plt.title(f"Loss comparison for agents")
+
+    plt.tight_layout()
 
     final_path = joinpath("../../results", sub_dir)
 
