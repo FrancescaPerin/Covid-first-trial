@@ -8,7 +8,7 @@ from itertools import groupby
 
 
 def plot_age_compartment_comparison(
-    experiments, idx, comp_name, summary=False, sub_dir=".", show=False, group_vals=None
+    experiments, idx, comp_name, colors, line_style, summary=False, sub_dir=".", show=False, group_vals=None
 ):
 
     # Either don't give group values or give one value of each experiment (dictionary of agents)
@@ -48,6 +48,7 @@ def plot_age_compartment_comparison(
     )  # get the key order from the first experiment
 
     # Plot desired compartment
+
     for group_val, group in groups.items():
 
         # Compute average history per agent
@@ -78,7 +79,7 @@ def plot_age_compartment_comparison(
             for j, name in enumerate(["Child", "Adult", "Senior"]):
 
                 axs[j].plot(
-                    sel_mean[:,j],
+                    sel_mean[:,j], line_style[int(i/13)], color=colors[i%13],
                     label=f"{agent_name} {'' if group_vals is None else group_val}",
                 )  # child
 
@@ -89,11 +90,11 @@ def plot_age_compartment_comparison(
                 )
                 axs[j].set_ylabel("Population fraction")
                 axs[j].set_title(age_groups[j])
+                #axs[j].set_ylim(0,max_lim)
    
-            
             if summary:
                 axs[len(age_groups)].plot(
-                    np.sum(history_mean[:, idx, :], axis=1),
+                    np.sum(history_mean[:, idx, :], axis=1), line_style[int(i/13)], color=colors[i%13],
                     label=f"Total {'' if group_vals is None else group_val}",
                 )
 
@@ -122,9 +123,9 @@ def plot_age_compartment_comparison(
         plt.show()
 
 
-def plot_compartment_comparison(experiments, idx, comp_name, sub_dir=".", show=False, group_vals=None):
+def plot_compartment_comparison(experiments, idx, comp_name, colors, line_style, sub_dir=".", show=False, group_vals=None):
 
-    plt.figure()
+    plt.figure(figsize=(15,10))
 
     # Either don't give group values or give one value of each experiment (dictionary of agents)
     assert group_vals is None or len(group_vals) == len(experiments)
@@ -145,7 +146,7 @@ def plot_compartment_comparison(experiments, idx, comp_name, sub_dir=".", show=F
         }
 
 
-    plt.rcParams["figure.figsize"] = (15, 5)
+    # plt.rcParams["figure.figsize"] = (15, 5)
 
     agent_names = list(
         experiments[0].keys()
@@ -155,8 +156,7 @@ def plot_compartment_comparison(experiments, idx, comp_name, sub_dir=".", show=F
     for group_val, group in groups.items():
 
         # Compute average history per agent
-        for agent_name in agent_names:
-
+        for i, agent_name in enumerate(agent_names):
             # Average histories accross experiments for agents with the same name
 
             history = np.array([agents[agent_name].history[:, 1:] for agents in group], dtype=np.float64)
@@ -172,20 +172,22 @@ def plot_compartment_comparison(experiments, idx, comp_name, sub_dir=".", show=F
 
             # arr_filter = history[:, idx:] > 0.001
 
-            sel_mean = np.squeeze(np.asarray(history_mean[:, 1:])[:, idx])
-            sel_se = np.squeeze(np.asarray(history_se[:, 1:])[:, idx])
+            sel_mean = np.squeeze(np.asarray(history_mean[:, :])[:, idx])
 
-            plt.plot(sel_mean,
+            sel_se = np.squeeze(np.asarray(history_se[:, :])[:, idx])
+
+            plt.plot(sel_mean, line_style[int(i/13)], color= colors[i%13],
                 label=f"{agent_name} {'' if group_vals is None else group_val}"
                 )
 
             plt.fill_between(range(len(sel_mean)), sel_mean - 2*sel_se, sel_mean + 2*sel_se)
 
     # Add information
-    plt.legend()
+    plt.legend(loc='upper right', bbox_to_anchor=(1.27, 1))
     plt.ylabel("Population fraction")
     plt.xlabel("Time (days)")
     plt.title(f"{comp_name} comparison for agents")
+    plt.ylim([0,1])
     plt.tight_layout()
 
     final_path = joinpath("../../results", sub_dir, "no_age_group")
@@ -197,7 +199,7 @@ def plot_compartment_comparison(experiments, idx, comp_name, sub_dir=".", show=F
     if show:
         plt.show()
 
-def plot_alphas(experiments, alphas, colors, sub_dir=".", show=False, group_vals=None):
+def plot_alphas(experiments, alphas, colors, line_style, sub_dir=".", show=False, group_vals=None):
 
     # Either don't give group values or give one value of each experiment (dictionary of agents)
     assert group_vals is None or len(group_vals) == len(experiments)
@@ -264,7 +266,7 @@ def plot_alphas(experiments, alphas, colors, sub_dir=".", show=False, group_vals
 
             ax = plt.subplot(nrows, ncols, i + 1)
 
-            ax.plot(sel_mean,color= colors[i%13],label=f"{agent_name}")
+            ax.plot(sel_mean, line_style[int(i/13)], color= colors[i%13],label=f"{agent_name}")
 
             ax.fill_between(range(len(sel_mean)), sel_mean - 2*sel_se, sel_mean + 2*sel_se)
 
@@ -295,9 +297,9 @@ def plot_alphas(experiments, alphas, colors, sub_dir=".", show=False, group_vals
 
 
 
-def plot_loss_GDP(experiments, sub_dir=".", show=False, group_vals=None):
+def plot_loss_GDP(experiments, colors, line_style, sub_dir=".", show=False, group_vals=None):
 
-    plt.figure()
+    plt.figure(figsize=(15,10))
 
     # Either don't give group values or give one value of each experiment (dictionary of agents)
     assert group_vals is None or len(group_vals) == len(experiments)
@@ -321,13 +323,13 @@ def plot_loss_GDP(experiments, sub_dir=".", show=False, group_vals=None):
         experiments[0].keys()
     )
 
-    plt.rcParams["figure.figsize"] = (15, 5)
+    #plt.rcParams["figure.figsize"] = (15, 5)
 
     # Plot desired compartment
     for group_val, group in groups.items():
 
         # Compute average history per agent
-        for agent_name in agent_names:
+        for i, agent_name in enumerate(agent_names):
 
             history = np.array([agents[agent_name].history[:, -1] for agents in group], dtype=np.float64)
 
@@ -346,15 +348,18 @@ def plot_loss_GDP(experiments, sub_dir=".", show=False, group_vals=None):
             sel_mean = np.squeeze(np.asarray(history_mean[:, -1]))
             sel_se = np.squeeze(np.asarray(history_se[:, -1]))
 
-            plt.plot(sel_mean,
+            sel_diff= -np.diff(sel_mean, n=1, axis=0)[1:]
+
+            plt.plot(sel_diff, line_style[int(i/13)], color= colors[i%13],
                 label=f"{agent_name} {'' if group_vals is None else group_val}"
                 )
 
-            plt.fill_between(range(len(sel_mean)), sel_mean - 2*sel_se, sel_mean + 2*sel_se)
+            #TODO fix error?
+            #plt.fill_between(range(len(sel_men)), sel_mean - 2*sel_se, sel_mean + 2*sel_se)
 
 
     # Add information
-    plt.legend()
+    plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
     plt.ylabel("Population fraction")
     plt.xlabel("Time (days)")
     plt.title(f"Loss comparison for agents")

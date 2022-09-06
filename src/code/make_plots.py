@@ -22,14 +22,13 @@ from plots import (
 def all_plots(settings, agents, alphas, total_group, output_dir, show, values=None):
 
     colors = sns.color_palette("hls", 13)
+    line_style = ['-', ':']
 
-    plot_alphas(agents, alphas, colors, output_dir, show, group_vals=None)
+    plot_alphas(agents, alphas, colors, line_style, output_dir, show, group_vals=None)
 
-    #quit()
+    #if settings["economy"] == True:
 
-    if settings["economy"] == True:
-
-        plot_loss_GDP(agents, sub_dir=output_dir, show=show, group_vals= values)
+    plot_loss_GDP(agents, colors, line_style, sub_dir=output_dir, show=show, group_vals= values)
 
     if settings["age_group"] == True:
 
@@ -37,6 +36,8 @@ def all_plots(settings, agents, alphas, total_group, output_dir, show, values=No
             agents,
             0,
             "Susceptible",
+            colors,
+            line_style,
             summary=total_group,
             sub_dir=output_dir,
             show=show,
@@ -46,6 +47,8 @@ def all_plots(settings, agents, alphas, total_group, output_dir, show, values=No
             agents,
             1,
             "Exposed",
+            colors,
+            line_style,
             summary=total_group,
             sub_dir=output_dir,
             show=show,
@@ -55,6 +58,8 @@ def all_plots(settings, agents, alphas, total_group, output_dir, show, values=No
             agents,
             3,
             "Infected",
+            colors,
+            line_style,
             summary=total_group,
             sub_dir=output_dir,
             show=show,
@@ -64,6 +69,19 @@ def all_plots(settings, agents, alphas, total_group, output_dir, show, values=No
             agents,
             4,
             "Recovered",
+            colors,
+            line_style,
+            summary=total_group,
+            sub_dir=output_dir,
+            show=show,
+            group_vals=values,
+        )
+        plot_age_compartment_comparison(
+            agents,
+            4,
+            "Dead",
+            colors,
+            line_style,
             summary=total_group,
             sub_dir=output_dir,
             show=show,
@@ -73,15 +91,22 @@ def all_plots(settings, agents, alphas, total_group, output_dir, show, values=No
     else:
 
         plot_compartment_comparison(
-            agents, 0, "Susceptible", sub_dir=output_dir, show=show, group_vals=values
-        )
-        plot_compartment_comparison(
-            agents, 1, "Exposed", sub_dir=output_dir, show=show, group_vals=values
-        )
-        plot_compartment_comparison(
-            agents, 3, "Infected", sub_dir=output_dir, show=show, group_vals=values
+            agents, 0, "Susceptible", colors, line_style, sub_dir=output_dir, show=show, group_vals=values
         )
 
+        #quit()
+        plot_compartment_comparison(
+            agents, 1, "Exposed", colors, line_style, sub_dir=output_dir, show=show, group_vals=values
+        )
+        plot_compartment_comparison(
+            agents, 3, "Infected", colors, line_style, sub_dir=output_dir, show=show, group_vals=values
+        )
+        plot_compartment_comparison(
+            agents, 4, "Recovered", colors, line_style, sub_dir=output_dir, show=show, group_vals=values
+        )
+        plot_compartment_comparison(
+            agents, 5, "Dead", colors, line_style, sub_dir=output_dir, show=show, group_vals=values
+        )
 
 parser = ArgumentParser()
 
