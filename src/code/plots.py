@@ -333,6 +333,8 @@ def plot_loss_GDP(experiments, colors, line_style, sub_dir=".", show=False, grou
 
             history = np.array([agents[agent_name].history[:, -1] for agents in group], dtype=np.float64)
 
+            history = np.diff(history, n=1, axis=1)[:,1:]
+
             history_mean = np.mean(
                     history, axis=0
                 )
@@ -348,14 +350,11 @@ def plot_loss_GDP(experiments, colors, line_style, sub_dir=".", show=False, grou
             sel_mean = np.squeeze(np.asarray(history_mean[:, -1]))
             sel_se = np.squeeze(np.asarray(history_se[:, -1]))
 
-            sel_diff= -np.diff(sel_mean, n=1, axis=0)[1:]
-
-            plt.plot(sel_diff, line_style[int(i/13)], color= colors[i%13],
+            plt.plot(sel_mean, line_style[int(i/13)], color= colors[i%13],
                 label=f"{agent_name} {'' if group_vals is None else group_val}"
                 )
-
-            #TODO fix error?
-            #plt.fill_between(range(len(sel_men)), sel_mean - 2*sel_se, sel_mean + 2*sel_se)
+                    
+            plt.fill_between(range(len(sel_mean)), sel_mean - 2*sel_se, sel_mean + 2*sel_se)
 
 
     # Add information

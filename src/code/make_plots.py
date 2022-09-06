@@ -30,6 +30,8 @@ def all_plots(settings, agents, alphas, total_group, output_dir, show, values=No
 
     plot_loss_GDP(agents, colors, line_style, sub_dir=output_dir, show=show, group_vals= values)
 
+    quit()
+
     if settings["age_group"] == True:
 
         plot_age_compartment_comparison(
@@ -192,6 +194,7 @@ else:
     values=[]
 
     for result_dir in args.result_dirs:
+
         with open(joinpath(result_dir, args.file_value[0]), 'rt') as f:
             data = json.load(f)
 
@@ -211,7 +214,7 @@ else:
 
     agents = [torch.load(joinpath(result_dir, "agents.pth")) for result_dir in args.result_dirs]
 
-    alphas = [np.load(joinpath(result_dir, "alphas_history.npy")) for result_dir in args.result_dirs]
+    alphas = [np.load(joinpath(result_dir, "alphas_history.npy"), allow_pickle=True) for result_dir in args.result_dirs]
 
     # Plotting based on verious settings
-    all_plots(settings, agents, aplhas, args.total_group, output_dir, args.show, values)
+    all_plots(settings, agents, alphas, args.total_group, output_dir, args.show, values)
