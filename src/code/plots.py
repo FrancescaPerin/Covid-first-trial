@@ -95,7 +95,7 @@ def plot_age_compartment_comparison(
             if summary:
                 axs[len(age_groups)].plot(
                     np.sum(history_mean[:, idx, :], axis=1), line_style[int(i/13)], color=colors[i%13],
-                    label=f"Total {'' if group_vals is None else group_val}",
+                    label=f"Total {'' if group_vals is None or group_vals.count(group_vals[0]) == len(group_vals) else group_val}",
                 )
 
                 axs[len(age_groups)].fill_between(range(len(history_mean)), 
@@ -177,7 +177,7 @@ def plot_compartment_comparison(experiments, idx, comp_name, colors, line_style,
             sel_se = np.squeeze(np.asarray(history_se[:, :])[:, idx])
 
             plt.plot(sel_mean, line_style[int(i/13)], color= colors[i%13],
-                label=f"{agent_name} {'' if group_vals is None else group_val}"
+                label=f"{agent_name} {'' if group_vals is None or group_vals.count(group_vals[0]) == len(group_vals) else group_val}"
                 )
 
             plt.fill_between(range(len(sel_mean)), sel_mean - 2*sel_se, sel_mean + 2*sel_se)
@@ -349,10 +349,12 @@ def plot_loss_GDP(experiments, colors, line_style, sub_dir=".", show=False, grou
             sel_mean = np.squeeze(np.asarray(history_mean[:, -1]))
             sel_se = np.squeeze(np.asarray(history_se[:, -1]))
 
+            #breakpoint()
+
             plt.plot(sel_mean, line_style[int(i/13)], color= colors[i%13],
-                label=f"{agent_name} {'' if group_vals is None else group_val}"
-                )
-            
+                label=f"{agent_name} {'' if group_vals is  None or group_vals.count(group_vals[0]) == len(group_vals) else group_val }"
+            )
+
             plt.fill_between(range(len(sel_mean)), sel_mean - 2*sel_se, sel_mean + 2*sel_se)
 
 
