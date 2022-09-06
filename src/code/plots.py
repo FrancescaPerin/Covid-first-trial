@@ -37,7 +37,7 @@ def plot_age_compartment_comparison(
 
     fig.subplots_adjust(hspace=0.5, wspace=0.001)
 
-    fig.suptitle(f"{comp_name} comparison for agents")
+    fig.suptitle(f"{comp_name} population over time")
 
     axs = axs.ravel()
 
@@ -186,7 +186,7 @@ def plot_compartment_comparison(experiments, idx, comp_name, colors, line_style,
     plt.legend(loc='upper right', bbox_to_anchor=(1.27, 1))
     plt.ylabel("Population fraction")
     plt.xlabel("Time (days)")
-    plt.title(f"{comp_name} comparison for agents")
+    plt.title(f"{comp_name} population over time ")
     plt.ylim([0,1])
     plt.tight_layout()
 
@@ -229,7 +229,7 @@ def plot_alphas(experiments, alphas, colors, line_style, sub_dir=".", show=False
 
     fig.subplots_adjust(hspace=0.6, wspace=0.4)
 
-    fig.suptitle("State imposed closure values over time", size='x-large')
+    fig.suptitle("State imposed containment over time", size='x-large')
 
     axs = axs.ravel()
 
@@ -279,7 +279,7 @@ def plot_alphas(experiments, alphas, colors, line_style, sub_dir=".", show=False
 
     #Add information
     plt.xlabel("Time (days)")
-    plt.ylabel("Value of state imposed closure (alpha)")
+    plt.ylabel("Value of state imposed containment (alpha)")
 
     #plt.legend()
     plt.tight_layout()
@@ -289,7 +289,7 @@ def plot_alphas(experiments, alphas, colors, line_style, sub_dir=".", show=False
     if not os.path.isdir(final_path):
         os.makedirs(final_path)
 
-    plt.savefig(joinpath(final_path, "aplhas_comparison.png"))
+    plt.savefig(joinpath(final_path, "alphas_comparison.png"))
 
     if show:
         plt.show()
@@ -360,9 +360,9 @@ def plot_loss_GDP(experiments, colors, line_style, sub_dir=".", show=False, grou
 
     # Add information
     plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
-    plt.ylabel("Population fraction")
+    plt.ylabel("Derivative")
     plt.xlabel("Time (days)")
-    plt.title(f"Loss comparison for agents")
+    plt.title(f"GDP loss over time")
 
     plt.tight_layout()
 
@@ -371,7 +371,7 @@ def plot_loss_GDP(experiments, colors, line_style, sub_dir=".", show=False, grou
     if not os.path.isdir(final_path):
         os.makedirs(final_path)
 
-    plt.savefig(joinpath(final_path, "loss_comparison.png"))
+    plt.savefig(joinpath(final_path, "GDPloss_comparison.png"))
 
     if show:
         plt.show()
