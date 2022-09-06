@@ -202,16 +202,16 @@ def plot_compartment_comparison(experiments, idx, comp_name, colors, line_style,
 def plot_alphas(experiments, alphas, colors, line_style, sub_dir=".", show=False, group_vals=None):
 
     # Either don't give group values or give one value of each experiment (dictionary of agents)
-    assert group_vals is None or len(group_vals) == len(experiments)
+    assert group_vals is None or len(group_vals) == len(alphas)
 
     # If no grouping is given, create a single "fake" group with parameter value `0`
     if group_vals is None:
 
-        groups = {0: experiments}
+        groups = {0: alphas}
     else:
 
         # Sort by value
-        sorted_pairs = sorted(zip(experiments, group_vals), key=lambda x: x[1])
+        sorted_pairs = sorted(zip(alphas, group_vals), key=lambda x: x[1])
 
         # Group by value
         groups = {
@@ -220,13 +220,12 @@ def plot_alphas(experiments, alphas, colors, line_style, sub_dir=".", show=False
         }
 
     agent_names = list(
-        experiments[0].keys()
+        alphas[0][0].keys()
     )
-
     
     plt.rcParams["figure.figsize"] = (15, 10)
 
-    fig, axs = plt.subplots(int(len(alphas[0].keys())+1/2), 2)  # get the number of agents from the first experiment
+    fig, axs = plt.subplots(int(len(alphas[0][0].keys())+1/2), 2)  # get the number of agents from the first experiment
 
     fig.subplots_adjust(hspace=0.6, wspace=0.4)
 
@@ -240,11 +239,11 @@ def plot_alphas(experiments, alphas, colors, line_style, sub_dir=".", show=False
         # Compute average history per agent
         for i, agent_name in enumerate(agent_names):
 
-            history_temp = np.array([i for i in list(map(lambda x: [x[agent_name]], alphas))], dtype=np.float64)
+            history_temp = np.array([i for i in list(map(lambda x: [x[agent_name]], alphas[0]))], dtype=np.float64)
 
             history = history_temp.reshape(history_temp.shape[1], history_temp.shape[0])
 
-            history.reshape(1, len(alphas))
+            history.reshape(1, len(alphas[0]))
 
             history_mean = np.mean(
                     history, axis=0
@@ -262,7 +261,7 @@ def plot_alphas(experiments, alphas, colors, line_style, sub_dir=".", show=False
 
             ncols = 2
             # calculate number of rows
-            nrows = len(alphas[0].keys()) // ncols + (len(alphas[0].keys()) % ncols > 0)
+            nrows = len(alphas[0][0].keys()) // ncols + (len(alphas[0][0].keys()) % ncols > 0)
 
             ax = plt.subplot(nrows, ncols, i + 1)
 
@@ -353,7 +352,7 @@ def plot_loss_GDP(experiments, colors, line_style, sub_dir=".", show=False, grou
             plt.plot(sel_mean, line_style[int(i/13)], color= colors[i%13],
                 label=f"{agent_name} {'' if group_vals is None else group_val}"
                 )
-                    
+            
             plt.fill_between(range(len(sel_mean)), sel_mean - 2*sel_se, sel_mean + 2*sel_se)
 
 

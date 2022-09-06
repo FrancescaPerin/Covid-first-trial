@@ -24,13 +24,11 @@ def all_plots(settings, agents, alphas, total_group, output_dir, show, values=No
     colors = sns.color_palette("hls", 13)
     line_style = ['-', ':']
 
-    plot_alphas(agents, alphas, colors, line_style, output_dir, show, group_vals=None)
+    plot_alphas(agents, alphas, colors, line_style, output_dir, show, group_vals=values)
 
     #if settings["economy"] == True:
 
     plot_loss_GDP(agents, colors, line_style, sub_dir=output_dir, show=show, group_vals= values)
-
-    quit()
 
     if settings["age_group"] == True:
 
@@ -189,7 +187,7 @@ if not args.aggregate:
             output_dir = relpath(output_dir, "../../results/")
 
         # Plotting based on verious settings
-        all_plots(settings, [agents], alphas, args.total_group, output_dir, args.show)
+        all_plots(settings, [agents], [alphas], args.total_group, output_dir, args.show)
 else:
     values=[]
 
