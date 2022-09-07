@@ -80,7 +80,7 @@ def plot_age_compartment_comparison(
 
                 axs[j].plot(
                     sel_mean[:,j], line_style[int(i/13)], color=colors[i%13],
-                    label=f"{agent_name} {'' if group_vals is None else group_val}",
+                    label=f"{agent_name} {'' if group_vals is None or group_vals.count(group_vals[0]) == len(group_vals) else group_val}",
                 )  # child
 
                 axs[j].fill_between(range(len(sel_mean)), 
@@ -105,6 +105,7 @@ def plot_age_compartment_comparison(
                 )
                 axs[len(age_groups)].set_ylabel("Population fraction")
                 axs[len(age_groups)].set_title("Total")
+                axs[len(age_groups)].set_ylim([-0.1,1.1])
                 
         axs[n_plots-1].set_xlabel("Time (days)")
         axs[0].legend(loc='upper right', bbox_to_anchor=(1.27, 0.5))
@@ -187,7 +188,7 @@ def plot_compartment_comparison(experiments, idx, comp_name, colors, line_style,
     plt.ylabel("Population fraction")
     plt.xlabel("Time (days)")
     plt.title(f"{comp_name} population over time ")
-    plt.ylim([0,1])
+    plt.ylim([-0.01,1.01])
     plt.tight_layout()
 
     final_path = joinpath("../../results", sub_dir, "no_age_group")
@@ -269,7 +270,7 @@ def plot_alphas(experiments, alphas, colors, line_style, sub_dir=".", show=False
 
             ax.fill_between(range(len(sel_mean)), sel_mean - 2*sel_se, sel_mean + 2*sel_se)
 
-            ax.set_ylim([-0.1,1.1])
+            ax.set_ylim([0,1])
             ax.legend(loc='upper left', bbox_to_anchor=(1, 1))
 
     # Add information
@@ -332,7 +333,7 @@ def plot_loss_GDP(experiments, colors, line_style, sub_dir=".", show=False, grou
 
             history = np.array([agents[agent_name].history[:, -1] for agents in group], dtype=np.float64)
 
-            history = np.diff(history, n=1, axis=1)[:,1:]
+            history = -np.diff(history, n=1, axis=1)[:,1:]
 
             history_mean = np.mean(
                     history, axis=0
@@ -349,8 +350,6 @@ def plot_loss_GDP(experiments, colors, line_style, sub_dir=".", show=False, grou
             sel_mean = np.squeeze(np.asarray(history_mean[:, -1]))
             sel_se = np.squeeze(np.asarray(history_se[:, -1]))
 
-            #breakpoint()
-
             plt.plot(sel_mean, line_style[int(i/13)], color= colors[i%13],
                 label=f"{agent_name} {'' if group_vals is  None or group_vals.count(group_vals[0]) == len(group_vals) else group_val }"
             )
@@ -360,6 +359,7 @@ def plot_loss_GDP(experiments, colors, line_style, sub_dir=".", show=False, grou
 
     # Add information
     plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
+    plt.ylim(top=0.1)
     plt.ylabel("Derivative")
     plt.xlabel("Time (days)")
     plt.title(f"GDP loss over time")

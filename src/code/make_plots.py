@@ -56,6 +56,17 @@ def all_plots(settings, agents, alphas, total_group, output_dir, show, values=No
         )
         plot_age_compartment_comparison(
             agents,
+            2,
+            "Asymptomatic",
+            colors,
+            line_style,
+            summary=total_group,
+            sub_dir=output_dir,
+            show=show,
+            group_vals=values,
+        )
+        plot_age_compartment_comparison(
+            agents,
             3,
             "Infected",
             colors,
@@ -78,7 +89,7 @@ def all_plots(settings, agents, alphas, total_group, output_dir, show, values=No
         )
         plot_age_compartment_comparison(
             agents,
-            4,
+            5,
             "Dead",
             colors,
             line_style,
@@ -97,6 +108,9 @@ def all_plots(settings, agents, alphas, total_group, output_dir, show, values=No
         #quit()
         plot_compartment_comparison(
             agents, 1, "Exposed", colors, line_style, sub_dir=output_dir, show=show, group_vals=values
+        )
+        plot_compartment_comparison(
+            agents, 2, "Asymptomatic", colors, line_style, sub_dir=output_dir, show=show, group_vals=values
         )
         plot_compartment_comparison(
             agents, 3, "Infected", colors, line_style, sub_dir=output_dir, show=show, group_vals=values
