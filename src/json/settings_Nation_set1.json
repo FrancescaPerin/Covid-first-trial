@@ -6,7 +6,7 @@
     "age_group": false,
     "age_group_summary": false,
     "economy": false,
-    "lockdown_period": 15,
+    "lockdown_period": 1,
     "bufferSettings": {
         "maxSize": 300,
         "batchSize": 40,

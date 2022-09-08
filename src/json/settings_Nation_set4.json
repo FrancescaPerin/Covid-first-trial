@@ -1,6 +1,6 @@
 {
     "iterations": 1000,
-    "fixed_migration": true,
+    "fixed_migration": false,
     "pop_migration": 2e-5,
     "nation_def": "Nation",
     "age_group": true,

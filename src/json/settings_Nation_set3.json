@@ -1,12 +1,12 @@
 {
     "iterations": 1000,
-    "fixed_migration": true,
+    "fixed_migration": false,
     "pop_migration": 2e-5,
     "nation_def": "Nation",
-    "age_group": true,
+    "age_group": false,
     "age_group_summary": false,
     "economy": false,
-    "lockdown_period": 15,
+    "lockdown_period": 1,
     "bufferSettings": {
         "maxSize": 300,
         "batchSize": 40,
