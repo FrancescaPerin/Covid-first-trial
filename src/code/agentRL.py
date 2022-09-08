@@ -7,6 +7,7 @@ from torch import Tensor
 from torch.distributions.beta import Beta
 from torch.distributions.multinomial import Multinomial
 from torch.optim import Adam
+import torch.nn.functional as F
 
 from agent import Agent
 from replayBuffer import replayBuffer
@@ -41,7 +42,9 @@ class Net(nn.Module):
             zip(neurons[:-1], neurons[1:], activations[1:])
         ):
             # Create linear layer
-            self.__backbone.add_module(f"layer_{idx}", nn.Linear(input_n, output_n))
+            layer = nn.Linear(input_n, output_n)
+            torch.nn.init.xavier_uniform_(layer.weight)
+            self.__backbone.add_module(f"layer_{idx}", layer)
 
             # Add activation function if provided
             if activation_function is not None:
@@ -55,7 +58,10 @@ class Net(nn.Module):
         for _ in range(n_heads):
 
             head = nn.Sequential()
-            head.add_module(f"layer_mean", nn.Linear(neurons[-1], output_size))
+
+            layer = nn.Linear(neurons[-1], output_size)
+            torch.nn.init.xavier_uniform_(layer.weight)
+            head.add_module(f"layer_mean", layer)
 
             if out_activation is not None:
                 head.add_module(f"activation_mean", getattr(nn, out_activation)())
@@ -154,6 +160,8 @@ class AgentRL(Agent):
 
     def update(self, n=1):
 
+        tot_actor_loss, tot_critic_loss = 0.0, 0.0
+
         for step, t in zip(range(n), self.__replaybuffer):
 
             # Reset gradients
@@ -172,7 +180,11 @@ class AgentRL(Agent):
                 self._actor_optimizer.step()
                 self._critic_optimizer.step()
 
-        return actor_loss.detach().numpy(), critic_loss.detach().numpy()
+                # Record losses
+                tot_actor_loss += float(actor_loss.detach().mean())
+                tot_critic_loss += float(critic_loss.detach().mean())
+
+        return tot_actor_loss/n, tot_critic_loss/n
 
     def extract_transition(self, t):
 
@@ -201,25 +213,26 @@ class BetaAgent(AgentRL):
 
 
 class MultinomialAgent(AgentRL):
-    def extract_transition(self, t):
 
-        s1, a, r, s2 = AgentRL.extract_transition(self, t)
+    def __init__(
+        self,
+        name,
+        config_par,
+    ):
 
-        # convert a to one-hot encoding
-        I = torch.eye(
-            self.config_par["networkParameters"]["actor"]["net"]["output_size"]
-        ).to(self._device)
-        a = I[a.to(torch.long)]
+        AgentRL.__init__(self, name=name, config_par=config_par)
 
-        return s1, a, r, s2
+        self._cross_entropy = nn.CrossEntropyLoss(reduction='none')
 
     def get_dist(self, state):
 
-        # Get probabilities for each event
-        log_probs = self._actor(state)
-
         # Create multinomial distribution
-        return Multinomial(probs=log_probs)
+        return Multinomial(probs=F.softmax(self._actor(state)))
+
+    def get_log_probs(self, state, action):
+
+        # Get logits for each action selected
+        return -self._cross_entropy(self._actor(state), action[:, 0].to(torch.long))
 
     def greedy_policy(self):
 

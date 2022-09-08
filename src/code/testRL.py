@@ -3,47 +3,50 @@ import gym
 from matplotlib import pyplot as plt
 from rich.progress import track
 import numpy as np
+import time
 
 # Create agent
 
+TRAIN_EPISODES = 1000
+TEST_EPISODES = 20
+
+STATE_SIZE = 4
+END_REWARD = None
+
+ENV = "CartPole-v1"
+# ENV = "Acrobot-v1"
+
 config = {
-    "iterations": 400,
-    "fixed_migration": True,
-    "pop_migration": 0.02,
-    "nation_def": "Nation",
-    "age_group": True,
-    "age_group_summary": True,
-    "economy": False,
-    "bufferSettings": {"maxSize": 5000, "batchSize": 150, "shuffle_data": True},
+    "iterations": 1000,
+    "bufferSettings": {"maxSize": 300, "batchSize": 40, "shuffle_data": True},
     "networkParameters": {
-        "gamma": 0.98,
+        "gamma": 0.99,
         "device": "cpu",
         "actor": {
             "optim": {"lr": 0.001},
             "net": {
-                "state_size": 4,
+                "state_size": STATE_SIZE,
                 "output_size": 2,
-                "neurons": [128],
-                "activations": "ReLU",
-                "out_activation": "ReLU",
+                "neurons": [128, 32],
+                "activations": "LeakyReLU",
+                "out_activation": None,
                 "n_heads": 1,
             },
         },
         "critic": {
             "optim": {"lr": 0.001},
             "net": {
-                "state_size": 4,
+                "state_size": STATE_SIZE,
                 "output_size": 1,
-                "neurons": [128],
-                "activations": "ReLU",
+                "neurons": [128, 32],
+                "activations": "LeakyReLU",
                 "out_activation": None,
                 "n_heads": 1,
             },
         },
     },
-    "updatePeriod": 30,
-    "updateN": 100,
-    "alpha": 0.2,
+    "updatePeriod": 10,
+    "updateN": 30,
 }
 
 agent = MultinomialAgent(
@@ -62,8 +65,8 @@ actor_loss = []
 critic_loss = []
 
 # Training loop
-# for episode in range(100):
-for episode in track(range(500)):
+# for episode in range(TRAIN_EPISODES):
+for episode in track(range(TRAIN_EPISODES)):
 
     # Initialize state
     state = env.reset()
@@ -76,9 +79,13 @@ for episode in track(range(500)):
 
         # Get the action the agent would do
         action = np.argmax(agent.policy())
+        # action = np.random.randint(2)
 
         # Pass action to environment and get new state
         next_state, reward, done, other = env.step(action)
+
+        if done and END_REWARD is not None:
+            reward = END_REWARD
 
         # Update return
         G += reward
@@ -95,16 +102,31 @@ for episode in track(range(500)):
             critic_loss.append(critic_t)
         else:
             counter_update_period += 1
-            # actor_loss.append(actor_t)
-            # critic_loss.append(critic_t)
 
         if done:
             break
 
     returns.append(G)
 
+# Plot loss and returns
+actor_loss = np.array(actor_loss)
+critic_loss = np.array(critic_loss)
+
+returns = np.array(returns)
+
+fig, axs = plt.subplots(2)
+axs[0].plot(returns, label="Raw")
+axs[0].plot(np.cumsum(returns) / (np.arange(returns.shape[0]) + 1), label="Avg")
+axs[0].legend()
+
+axs[1].plot(actor_loss, label="Actor")
+axs[1].plot(critic_loss, label="Critic")
+axs[1].legend()
+
+plt.show()
+
 # Testing loop
-for episode in track(range(20)):
+for episode in track(range(TEST_EPISODES)):
 
     # Initialize state
     state = env.reset()
@@ -127,24 +149,3 @@ for episode in track(range(20)):
             break
 
     print("END OF EPISODE: ", i)
-
-# Plot loss and returns
-actor_loss = np.array(actor_loss)
-critic_loss = np.array(critic_loss)
-
-print(actor_loss)
-print(critic_loss)
-
-returns = np.array(returns)
-
-
-fig, axs = plt.subplots(2)
-axs[0].plot(returns, label="Raw")
-axs[0].plot(np.cumsum(returns) / (np.arange(returns.shape[0]) + 1), label="Avg")
-axs[0].legend()
-
-axs[1].plot(actor_loss, label="Actor")
-axs[1].plot(critic_loss, label="Critic")
-axs[1].legend()
-
-plt.show()
