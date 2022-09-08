@@ -96,7 +96,7 @@ class Nation(Agent):
             # Calculate new SEAIRDV values for state receiving population
             agent.immigrate(self, migration_noise)
 
-            return self, conn_agents
+        return self, conn_agents
 
     def next_state(self, t):
         """
