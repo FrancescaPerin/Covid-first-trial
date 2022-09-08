@@ -74,7 +74,7 @@ class Net(nn.Module):
         h = self.__backbone(state)
 
         # Get outputs from heads
-        outputs = tuple(head(h) + 1e-7 for head in self.__heads)
+        outputs = tuple(head(h) for head in self.__heads)
 
         # Give outputs as is if more than one
         if len(self.__heads) > 1:
@@ -206,10 +206,10 @@ class BetaAgent(AgentRL):
     def get_dist(self, state):
 
         # Get parameters of distribution of alpha
-        alpha_dist_pars = self._actor(state)
+        log_alpha, log_beta = self._actor(state)
 
         # Crete distribution over alpha
-        return Beta(*alpha_dist_pars)
+        return Beta(log_alpha.exp().pow(0.5), log_beta.exp().pow(0.5))
 
 
 class MultinomialAgent(AgentRL):
