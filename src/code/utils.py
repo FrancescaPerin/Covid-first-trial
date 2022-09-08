@@ -129,7 +129,7 @@ def summary_C_1D(cont_params, alpha):
 
 def calc_loss_GDP(agent, D_prime, t, r=0.0001, sigma=2, teta=0.33, a=18000, alpha=0.0):
 
-    return np.exp(-r * t) * (
+    return -np.exp(-r * t) * (
         V(P(agent, alpha=alpha, teta=teta), sigma=sigma) + a * D_prime
     )
 
@@ -170,9 +170,20 @@ def add_noise(mean, percentage_std):
 def reward_function(agent):
     # TODO check reward function
 
+    # If age-groups extract loss for adults only
     if len(agent.state.loss) == 3:
         loss =  agent.state.loss[1]
     else:
         loss = agent.state.loss[0]
 
-    return agent.state.D.sum() * loss
+    # Invert loss so that objective is to minimize
+    gdp = -loss
+
+    # Get scaling (death rate)
+    factor = agent.state.D.sum()
+
+    # Invert if GDP is positive (so that objective is to minimize death rate)
+    if gdp>0:
+        factor = 1 - factor
+
+    return factor * gdp
