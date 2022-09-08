@@ -34,5 +34,6 @@ Preprocessing/.DS_Store
 .DS_Store
 .DS_Store
 env/**
+env_plot/**
 results/**
 .DS_Store
