@@ -1,0 +1,3838 @@
+{
+    "Belgium": {
+        "Bulgaria": {
+            "on_board": 273549.8,
+            "arrivals": 133885.25,
+            "departures": 132883.75
+        },
+        "Czech Republic": {
+            "on_board": 455182.8,
+            "arrivals": 223209.75,
+            "departures": 223384.25
+        },
+        "Denmark": {
+            "on_board": 690219.4,
+            "arrivals": 345085.25,
+            "departures": 340693.5
+        },
+        "Germany": {
+            "on_board": 1878593.2,
+            "arrivals": 940201.75,
+            "departures": 951456.5
+        },
+        "Estonia": {
+            "on_board": 52916.4,
+            "arrivals": 26580.75,
+            "departures": 22983.75
+        },
+        "Ireland": {
+            "on_board": 514753.4,
+            "arrivals": 257860.25,
+            "departures": 258627.0
+        },
+        "Greece": {
+            "on_board": 1049566.0,
+            "arrivals": 521781.75,
+            "departures": 513749.5
+        },
+        "Spain": {
+            "on_board": 5844935.2,
+            "arrivals": 2886074.5,
+            "departures": 2877875.0
+        },
+        "France": {
+            "on_board": 2321941.4,
+            "arrivals": 1155049.25,
+            "departures": 1140036.5
+        },
+        "Croatia": {
+            "on_board": 231794.0,
+            "arrivals": 114322.0,
+            "departures": 113024.5
+        },
+        "Italy": {
+            "on_board": 3431755.8,
+            "arrivals": 1703076.75,
+            "departures": 1700460.25
+        },
+        "Cyprus": {
+            "on_board": 67856.4,
+            "arrivals": 33476.0,
+            "departures": 35147.5
+        },
+        "Latvia": {
+            "on_board": 137639.0,
+            "arrivals": 66439.5,
+            "departures": 67917.25
+        },
+        "Lithuania": {
+            "on_board": 97252.4,
+            "arrivals": 48983.25,
+            "departures": 47860.5
+        },
+        "Luxembourg": {
+            "on_board": 1108.2,
+            "arrivals": 424.25,
+            "departures": 727.25
+        },
+        "Hungary": {
+            "on_board": 533752.0,
+            "arrivals": 268038.75,
+            "departures": 263568.25
+        },
+        "Malta": {
+            "on_board": 185037.4,
+            "arrivals": 87843.25,
+            "departures": 86727.25
+        },
+        "Netherlands": {
+            "on_board": 263158.0,
+            "arrivals": 123139.25,
+            "departures": 133670.75
+        },
+        "Austria": {
+            "on_board": 482756.8,
+            "arrivals": 240878.25,
+            "departures": 238907.5
+        },
+        "Poland": {
+            "on_board": 776716.4,
+            "arrivals": 378980.5,
+            "departures": 376582.75
+        },
+        "Portugal": {
+            "on_board": 1424283.4,
+            "arrivals": 689841.5,
+            "departures": 686014.75
+        },
+        "Romania": {
+            "on_board": 609875.8,
+            "arrivals": 296322.25,
+            "departures": 287097.75
+        },
+        "Slovenia": {
+            "on_board": 102050.2,
+            "arrivals": 51768.25,
+            "departures": 51213.5
+        },
+        "Slovakia": {
+            "on_board": 67801.0,
+            "arrivals": 34982.75,
+            "departures": 34261.0
+        },
+        "Finland": {
+            "on_board": 197392.2,
+            "arrivals": 91920.75,
+            "departures": 94321.25
+        },
+        "Sweden": {
+            "on_board": 549103.0,
+            "arrivals": 264755.5,
+            "departures": 266010.5
+        },
+        "United Kingdom of Great Britain": {
+            "on_board": 1592852.8,
+            "arrivals": 774628.75,
+            "departures": 809379.75
+        }
+    },
+    "Bulgaria": {
+        "Belgium": {
+            "on_board": 266040.2,
+            "arrivals": 128425.75,
+            "departures": 129726.5
+        },
+        "Czech Republic": {
+            "on_board": 322729.2,
+            "arrivals": 154480.5,
+            "departures": 156114.0
+        },
+        "Denmark": {
+            "on_board": 120898.2,
+            "arrivals": 57783.0,
+            "departures": 56965.5
+        },
+        "Germany": {
+            "on_board": 1945133.2,
+            "arrivals": 945165.0,
+            "departures": 962777.75
+        },
+        "Estonia": {
+            "on_board": 36859.8,
+            "arrivals": 17835.75,
+            "departures": 17868.75
+        },
+        "Ireland": {
+            "on_board": 76399.8,
+            "arrivals": 33882.25,
+            "departures": 34065.75
+        },
+        "Greece": {
+            "on_board": 204817.4,
+            "arrivals": 94668.5,
+            "departures": 95575.5
+        },
+        "Spain": {
+            "on_board": 442810.6,
+            "arrivals": 211895.5,
+            "departures": 212694.5
+        },
+        "France": {
+            "on_board": 264371.6,
+            "arrivals": 121467.0,
+            "departures": 122965.75
+        },
+        "Croatia": {
+            "on_board": 1467.6,
+            "arrivals": 667.0,
+            "departures": 651.75
+        },
+        "Italy": {
+            "on_board": 656787.0,
+            "arrivals": 322727.25,
+            "departures": 323854.5
+        },
+        "Cyprus": {
+            "on_board": 115241.2,
+            "arrivals": 51709.75,
+            "departures": 51583.5
+        },
+        "Latvia": {
+            "on_board": 29368.6,
+            "arrivals": 14891.75,
+            "departures": 14847.0
+        },
+        "Lithuania": {
+            "on_board": 42443.4,
+            "arrivals": 21570.25,
+            "departures": 21635.0
+        },
+        "Luxembourg": {
+            "on_board": 23767.6,
+            "arrivals": 11705.5,
+            "departures": 11739.25
+        },
+        "Hungary": {
+            "on_board": 62825.6,
+            "arrivals": 29541.75,
+            "departures": 29859.0
+        },
+        "Malta": {
+            "on_board": 46011.4,
+            "arrivals": 22730.5,
+            "departures": 22904.25
+        },
+        "Netherlands": {
+            "on_board": 300066.0,
+            "arrivals": 140856.0,
+            "departures": 143968.25
+        },
+        "Austria": {
+            "on_board": 441693.4,
+            "arrivals": 213241.5,
+            "departures": 213168.5
+        },
+        "Poland": {
+            "on_board": 562503.8,
+            "arrivals": 266136.75,
+            "departures": 267798.25
+        },
+        "Portugal": {
+            "on_board": 17130.2,
+            "arrivals": 6566.0,
+            "departures": 6682.5
+        },
+        "Romania": {
+            "on_board": 58173.4,
+            "arrivals": 30230.75,
+            "departures": 30525.0
+        },
+        "Slovenia": {
+            "on_board": 3426.2,
+            "arrivals": 1393.3333333333333,
+            "departures": 1077.75
+        },
+        "Slovakia": {
+            "on_board": 130599.6,
+            "arrivals": 61412.0,
+            "departures": 61173.5
+        },
+        "Finland": {
+            "on_board": 54600.8,
+            "arrivals": 25418.75,
+            "departures": 25829.75
+        },
+        "Sweden": {
+            "on_board": 68134.0,
+            "arrivals": 36156.5,
+            "departures": 37171.0
+        },
+        "United Kingdom of Great Britain": {
+            "on_board": 1575542.0,
+            "arrivals": 733393.25,
+            "departures": 756398.25
+        }
+    },
+    "Czech Republic": {
+        "Belgium": {
+            "on_board": 454788.0,
+            "arrivals": 223212.75,
+            "departures": 222750.5
+        },
+        "Bulgaria": {
+            "on_board": 328437.0,
+            "arrivals": 159224.5,
+            "departures": 156519.0
+        },
+        "Denmark": {
+            "on_board": 286318.6,
+            "arrivals": 129757.5,
+            "departures": 132512.0
+        },
+        "Germany": {
+            "on_board": 1196098.8,
+            "arrivals": 602928.5,
+            "departures": 600184.0
+        },
+        "Estonia": {
+            "on_board": 239.2,
+            "arrivals": 95.0,
+            "departures": 77.5
+        },
+        "Ireland": {
+            "on_board": 202871.0,
+            "arrivals": 101175.0,
+            "departures": 99488.5
+        },
+        "Greece": {
+            "on_board": 789974.6,
+            "arrivals": 382361.75,
+            "departures": 373968.25
+        },
+        "Spain": {
+            "on_board": 1017921.4,
+            "arrivals": 477674.75,
+            "departures": 473626.0
+        },
+        "France": {
+            "on_board": 1073002.0,
+            "arrivals": 517290.25,
+            "departures": 512148.0
+        },
+        "Croatia": {
+            "on_board": 94140.4,
+            "arrivals": 42979.5,
+            "departures": 42564.25
+        },
+        "Italy": {
+            "on_board": 1262909.2,
+            "arrivals": 600852.25,
+            "departures": 600596.75
+        },
+        "Cyprus": {
+            "on_board": 29975.6,
+            "arrivals": 12479.5,
+            "departures": 12123.75
+        },
+        "Latvia": {
+            "on_board": 61662.6,
+            "arrivals": 24802.25,
+            "departures": 24862.25
+        },
+        "Lithuania": {
+            "on_board": 458.6,
+            "arrivals": 231.5,
+            "departures": 236.0
+        },
+        "Luxembourg": {
+            "on_board": 10463.4,
+            "arrivals": 4806.25,
+            "departures": 4840.75
+        },
+        "Hungary": {
+            "on_board": 137774.4,
+            "arrivals": 56265.75,
+            "departures": 57561.5
+        },
+        "Malta": {
+            "on_board": 25674.0,
+            "arrivals": 12501.25,
+            "departures": 12786.5
+        },
+        "Netherlands": {
+            "on_board": 772181.8,
+            "arrivals": 371719.5,
+            "departures": 368995.0
+        },
+        "Austria": {
+            "on_board": 162386.2,
+            "arrivals": 79422.75,
+            "departures": 77861.5
+        },
+        "Poland": {
+            "on_board": 232793.0,
+            "arrivals": 109089.25,
+            "departures": 111166.25
+        },
+        "Portugal": {
+            "on_board": 158799.4,
+            "arrivals": 77258.25,
+            "departures": 78234.0
+        },
+        "Romania": {
+            "on_board": 87140.4,
+            "arrivals": 43043.5,
+            "departures": 39608.75
+        },
+        "Slovenia": {
+            "on_board": 12209.0,
+            "arrivals": 6531.5,
+            "departures": 6233.5
+        },
+        "Slovakia": {
+            "on_board": 74231.6,
+            "arrivals": 39140.5,
+            "departures": 39114.75
+        },
+        "Finland": {
+            "on_board": 291289.0,
+            "arrivals": 144203.25,
+            "departures": 141980.0
+        },
+        "Sweden": {
+            "on_board": 265334.0,
+            "arrivals": 133682.25,
+            "departures": 121957.75
+        },
+        "United Kingdom of Great Britain": {
+            "on_board": 2076346.6,
+            "arrivals": 1003633.5,
+            "departures": 1001192.0
+        }
+    },
+    "Denmark": {
+        "Belgium": {
+            "on_board": 689360.2,
+            "arrivals": 340118.0,
+            "departures": 344978.75
+        },
+        "Bulgaria": {
+            "on_board": 121398.6,
+            "arrivals": 57378.5,
+            "departures": 58068.0
+        },
+        "Czech Republic": {
+            "on_board": 286548.8,
+            "arrivals": 132721.5,
+            "departures": 129830.5
+        },
+        "Germany": {
+            "on_board": 2919477.6,
+            "arrivals": 1452036.25,
+            "departures": 1445807.5
+        },
+        "Estonia": {
+            "on_board": 96540.0,
+            "arrivals": 48000.75,
+            "departures": 43411.25
+        },
+        "Ireland": {
+            "on_board": 287969.8,
+            "arrivals": 145671.5,
+            "departures": 146091.25
+        },
+        "Greece": {
+            "on_board": 968862.0,
+            "arrivals": 475399.0,
+            "departures": 474748.25
+        },
+        "Spain": {
+            "on_board": 3126393.4,
+            "arrivals": 1569955.0,
+            "departures": 1558773.0
+        },
+        "France": {
+            "on_board": 1504625.2,
+            "arrivals": 745163.25,
+            "departures": 739600.0
+        },
+        "Croatia": {
+            "on_board": 199549.0,
+            "arrivals": 95587.75,
+            "departures": 93924.25
+        },
+        "Italy": {
+            "on_board": 1472492.2,
+            "arrivals": 732503.0,
+            "departures": 732110.75
+        },
+        "Cyprus": {
+            "on_board": 83240.4,
+            "arrivals": 38776.0,
+            "departures": 38586.75
+        },
+        "Latvia": {
+            "on_board": 227261.6,
+            "arrivals": 108717.75,
+            "departures": 106514.25
+        },
+        "Lithuania": {
+            "on_board": 327444.4,
+            "arrivals": 163669.0,
+            "departures": 156618.5
+        },
+        "Luxembourg": {
+            "on_board": 70087.0,
+            "arrivals": 34268.0,
+            "departures": 33178.25
+        },
+        "Hungary": {
+            "on_board": 265920.6,
+            "arrivals": 130409.25,
+            "departures": 130414.0
+        },
+        "Malta": {
+            "on_board": 80341.4,
+            "arrivals": 39456.25,
+            "departures": 39845.75
+        },
+        "Netherlands": {
+            "on_board": 1684979.8,
+            "arrivals": 824429.0,
+            "departures": 828056.75
+        },
+        "Austria": {
+            "on_board": 439438.4,
+            "arrivals": 205307.75,
+            "departures": 203039.75
+        },
+        "Poland": {
+            "on_board": 681884.4,
+            "arrivals": 321037.75,
+            "departures": 312534.75
+        },
+        "Portugal": {
+            "on_board": 347983.2,
+            "arrivals": 170560.0,
+            "departures": 165838.25
+        },
+        "Romania": {
+            "on_board": 111854.8,
+            "arrivals": 46481.5,
+            "departures": 44644.0
+        },
+        "Slovenia": {
+            "on_board": 25185.8,
+            "arrivals": 12330.5,
+            "departures": 12621.5
+        },
+        "Slovakia": {
+            "on_board": 389.4,
+            "arrivals": 321.6666666666667,
+            "departures": 227.75
+        },
+        "Finland": {
+            "on_board": 891994.8,
+            "arrivals": 445220.25,
+            "departures": 441114.0
+        },
+        "Sweden": {
+            "on_board": 1929160.4,
+            "arrivals": 982907.5,
+            "departures": 979664.5
+        },
+        "United Kingdom of Great Britain": {
+            "on_board": 3578462.8,
+            "arrivals": 1779275.5,
+            "departures": 1801397.0
+        }
+    },
+    "Germany": {
+        "Belgium": {
+            "on_board": 1864147.8,
+            "arrivals": 943961.5,
+            "departures": 933083.5
+        },
+        "Bulgaria": {
+            "on_board": 1944199.8,
+            "arrivals": 963863.5,
+            "departures": 945006.5
+        },
+        "Czech Republic": {
+            "on_board": 1168056.0,
+            "arrivals": 586944.25,
+            "departures": 586946.25
+        },
+        "Denmark": {
+            "on_board": 2904568.2,
+            "arrivals": 1438576.0,
+            "departures": 1444265.0
+        },
+        "Estonia": {
+            "on_board": 409322.2,
+            "arrivals": 204887.25,
+            "departures": 200007.25
+        },
+        "Ireland": {
+            "on_board": 2197161.0,
+            "arrivals": 1060291.5,
+            "departures": 1057722.75
+        },
+        "Greece": {
+            "on_board": 6871473.0,
+            "arrivals": 3298893.25,
+            "departures": 3262441.5
+        },
+        "Spain": {
+            "on_board": 27747548.8,
+            "arrivals": 13775961.0,
+            "departures": 13721685.25
+        },
+        "France": {
+            "on_board": 7755854.2,
+            "arrivals": 3843811.5,
+            "departures": 3745093.75
+        },
+        "Croatia": {
+            "on_board": 1967145.4,
+            "arrivals": 927640.25,
+            "departures": 912490.25
+        },
+        "Italy": {
+            "on_board": 13816189.0,
+            "arrivals": 6780827.25,
+            "departures": 6702556.5
+        },
+        "Cyprus": {
+            "on_board": 352309.0,
+            "arrivals": 171702.0,
+            "departures": 172031.75
+        },
+        "Latvia": {
+            "on_board": 863969.0,
+            "arrivals": 424469.75,
+            "departures": 415498.25
+        },
+        "Lithuania": {
+            "on_board": 484617.6,
+            "arrivals": 232983.25,
+            "departures": 233627.5
+        },
+        "Luxembourg": {
+            "on_board": 495902.2,
+            "arrivals": 236939.75,
+            "departures": 233757.25
+        },
+        "Hungary": {
+            "on_board": 1921671.0,
+            "arrivals": 928134.75,
+            "departures": 905506.0
+        },
+        "Malta": {
+            "on_board": 760942.2,
+            "arrivals": 365153.75,
+            "departures": 362148.5
+        },
+        "Netherlands": {
+            "on_board": 4356304.6,
+            "arrivals": 2146513.25,
+            "departures": 2159308.0
+        },
+        "Austria": {
+            "on_board": 7028799.4,
+            "arrivals": 3501064.75,
+            "departures": 3451273.75
+        },
+        "Poland": {
+            "on_board": 4161778.4,
+            "arrivals": 2016652.25,
+            "departures": 1999968.5
+        },
+        "Portugal": {
+            "on_board": 4689751.2,
+            "arrivals": 2291152.5,
+            "departures": 2278204.25
+        },
+        "Romania": {
+            "on_board": 2465021.0,
+            "arrivals": 1220119.25,
+            "departures": 1147485.75
+        },
+        "Slovenia": {
+            "on_board": 241508.2,
+            "arrivals": 121678.5,
+            "departures": 117681.5
+        },
+        "Slovakia": {
+            "on_board": 51354.6,
+            "arrivals": 30516.75,
+            "departures": 29939.75
+        },
+        "Finland": {
+            "on_board": 1877414.0,
+            "arrivals": 910883.25,
+            "departures": 905264.25
+        },
+        "Sweden": {
+            "on_board": 3261439.4,
+            "arrivals": 1635998.25,
+            "departures": 1625527.25
+        },
+        "United Kingdom of Great Britain": {
+            "on_board": 14297062.6,
+            "arrivals": 7111852.5,
+            "departures": 7132463.0
+        }
+    },
+    "Estonia": {
+        "Belgium": {
+            "on_board": 52655.4,
+            "arrivals": 22858.5,
+            "departures": 26435.0
+        },
+        "Bulgaria": {
+            "on_board": 37537.0,
+            "arrivals": 18081.75,
+            "departures": 18249.0
+        },
+        "Czech Republic": {
+            "on_board": 99.6,
+            "arrivals": 83.0,
+            "departures": 62.25
+        },
+        "Denmark": {
+            "on_board": 95998.2,
+            "arrivals": 43120.25,
+            "departures": 47708.75
+        },
+        "Germany": {
+            "on_board": 411688.6,
+            "arrivals": 201085.25,
+            "departures": 206055.75
+        },
+        "Ireland": {
+            "on_board": 20216.2,
+            "arrivals": 10087.75,
+            "departures": 9920.25
+        },
+        "Greece": {
+            "on_board": 61301.0,
+            "arrivals": 29913.5,
+            "departures": 30125.5
+        },
+        "Spain": {
+            "on_board": 67432.0,
+            "arrivals": 33467.75,
+            "departures": 34052.0
+        },
+        "France": {
+            "on_board": 43083.2,
+            "arrivals": 21317.25,
+            "departures": 21523.5
+        },
+        "Croatia": {
+            "on_board": 10448.8,
+            "arrivals": 5800.75,
+            "departures": 5384.25
+        },
+        "Italy": {
+            "on_board": 87199.0,
+            "arrivals": 43640.0,
+            "departures": 43355.25
+        },
+        "Cyprus": {
+            "on_board": 17424.2,
+            "arrivals": 5758.75,
+            "departures": 5839.75
+        },
+        "Latvia": {
+            "on_board": 228603.4,
+            "arrivals": 105486.5,
+            "departures": 107902.5
+        },
+        "Lithuania": {
+            "on_board": 74609.2,
+            "arrivals": 34679.75,
+            "departures": 36173.5
+        },
+        "Luxembourg": {
+            "on_board": 62.5,
+            "arrivals": 19.5,
+            "departures": 43.0
+        },
+        "Hungary": {
+            "on_board": 151.75,
+            "arrivals": 36.0,
+            "departures": 128.66666666666666
+        },
+        "Malta": {
+            "on_board": 7374.4,
+            "arrivals": 2352.25,
+            "departures": 2369.5
+        },
+        "Netherlands": {
+            "on_board": 93308.6,
+            "arrivals": 46593.25,
+            "departures": 49583.75
+        },
+        "Austria": {
+            "on_board": 43634.0,
+            "arrivals": 20611.0,
+            "departures": 21467.25
+        },
+        "Poland": {
+            "on_board": 105856.6,
+            "arrivals": 41450.75,
+            "departures": 43121.0
+        },
+        "Portugal": {
+            "on_board": 2074.0,
+            "arrivals": 881.5,
+            "departures": 805.5
+        },
+        "Romania": {
+            "on_board": 2009.6666666666667,
+            "arrivals": 1814.0,
+            "departures": 928.0
+        },
+        "Slovenia": {
+            "on_board": 229.0,
+            "arrivals": 113.75,
+            "departures": 159.33333333333334
+        },
+        "Slovakia": {
+            "on_board": 82.5,
+            "arrivals": 60.5,
+            "departures": 44.0
+        },
+        "Finland": {
+            "on_board": 253008.6,
+            "arrivals": 119014.75,
+            "departures": 123308.25
+        },
+        "Sweden": {
+            "on_board": 193792.4,
+            "arrivals": 83067.5,
+            "departures": 86951.0
+        },
+        "United Kingdom of Great Britain": {
+            "on_board": 159474.4,
+            "arrivals": 70385.75,
+            "departures": 71621.5
+        }
+    },
+    "Ireland": {
+        "Belgium": {
+            "on_board": 513418.2,
+            "arrivals": 257783.5,
+            "departures": 257228.75
+        },
+        "Bulgaria": {
+            "on_board": 76926.0,
+            "arrivals": 34329.5,
+            "departures": 34211.5
+        },
+        "Czech Republic": {
+            "on_board": 202762.6,
+            "arrivals": 99199.25,
+            "departures": 101364.25
+        },
+        "Denmark": {
+            "on_board": 287859.6,
+            "arrivals": 146029.25,
+            "departures": 145596.25
+        },
+        "Germany": {
+            "on_board": 2204909.6,
+            "arrivals": 1060912.5,
+            "departures": 1065434.75
+        },
+        "Estonia": {
+            "on_board": 20218.8,
+            "arrivals": 9884.0,
+            "departures": 10131.75
+        },
+        "Greece": {
+            "on_board": 152441.4,
+            "arrivals": 69156.25,
+            "departures": 68853.0
+        },
+        "Spain": {
+            "on_board": 4104911.8,
+            "arrivals": 1980961.5,
+            "departures": 1981069.0
+        },
+        "France": {
+            "on_board": 1983913.6,
+            "arrivals": 973486.5,
+            "departures": 973334.0
+        },
+        "Croatia": {
+            "on_board": 147766.6,
+            "arrivals": 63521.5,
+            "departures": 62347.5
+        },
+        "Italy": {
+            "on_board": 1396573.4,
+            "arrivals": 673227.5,
+            "departures": 669760.0
+        },
+        "Cyprus": {
+            "on_board": 22419.75,
+            "arrivals": 8987.0,
+            "departures": 8797.666666666666
+        },
+        "Latvia": {
+            "on_board": 125131.2,
+            "arrivals": 58580.5,
+            "departures": 60035.75
+        },
+        "Lithuania": {
+            "on_board": 176260.6,
+            "arrivals": 87419.0,
+            "departures": 89245.5
+        },
+        "Luxembourg": {
+            "on_board": 51099.6,
+            "arrivals": 20294.0,
+            "departures": 20695.5
+        },
+        "Hungary": {
+            "on_board": 237156.4,
+            "arrivals": 113375.25,
+            "departures": 111590.0
+        },
+        "Malta": {
+            "on_board": 85034.6,
+            "arrivals": 39694.5,
+            "departures": 39886.5
+        },
+        "Netherlands": {
+            "on_board": 1294049.0,
+            "arrivals": 623243.5,
+            "departures": 622929.5
+        },
+        "Austria": {
+            "on_board": 163747.4,
+            "arrivals": 69994.25,
+            "departures": 70076.5
+        },
+        "Poland": {
+            "on_board": 1011079.6,
+            "arrivals": 502702.0,
+            "departures": 504187.0
+        },
+        "Portugal": {
+            "on_board": 1078656.6,
+            "arrivals": 502368.75,
+            "departures": 503657.5
+        },
+        "Romania": {
+            "on_board": 200108.2,
+            "arrivals": 96760.0,
+            "departures": 93906.75
+        },
+        "Slovenia": {
+            "on_board": 117.33333333333333,
+            "arrivals": 49.0,
+            "departures": 70.0
+        },
+        "Slovakia": {
+            "on_board": 130234.0,
+            "arrivals": 65651.75,
+            "departures": 65376.0
+        },
+        "Finland": {
+            "on_board": 102903.8,
+            "arrivals": 47978.5,
+            "departures": 50678.5
+        },
+        "Sweden": {
+            "on_board": 135698.8,
+            "arrivals": 62508.75,
+            "departures": 63878.75
+        },
+        "United Kingdom of Great Britain": {
+            "on_board": 12690498.2,
+            "arrivals": 6263047.0,
+            "departures": 6291310.25
+        }
+    },
+    "Greece": {
+        "Belgium": {
+            "on_board": 1097311.4,
+            "arrivals": 504466.25,
+            "departures": 574321.75
+        },
+        "Bulgaria": {
+            "on_board": 201628.4,
+            "arrivals": 93015.0,
+            "departures": 93689.25
+        },
+        "Czech Republic": {
+            "on_board": 764262.8,
+            "arrivals": 362655.5,
+            "departures": 365967.25
+        },
+        "Denmark": {
+            "on_board": 947232.6,
+            "arrivals": 469337.5,
+            "departures": 464036.0
+        },
+        "Germany": {
+            "on_board": 6829836.6,
+            "arrivals": 3270187.75,
+            "departures": 3256962.5
+        },
+        "Estonia": {
+            "on_board": 59032.2,
+            "arrivals": 29091.5,
+            "departures": 28585.5
+        },
+        "Ireland": {
+            "on_board": 149520.4,
+            "arrivals": 68195.5,
+            "departures": 67945.5
+        },
+        "Spain": {
+            "on_board": 651035.8,
+            "arrivals": 289505.75,
+            "departures": 297667.25
+        },
+        "France": {
+            "on_board": 2571273.2,
+            "arrivals": 1232924.5,
+            "departures": 1239693.5
+        },
+        "Croatia": {
+            "on_board": 59069.0,
+            "arrivals": 26252.5,
+            "departures": 23319.5
+        },
+        "Italy": {
+            "on_board": 3354237.2,
+            "arrivals": 1597233.5,
+            "departures": 1650562.0
+        },
+        "Cyprus": {
+            "on_board": 1569273.4,
+            "arrivals": 775412.25,
+            "departures": 769055.75
+        },
+        "Latvia": {
+            "on_board": 83730.2,
+            "arrivals": 40567.75,
+            "departures": 40401.75
+        },
+        "Lithuania": {
+            "on_board": 121804.4,
+            "arrivals": 57408.0,
+            "departures": 56709.25
+        },
+        "Luxembourg": {
+            "on_board": 71365.0,
+            "arrivals": 34104.0,
+            "departures": 34123.5
+        },
+        "Hungary": {
+            "on_board": 331511.2,
+            "arrivals": 153959.75,
+            "departures": 152122.5
+        },
+        "Malta": {
+            "on_board": 64370.6,
+            "arrivals": 27996.75,
+            "departures": 29455.25
+        },
+        "Netherlands": {
+            "on_board": 1926991.0,
+            "arrivals": 868402.5,
+            "departures": 966514.75
+        },
+        "Austria": {
+            "on_board": 963922.4,
+            "arrivals": 449541.75,
+            "departures": 459830.75
+        },
+        "Poland": {
+            "on_board": 1677270.4,
+            "arrivals": 817563.75,
+            "departures": 818202.5
+        },
+        "Portugal": {
+            "on_board": 59249.2,
+            "arrivals": 21394.0,
+            "departures": 21520.0
+        },
+        "Romania": {
+            "on_board": 472475.8,
+            "arrivals": 222322.0,
+            "departures": 228504.25
+        },
+        "Slovenia": {
+            "on_board": 59786.4,
+            "arrivals": 28258.5,
+            "departures": 32662.5
+        },
+        "Slovakia": {
+            "on_board": 220573.2,
+            "arrivals": 108332.0,
+            "departures": 107976.75
+        },
+        "Finland": {
+            "on_board": 489758.2,
+            "arrivals": 233212.0,
+            "departures": 229050.25
+        },
+        "Sweden": {
+            "on_board": 1202216.2,
+            "arrivals": 605535.5,
+            "departures": 597004.75
+        },
+        "United Kingdom of Great Britain": {
+            "on_board": 7021195.0,
+            "arrivals": 3413439.0,
+            "departures": 3417492.75
+        }
+    },
+    "Spain": {
+        "Belgium": {
+            "on_board": 5944405.4,
+            "arrivals": 2951321.5,
+            "departures": 2897944.25
+        },
+        "Bulgaria": {
+            "on_board": 430367.6,
+            "arrivals": 207173.5,
+            "departures": 205309.5
+        },
+        "Czech Republic": {
+            "on_board": 1019090.2,
+            "arrivals": 477054.0,
+            "departures": 474419.5
+        },
+        "Denmark": {
+            "on_board": 3128420.0,
+            "arrivals": 1558644.25,
+            "departures": 1572979.25
+        },
+        "Germany": {
+            "on_board": 28081775.0,
+            "arrivals": 13882188.0,
+            "departures": 13943673.75
+        },
+        "Estonia": {
+            "on_board": 68012.2,
+            "arrivals": 34204.5,
+            "departures": 33938.5
+        },
+        "Ireland": {
+            "on_board": 4109625.8,
+            "arrivals": 1982368.5,
+            "departures": 1987333.25
+        },
+        "Greece": {
+            "on_board": 656108.0,
+            "arrivals": 298562.75,
+            "departures": 293018.5
+        },
+        "France": {
+            "on_board": 13845010.6,
+            "arrivals": 6736117.75,
+            "departures": 6704949.0
+        },
+        "Croatia": {
+            "on_board": 281415.4,
+            "arrivals": 131854.0,
+            "departures": 130234.5
+        },
+        "Italy": {
+            "on_board": 14126610.0,
+            "arrivals": 6826231.0,
+            "departures": 6759574.5
+        },
+        "Cyprus": {
+            "on_board": 11848.6,
+            "arrivals": 7359.75,
+            "departures": 7056.5
+        },
+        "Latvia": {
+            "on_board": 155724.8,
+            "arrivals": 67752.0,
+            "departures": 68491.5
+        },
+        "Lithuania": {
+            "on_board": 257459.2,
+            "arrivals": 128559.75,
+            "departures": 126029.75
+        },
+        "Luxembourg": {
+            "on_board": 484291.4,
+            "arrivals": 232613.75,
+            "departures": 225440.0
+        },
+        "Hungary": {
+            "on_board": 774771.2,
+            "arrivals": 357067.0,
+            "departures": 351841.75
+        },
+        "Malta": {
+            "on_board": 250374.4,
+            "arrivals": 108467.25,
+            "departures": 110175.75
+        },
+        "Netherlands": {
+            "on_board": 8059892.2,
+            "arrivals": 3970341.5,
+            "departures": 3893299.5
+        },
+        "Austria": {
+            "on_board": 1782628.2,
+            "arrivals": 795178.0,
+            "departures": 782279.25
+        },
+        "Poland": {
+            "on_board": 2243344.8,
+            "arrivals": 1112481.0,
+            "departures": 1112292.25
+        },
+        "Portugal": {
+            "on_board": 4309586.8,
+            "arrivals": 1983925.5,
+            "departures": 1996905.25
+        },
+        "Romania": {
+            "on_board": 1552349.2,
+            "arrivals": 747977.5,
+            "departures": 747720.25
+        },
+        "Slovenia": {
+            "on_board": 5253.4,
+            "arrivals": 2528.5,
+            "departures": 2390.0
+        },
+        "Slovakia": {
+            "on_board": 153799.8,
+            "arrivals": 82239.0,
+            "departures": 80722.5
+        },
+        "Finland": {
+            "on_board": 1588964.0,
+            "arrivals": 774496.75,
+            "departures": 772144.25
+        },
+        "Sweden": {
+            "on_board": 3609902.0,
+            "arrivals": 1797379.0,
+            "departures": 1795928.5
+        },
+        "United Kingdom of Great Britain": {
+            "on_board": 42362813.2,
+            "arrivals": 20841650.75,
+            "departures": 20909129.25
+        }
+    },
+    "France": {
+        "Belgium": {
+            "on_board": 2160793.4,
+            "arrivals": 1061271.0,
+            "departures": 1072019.0
+        },
+        "Bulgaria": {
+            "on_board": 238988.2,
+            "arrivals": 111195.5,
+            "departures": 109314.25
+        },
+        "Czech Republic": {
+            "on_board": 1013423.6,
+            "arrivals": 485524.0,
+            "departures": 490455.5
+        },
+        "Denmark": {
+            "on_board": 1403243.8,
+            "arrivals": 690946.5,
+            "departures": 694700.0
+        },
+        "Germany": {
+            "on_board": 7848554.2,
+            "arrivals": 3793640.25,
+            "departures": 3889397.75
+        },
+        "Estonia": {
+            "on_board": 42897.2,
+            "arrivals": 21349.25,
+            "departures": 21312.75
+        },
+        "Ireland": {
+            "on_board": 1905965.6,
+            "arrivals": 934651.25,
+            "departures": 933319.25
+        },
+        "Greece": {
+            "on_board": 2387588.6,
+            "arrivals": 1147529.75,
+            "departures": 1139308.0
+        },
+        "Spain": {
+            "on_board": 12338519.0,
+            "arrivals": 5964058.5,
+            "departures": 5977022.5
+        },
+        "Croatia": {
+            "on_board": 587318.4,
+            "arrivals": 280832.5,
+            "departures": 280334.25
+        },
+        "Italy": {
+            "on_board": 11038377.2,
+            "arrivals": 5397375.0,
+            "departures": 5431927.0
+        },
+        "Cyprus": {
+            "on_board": 46302.6,
+            "arrivals": 28231.25,
+            "departures": 28916.0
+        },
+        "Latvia": {
+            "on_board": 157002.0,
+            "arrivals": 74535.25,
+            "departures": 75209.75
+        },
+        "Lithuania": {
+            "on_board": 139796.6,
+            "arrivals": 67206.5,
+            "departures": 65895.0
+        },
+        "Luxembourg": {
+            "on_board": 228490.0,
+            "arrivals": 99775.5,
+            "departures": 97951.25
+        },
+        "Hungary": {
+            "on_board": 687911.6,
+            "arrivals": 334273.0,
+            "departures": 325029.25
+        },
+        "Malta": {
+            "on_board": 355591.8,
+            "arrivals": 165855.5,
+            "departures": 166386.0
+        },
+        "Netherlands": {
+            "on_board": 3603129.2,
+            "arrivals": 1768995.25,
+            "departures": 1803685.75
+        },
+        "Austria": {
+            "on_board": 1217997.6,
+            "arrivals": 575562.5,
+            "departures": 571561.5
+        },
+        "Poland": {
+            "on_board": 1221322.0,
+            "arrivals": 591665.5,
+            "departures": 598284.5
+        },
+        "Portugal": {
+            "on_board": 6122879.6,
+            "arrivals": 2934148.0,
+            "departures": 2944475.25
+        },
+        "Romania": {
+            "on_board": 883832.4,
+            "arrivals": 412540.25,
+            "departures": 407413.0
+        },
+        "Slovenia": {
+            "on_board": 90657.6,
+            "arrivals": 40688.5,
+            "departures": 47232.5
+        },
+        "Slovakia": {
+            "on_board": 31703.8,
+            "arrivals": 14890.0,
+            "departures": 16362.0
+        },
+        "Finland": {
+            "on_board": 637445.8,
+            "arrivals": 300902.75,
+            "departures": 321216.25
+        },
+        "Sweden": {
+            "on_board": 1124663.8,
+            "arrivals": 550563.5,
+            "departures": 562221.0
+        },
+        "United Kingdom of Great Britain": {
+            "on_board": 11815223.0,
+            "arrivals": 5837728.25,
+            "departures": 5821785.25
+        }
+    },
+    "Croatia": {
+        "Belgium": {
+            "on_board": 223404.6,
+            "arrivals": 108912.25,
+            "departures": 110460.5
+        },
+        "Bulgaria": {
+            "on_board": 866.4,
+            "arrivals": 373.25,
+            "departures": 336.0
+        },
+        "Czech Republic": {
+            "on_board": 93960.0,
+            "arrivals": 42422.5,
+            "departures": 43042.25
+        },
+        "Denmark": {
+            "on_board": 199335.6,
+            "arrivals": 93768.25,
+            "departures": 95423.0
+        },
+        "Germany": {
+            "on_board": 1892830.2,
+            "arrivals": 880248.5,
+            "departures": 894375.5
+        },
+        "Estonia": {
+            "on_board": 7865.2,
+            "arrivals": 3754.25,
+            "departures": 4190.5
+        },
+        "Ireland": {
+            "on_board": 147531.4,
+            "arrivals": 62052.5,
+            "departures": 63498.75
+        },
+        "Greece": {
+            "on_board": 60541.0,
+            "arrivals": 24144.5,
+            "departures": 26585.75
+        },
+        "Spain": {
+            "on_board": 281863.8,
+            "arrivals": 130210.25,
+            "departures": 132605.0
+        },
+        "France": {
+            "on_board": 642395.0,
+            "arrivals": 306382.25,
+            "departures": 305372.75
+        },
+        "Italy": {
+            "on_board": 310191.2,
+            "arrivals": 144567.5,
+            "departures": 145658.75
+        },
+        "Cyprus": {
+            "on_board": 479.0,
+            "arrivals": 314.6666666666667,
+            "departures": 248.66666666666666
+        },
+        "Latvia": {
+            "on_board": 12051.6,
+            "arrivals": 5114.75,
+            "departures": 5070.25
+        },
+        "Lithuania": {
+            "on_board": 384.5,
+            "arrivals": 78.0,
+            "departures": 131.0
+        },
+        "Luxembourg": {
+            "on_board": 7197.6,
+            "arrivals": 3377.0,
+            "departures": 3199.0
+        },
+        "Hungary": {
+            "on_board": 1101.75,
+            "arrivals": 692.6666666666666,
+            "departures": 611.0
+        },
+        "Malta": {
+            "on_board": 3782.0,
+            "arrivals": 1884.25,
+            "departures": 2013.25
+        },
+        "Netherlands": {
+            "on_board": 335929.2,
+            "arrivals": 155658.25,
+            "departures": 158107.25
+        },
+        "Austria": {
+            "on_board": 323150.0,
+            "arrivals": 154510.0,
+            "departures": 161763.0
+        },
+        "Poland": {
+            "on_board": 130190.0,
+            "arrivals": 52056.0,
+            "departures": 50794.0
+        },
+        "Portugal": {
+            "on_board": 25424.0,
+            "arrivals": 11947.25,
+            "departures": 11791.75
+        },
+        "Romania": {
+            "on_board": 5521.2,
+            "arrivals": 2405.5,
+            "departures": 2848.0
+        },
+        "Slovenia": {
+            "on_board": 1140.6,
+            "arrivals": 821.0,
+            "departures": 558.5
+        },
+        "Slovakia": {
+            "on_board": 923.8,
+            "arrivals": 540.75,
+            "departures": 542.25
+        },
+        "Finland": {
+            "on_board": 184448.2,
+            "arrivals": 84796.0,
+            "departures": 89207.75
+        },
+        "Sweden": {
+            "on_board": 327164.0,
+            "arrivals": 156622.5,
+            "departures": 157722.25
+        },
+        "United Kingdom of Great Britain": {
+            "on_board": 1462048.4,
+            "arrivals": 686565.75,
+            "departures": 690090.25
+        }
+    },
+    "Italy": {
+        "Belgium": {
+            "on_board": 3442286.4,
+            "arrivals": 1703624.0,
+            "departures": 1712491.0
+        },
+        "Bulgaria": {
+            "on_board": 664220.6,
+            "arrivals": 327731.75,
+            "departures": 326844.75
+        },
+        "Czech Republic": {
+            "on_board": 1262537.8,
+            "arrivals": 600836.75,
+            "departures": 600281.0
+        },
+        "Denmark": {
+            "on_board": 1479410.8,
+            "arrivals": 735194.25,
+            "departures": 736466.25
+        },
+        "Germany": {
+            "on_board": 13867913.4,
+            "arrivals": 6720024.75,
+            "departures": 6810037.0
+        },
+        "Estonia": {
+            "on_board": 87424.2,
+            "arrivals": 43417.5,
+            "departures": 43898.25
+        },
+        "Ireland": {
+            "on_board": 1397526.6,
+            "arrivals": 670435.5,
+            "departures": 674094.75
+        },
+        "Greece": {
+            "on_board": 3364421.2,
+            "arrivals": 1639818.0,
+            "departures": 1616383.25
+        },
+        "Spain": {
+            "on_board": 14062059.2,
+            "arrivals": 6758727.5,
+            "departures": 6757839.25
+        },
+        "France": {
+            "on_board": 11554495.8,
+            "arrivals": 5680410.75,
+            "departures": 5634774.0
+        },
+        "Croatia": {
+            "on_board": 309437.4,
+            "arrivals": 144755.5,
+            "departures": 144909.5
+        },
+        "Cyprus": {
+            "on_board": 96380.4,
+            "arrivals": 46349.75,
+            "departures": 43595.5
+        },
+        "Latvia": {
+            "on_board": 225208.4,
+            "arrivals": 106779.5,
+            "departures": 106210.25
+        },
+        "Lithuania": {
+            "on_board": 329846.8,
+            "arrivals": 156713.75,
+            "departures": 156964.25
+        },
+        "Luxembourg": {
+            "on_board": 324289.6,
+            "arrivals": 150005.25,
+            "departures": 152041.0
+        },
+        "Hungary": {
+            "on_board": 1176056.0,
+            "arrivals": 555848.75,
+            "departures": 550634.25
+        },
+        "Malta": {
+            "on_board": 1229021.6,
+            "arrivals": 584058.0,
+            "departures": 586263.0
+        },
+        "Netherlands": {
+            "on_board": 4813587.4,
+            "arrivals": 2381015.0,
+            "departures": 2369234.5
+        },
+        "Austria": {
+            "on_board": 1453618.4,
+            "arrivals": 655151.75,
+            "departures": 648292.75
+        },
+        "Poland": {
+            "on_board": 2177935.8,
+            "arrivals": 1018264.5,
+            "departures": 1020459.5
+        },
+        "Portugal": {
+            "on_board": 2009984.6,
+            "arrivals": 936121.0,
+            "departures": 941773.5
+        },
+        "Romania": {
+            "on_board": 3315414.6,
+            "arrivals": 1609439.5,
+            "departures": 1614709.75
+        },
+        "Slovenia": {
+            "on_board": 3023.0,
+            "arrivals": 1605.25,
+            "departures": 1619.25
+        },
+        "Slovakia": {
+            "on_board": 231496.2,
+            "arrivals": 119088.5,
+            "departures": 116746.0
+        },
+        "Finland": {
+            "on_board": 558430.8,
+            "arrivals": 276816.25,
+            "departures": 265955.25
+        },
+        "Sweden": {
+            "on_board": 878474.6,
+            "arrivals": 444658.75,
+            "departures": 441162.25
+        },
+        "United Kingdom of Great Britain": {
+            "on_board": 14779706.6,
+            "arrivals": 7209027.5,
+            "departures": 7243656.5
+        }
+    },
+    "Cyprus": {
+        "Belgium": {
+            "on_board": 68358.4,
+            "arrivals": 35044.25,
+            "departures": 34184.0
+        },
+        "Bulgaria": {
+            "on_board": 115132.4,
+            "arrivals": 51588.0,
+            "departures": 51661.25
+        },
+        "Czech Republic": {
+            "on_board": 28005.0,
+            "arrivals": 10951.0,
+            "departures": 11289.75
+        },
+        "Denmark": {
+            "on_board": 82921.6,
+            "arrivals": 38410.25,
+            "departures": 38458.25
+        },
+        "Germany": {
+            "on_board": 353762.2,
+            "arrivals": 173198.75,
+            "departures": 171908.75
+        },
+        "Estonia": {
+            "on_board": 17499.2,
+            "arrivals": 5848.75,
+            "departures": 5808.5
+        },
+        "Ireland": {
+            "on_board": 18088.0,
+            "arrivals": 6669.25,
+            "departures": 6836.0
+        },
+        "Greece": {
+            "on_board": 1607230.0,
+            "arrivals": 793053.5,
+            "departures": 792708.5
+        },
+        "Spain": {
+            "on_board": 11814.4,
+            "arrivals": 7072.5,
+            "departures": 7351.5
+        },
+        "France": {
+            "on_board": 76365.0,
+            "arrivals": 44025.25,
+            "departures": 42410.5
+        },
+        "Croatia": {
+            "on_board": 314.6,
+            "arrivals": 165.25,
+            "departures": 205.25
+        },
+        "Italy": {
+            "on_board": 94182.6,
+            "arrivals": 43501.75,
+            "departures": 44647.25
+        },
+        "Latvia": {
+            "on_board": 29267.4,
+            "arrivals": 10940.25,
+            "departures": 11097.25
+        },
+        "Lithuania": {
+            "on_board": 52363.6,
+            "arrivals": 25417.5,
+            "departures": 24811.25
+        },
+        "Luxembourg": {
+            "on_board": 261.4,
+            "arrivals": 92.5,
+            "departures": 87.5
+        },
+        "Hungary": {
+            "on_board": 76578.6,
+            "arrivals": 31879.0,
+            "departures": 31306.0
+        },
+        "Malta": {
+            "on_board": 95466.6,
+            "arrivals": 44583.0,
+            "departures": 45854.25
+        },
+        "Netherlands": {
+            "on_board": 84455.6,
+            "arrivals": 40138.5,
+            "departures": 38666.5
+        },
+        "Austria": {
+            "on_board": 250690.4,
+            "arrivals": 117354.5,
+            "departures": 118402.5
+        },
+        "Poland": {
+            "on_board": 208684.6,
+            "arrivals": 94953.0,
+            "departures": 94545.75
+        },
+        "Portugal": {
+            "on_board": 25.0,
+            "arrivals": 6.0,
+            "departures": 23.0
+        },
+        "Romania": {
+            "on_board": 207095.4,
+            "arrivals": 96344.75,
+            "departures": 98057.5
+        },
+        "Slovenia": {
+            "on_board": 103.75,
+            "arrivals": 65.66666666666667,
+            "departures": 106.5
+        },
+        "Slovakia": {
+            "on_board": 34796.4,
+            "arrivals": 11619.25,
+            "departures": 11659.75
+        },
+        "Finland": {
+            "on_board": 38139.2,
+            "arrivals": 18234.25,
+            "departures": 18550.25
+        },
+        "Sweden": {
+            "on_board": 242543.8,
+            "arrivals": 119361.75,
+            "departures": 119433.75
+        },
+        "United Kingdom of Great Britain": {
+            "on_board": 2889169.6,
+            "arrivals": 1418759.75,
+            "departures": 1412020.0
+        }
+    },
+    "Latvia": {
+        "Belgium": {
+            "on_board": 137522.8,
+            "arrivals": 67719.25,
+            "departures": 66435.5
+        },
+        "Bulgaria": {
+            "on_board": 29881.0,
+            "arrivals": 15022.5,
+            "departures": 15231.5
+        },
+        "Czech Republic": {
+            "on_board": 61645.0,
+            "arrivals": 24862.0,
+            "departures": 24797.25
+        },
+        "Denmark": {
+            "on_board": 227302.6,
+            "arrivals": 106460.5,
+            "departures": 108726.75
+        },
+        "Germany": {
+            "on_board": 870238.0,
+            "arrivals": 418184.25,
+            "departures": 428241.25
+        },
+        "Estonia": {
+            "on_board": 229310.6,
+            "arrivals": 108248.75,
+            "departures": 105912.25
+        },
+        "Ireland": {
+            "on_board": 125236.0,
+            "arrivals": 59914.75,
+            "departures": 58797.25
+        },
+        "Greece": {
+            "on_board": 86938.2,
+            "arrivals": 41844.25,
+            "departures": 42080.25
+        },
+        "Spain": {
+            "on_board": 155384.4,
+            "arrivals": 68059.0,
+            "departures": 67789.5
+        },
+        "France": {
+            "on_board": 158161.0,
+            "arrivals": 75750.5,
+            "departures": 75225.75
+        },
+        "Croatia": {
+            "on_board": 19060.6,
+            "arrivals": 8322.75,
+            "departures": 8615.0
+        },
+        "Italy": {
+            "on_board": 225783.0,
+            "arrivals": 106180.0,
+            "departures": 107494.25
+        },
+        "Cyprus": {
+            "on_board": 29238.4,
+            "arrivals": 11043.75,
+            "departures": 10978.25
+        },
+        "Lithuania": {
+            "on_board": 238028.8,
+            "arrivals": 110802.75,
+            "departures": 110067.0
+        },
+        "Luxembourg": {
+            "on_board": 2.25,
+            "arrivals": 3.0,
+            "departures": 1.5
+        },
+        "Hungary": {
+            "on_board": 25173.0,
+            "arrivals": 11853.5,
+            "departures": 11509.25
+        },
+        "Malta": {
+            "on_board": 25760.0,
+            "arrivals": 9812.75,
+            "departures": 9873.5
+        },
+        "Netherlands": {
+            "on_board": 190555.4,
+            "arrivals": 92515.5,
+            "departures": 92335.75
+        },
+        "Austria": {
+            "on_board": 106552.0,
+            "arrivals": 48642.25,
+            "departures": 50298.75
+        },
+        "Poland": {
+            "on_board": 134190.6,
+            "arrivals": 59125.5,
+            "departures": 58229.0
+        },
+        "Portugal": {
+            "on_board": 11686.6,
+            "arrivals": 3705.25,
+            "departures": 3824.5
+        },
+        "Romania": {
+            "on_board": 2615.25,
+            "arrivals": 2636.0,
+            "departures": 1695.0
+        },
+        "Slovenia": {
+            "on_board": 113.25,
+            "arrivals": 26.0,
+            "departures": 15.0
+        },
+        "Slovakia": {
+            "on_board": 2260.8,
+            "arrivals": 1045.5,
+            "departures": 1112.0
+        },
+        "Finland": {
+            "on_board": 335184.8,
+            "arrivals": 159743.75,
+            "departures": 157605.25
+        },
+        "Sweden": {
+            "on_board": 266324.6,
+            "arrivals": 127852.75,
+            "departures": 131229.75
+        },
+        "United Kingdom of Great Britain": {
+            "on_board": 803666.4,
+            "arrivals": 397773.25,
+            "departures": 399962.75
+        }
+    },
+    "Lithuania": {
+        "Belgium": {
+            "on_board": 97046.6,
+            "arrivals": 47464.75,
+            "departures": 49274.25
+        },
+        "Bulgaria": {
+            "on_board": 42390.4,
+            "arrivals": 21544.5,
+            "departures": 21591.75
+        },
+        "Czech Republic": {
+            "on_board": 389.6,
+            "arrivals": 251.75,
+            "departures": 230.25
+        },
+        "Denmark": {
+            "on_board": 325213.6,
+            "arrivals": 155427.5,
+            "departures": 162810.75
+        },
+        "Germany": {
+            "on_board": 485606.8,
+            "arrivals": 233900.75,
+            "departures": 233531.75
+        },
+        "Estonia": {
+            "on_board": 75029.0,
+            "arrivals": 36139.75,
+            "departures": 35161.5
+        },
+        "Ireland": {
+            "on_board": 172368.8,
+            "arrivals": 86987.75,
+            "departures": 85576.5
+        },
+        "Greece": {
+            "on_board": 125027.8,
+            "arrivals": 58605.75,
+            "departures": 58901.5
+        },
+        "Spain": {
+            "on_board": 255370.8,
+            "arrivals": 125023.0,
+            "departures": 127764.75
+        },
+        "France": {
+            "on_board": 139955.8,
+            "arrivals": 66049.25,
+            "departures": 67271.5
+        },
+        "Croatia": {
+            "on_board": 316.6,
+            "arrivals": 88.0,
+            "departures": 42.0
+        },
+        "Italy": {
+            "on_board": 330380.2,
+            "arrivals": 157502.5,
+            "departures": 157586.0
+        },
+        "Cyprus": {
+            "on_board": 51551.4,
+            "arrivals": 24519.25,
+            "departures": 24957.0
+        },
+        "Latvia": {
+            "on_board": 236685.2,
+            "arrivals": 109418.5,
+            "departures": 110091.5
+        },
+        "Luxembourg": {
+            "on_board": 38.75,
+            "arrivals": 16.333333333333332,
+            "departures": 15.333333333333334
+        },
+        "Hungary": {
+            "on_board": 117.8,
+            "arrivals": 129.0,
+            "departures": 25.5
+        },
+        "Malta": {
+            "on_board": 29876.0,
+            "arrivals": 14008.75,
+            "departures": 14227.0
+        },
+        "Netherlands": {
+            "on_board": 135439.0,
+            "arrivals": 63514.0,
+            "departures": 65355.0
+        },
+        "Austria": {
+            "on_board": 57356.6,
+            "arrivals": 28000.5,
+            "departures": 26267.0
+        },
+        "Poland": {
+            "on_board": 202425.0,
+            "arrivals": 92512.75,
+            "departures": 91849.25
+        },
+        "Portugal": {
+            "on_board": 7249.2,
+            "arrivals": 2558.75,
+            "departures": 2651.5
+        },
+        "Romania": {
+            "on_board": 168.4,
+            "arrivals": 117.75,
+            "departures": 77.0
+        },
+        "Slovenia": {
+            "on_board": 75.0,
+            "arrivals": 77.66666666666667,
+            "departures": 44.666666666666664
+        },
+        "Slovakia": {
+            "on_board": 121.25,
+            "arrivals": 79.0,
+            "departures": 108.0
+        },
+        "Finland": {
+            "on_board": 107976.4,
+            "arrivals": 49528.25,
+            "departures": 47964.75
+        },
+        "Sweden": {
+            "on_board": 163374.0,
+            "arrivals": 81743.0,
+            "departures": 80715.0
+        },
+        "United Kingdom of Great Britain": {
+            "on_board": 1027202.8,
+            "arrivals": 498158.5,
+            "departures": 499039.5
+        }
+    },
+    "Luxembourg": {
+        "Belgium": {
+            "on_board": 691.0,
+            "arrivals": 548.75,
+            "departures": 95.25
+        },
+        "Bulgaria": {
+            "on_board": 23713.4,
+            "arrivals": 11705.5,
+            "departures": 11662.0
+        },
+        "Czech Republic": {
+            "on_board": 10324.0,
+            "arrivals": 4751.25,
+            "departures": 4762.5
+        },
+        "Denmark": {
+            "on_board": 69491.6,
+            "arrivals": 32824.5,
+            "departures": 34012.75
+        },
+        "Germany": {
+            "on_board": 495728.0,
+            "arrivals": 233897.75,
+            "departures": 236647.75
+        },
+        "Estonia": {
+            "on_board": 20.666666666666668,
+            "arrivals": 4.5,
+            "departures": 4.5
+        },
+        "Ireland": {
+            "on_board": 50896.0,
+            "arrivals": 20538.75,
+            "departures": 20345.25
+        },
+        "Greece": {
+            "on_board": 70879.4,
+            "arrivals": 33716.75,
+            "departures": 33823.25
+        },
+        "Spain": {
+            "on_board": 465188.4,
+            "arrivals": 218887.25,
+            "departures": 219009.75
+        },
+        "France": {
+            "on_board": 227121.6,
+            "arrivals": 97266.5,
+            "departures": 99599.75
+        },
+        "Croatia": {
+            "on_board": 7160.6,
+            "arrivals": 3315.0,
+            "departures": 3202.0
+        },
+        "Italy": {
+            "on_board": 320322.8,
+            "arrivals": 149364.25,
+            "departures": 148481.25
+        },
+        "Cyprus": {
+            "on_board": 242.4,
+            "arrivals": 79.0,
+            "departures": 82.25
+        },
+        "Latvia": {
+            "on_board": 8.6,
+            "arrivals": 4.0,
+            "departures": 6.0
+        },
+        "Lithuania": {
+            "on_board": 56.0,
+            "arrivals": 29.5,
+            "departures": 26.5
+        },
+        "Hungary": {
+            "on_board": 1809.8,
+            "arrivals": 3.0,
+            "departures": 38.25
+        },
+        "Malta": {
+            "on_board": 9910.4,
+            "arrivals": 1092.25,
+            "departures": 3103.75
+        },
+        "Netherlands": {
+            "on_board": 168867.2,
+            "arrivals": 82236.0,
+            "departures": 82635.25
+        },
+        "Austria": {
+            "on_board": 106385.4,
+            "arrivals": 50802.0,
+            "departures": 51085.25
+        },
+        "Poland": {
+            "on_board": 34442.4,
+            "arrivals": 14328.0,
+            "departures": 14135.5
+        },
+        "Portugal": {
+            "on_board": 553198.8,
+            "arrivals": 255881.75,
+            "departures": 257925.0
+        },
+        "Romania": {
+            "on_board": 9.5,
+            "arrivals": 4.666666666666667,
+            "departures": 6.0
+        },
+        "Slovenia": {
+            "on_board": 85.0,
+            "arrivals": 57.0,
+            "departures": 49.0
+        },
+        "Slovakia": {
+            "on_board": 42.6,
+            "arrivals": 6.75,
+            "departures": 21.0
+        },
+        "Finland": {
+            "on_board": 1186.8,
+            "arrivals": 577.75,
+            "departures": 636.5
+        },
+        "Sweden": {
+            "on_board": 23705.0,
+            "arrivals": 14630.75,
+            "departures": 14359.0
+        },
+        "United Kingdom of Great Britain": {
+            "on_board": 503761.4,
+            "arrivals": 239300.75,
+            "departures": 243189.75
+        }
+    },
+    "Hungary": {
+        "Belgium": {
+            "on_board": 532897.4,
+            "arrivals": 262781.25,
+            "departures": 267932.5
+        },
+        "Bulgaria": {
+            "on_board": 61990.8,
+            "arrivals": 29304.0,
+            "departures": 29223.75
+        },
+        "Czech Republic": {
+            "on_board": 136747.6,
+            "arrivals": 57039.75,
+            "departures": 55619.25
+        },
+        "Denmark": {
+            "on_board": 264590.8,
+            "arrivals": 128725.0,
+            "departures": 130377.25
+        },
+        "Germany": {
+            "on_board": 1917726.8,
+            "arrivals": 902741.5,
+            "departures": 925060.0
+        },
+        "Estonia": {
+            "on_board": 139.6,
+            "arrivals": 101.75,
+            "departures": 78.66666666666667
+        },
+        "Ireland": {
+            "on_board": 237099.8,
+            "arrivals": 111515.75,
+            "departures": 113468.75
+        },
+        "Greece": {
+            "on_board": 332911.6,
+            "arrivals": 153326.75,
+            "departures": 153789.75
+        },
+        "Spain": {
+            "on_board": 776322.6,
+            "arrivals": 350061.5,
+            "departures": 358227.25
+        },
+        "France": {
+            "on_board": 689347.6,
+            "arrivals": 325215.5,
+            "departures": 335193.0
+        },
+        "Croatia": {
+            "on_board": 701.8,
+            "arrivals": 318.25,
+            "departures": 442.25
+        },
+        "Italy": {
+            "on_board": 1175142.0,
+            "arrivals": 549096.5,
+            "departures": 556072.75
+        },
+        "Cyprus": {
+            "on_board": 76824.8,
+            "arrivals": 30989.5,
+            "departures": 32208.25
+        },
+        "Latvia": {
+            "on_board": 25081.0,
+            "arrivals": 11487.0,
+            "departures": 11806.5
+        },
+        "Lithuania": {
+            "on_board": 174.8,
+            "arrivals": 29.0,
+            "departures": 120.33333333333333
+        },
+        "Luxembourg": {
+            "on_board": 1864.4,
+            "arrivals": 74.5,
+            "departures": 39.0
+        },
+        "Malta": {
+            "on_board": 85098.8,
+            "arrivals": 37935.0,
+            "departures": 39684.25
+        },
+        "Netherlands": {
+            "on_board": 760484.6,
+            "arrivals": 373153.25,
+            "departures": 377672.75
+        },
+        "Austria": {
+            "on_board": 105079.4,
+            "arrivals": 50988.75,
+            "departures": 52860.75
+        },
+        "Poland": {
+            "on_board": 255973.0,
+            "arrivals": 114817.75,
+            "departures": 118462.25
+        },
+        "Portugal": {
+            "on_board": 157835.8,
+            "arrivals": 67826.75,
+            "departures": 70587.5
+        },
+        "Romania": {
+            "on_board": 125871.6,
+            "arrivals": 60884.75,
+            "departures": 60071.0
+        },
+        "Slovenia": {
+            "on_board": 46.6,
+            "arrivals": 2.5,
+            "departures": 53.75
+        },
+        "Slovakia": {
+            "on_board": 642.0,
+            "arrivals": 191.66666666666666,
+            "departures": 216.0
+        },
+        "Finland": {
+            "on_board": 247222.6,
+            "arrivals": 120419.25,
+            "departures": 122399.0
+        },
+        "Sweden": {
+            "on_board": 361954.6,
+            "arrivals": 177436.75,
+            "departures": 182974.75
+        },
+        "United Kingdom of Great Britain": {
+            "on_board": 2134844.0,
+            "arrivals": 1001790.0,
+            "departures": 1018621.25
+        }
+    },
+    "Malta": {
+        "Belgium": {
+            "on_board": 183615.0,
+            "arrivals": 85962.75,
+            "departures": 87195.75
+        },
+        "Bulgaria": {
+            "on_board": 45602.0,
+            "arrivals": 22713.25,
+            "departures": 22537.75
+        },
+        "Czech Republic": {
+            "on_board": 25433.8,
+            "arrivals": 12644.5,
+            "departures": 12390.75
+        },
+        "Denmark": {
+            "on_board": 79356.2,
+            "arrivals": 39435.0,
+            "departures": 38979.5
+        },
+        "Germany": {
+            "on_board": 760822.6,
+            "arrivals": 362045.75,
+            "departures": 364970.25
+        },
+        "Estonia": {
+            "on_board": 7329.2,
+            "arrivals": 2371.5,
+            "departures": 2354.5
+        },
+        "Ireland": {
+            "on_board": 84221.2,
+            "arrivals": 39523.25,
+            "departures": 39348.0
+        },
+        "Greece": {
+            "on_board": 65069.0,
+            "arrivals": 29161.0,
+            "departures": 28811.5
+        },
+        "Spain": {
+            "on_board": 248661.6,
+            "arrivals": 109157.5,
+            "departures": 107680.0
+        },
+        "France": {
+            "on_board": 356641.8,
+            "arrivals": 166956.0,
+            "departures": 166229.75
+        },
+        "Croatia": {
+            "on_board": 3842.2,
+            "arrivals": 1978.75,
+            "departures": 1939.5
+        },
+        "Italy": {
+            "on_board": 1218011.8,
+            "arrivals": 580931.5,
+            "departures": 581088.0
+        },
+        "Cyprus": {
+            "on_board": 79544.6,
+            "arrivals": 45509.75,
+            "departures": 44277.25
+        },
+        "Latvia": {
+            "on_board": 25488.8,
+            "arrivals": 9733.25,
+            "departures": 9760.0
+        },
+        "Lithuania": {
+            "on_board": 29877.2,
+            "arrivals": 14221.25,
+            "departures": 14014.25
+        },
+        "Luxembourg": {
+            "on_board": 9245.6,
+            "arrivals": 2322.5,
+            "departures": 1034.0
+        },
+        "Hungary": {
+            "on_board": 84128.4,
+            "arrivals": 39324.75,
+            "departures": 37576.25
+        },
+        "Netherlands": {
+            "on_board": 144977.2,
+            "arrivals": 71571.5,
+            "departures": 70750.5
+        },
+        "Austria": {
+            "on_board": 116707.2,
+            "arrivals": 55852.25,
+            "departures": 55169.75
+        },
+        "Poland": {
+            "on_board": 185573.6,
+            "arrivals": 87408.0,
+            "departures": 85767.25
+        },
+        "Portugal": {
+            "on_board": 26787.8,
+            "arrivals": 7291.5,
+            "departures": 7515.75
+        },
+        "Romania": {
+            "on_board": 56656.8,
+            "arrivals": 27198.75,
+            "departures": 26849.5
+        },
+        "Slovenia": {
+            "on_board": 4764.2,
+            "arrivals": 2357.75,
+            "departures": 2282.5
+        },
+        "Slovakia": {
+            "on_board": 15098.2,
+            "arrivals": 4993.75,
+            "departures": 5000.0
+        },
+        "Finland": {
+            "on_board": 23062.6,
+            "arrivals": 12931.25,
+            "departures": 13013.25
+        },
+        "Sweden": {
+            "on_board": 88964.8,
+            "arrivals": 42401.25,
+            "departures": 44017.0
+        },
+        "United Kingdom of Great Britain": {
+            "on_board": 1497472.2,
+            "arrivals": 722697.25,
+            "departures": 721926.75
+        }
+    },
+    "Netherlands": {
+        "Belgium": {
+            "on_board": 261651.4,
+            "arrivals": 128756.25,
+            "departures": 120459.0
+        },
+        "Bulgaria": {
+            "on_board": 304831.8,
+            "arrivals": 149151.5,
+            "departures": 141768.25
+        },
+        "Czech Republic": {
+            "on_board": 771639.4,
+            "arrivals": 368712.75,
+            "departures": 371548.5
+        },
+        "Denmark": {
+            "on_board": 1686524.6,
+            "arrivals": 828655.75,
+            "departures": 825259.0
+        },
+        "Germany": {
+            "on_board": 4372255.0,
+            "arrivals": 2167253.75,
+            "departures": 2155642.5
+        },
+        "Estonia": {
+            "on_board": 93301.4,
+            "arrivals": 49515.25,
+            "departures": 46686.75
+        },
+        "Ireland": {
+            "on_board": 1289684.0,
+            "arrivals": 618844.25,
+            "departures": 622830.5
+        },
+        "Greece": {
+            "on_board": 1853706.8,
+            "arrivals": 879226.0,
+            "departures": 891734.5
+        },
+        "Spain": {
+            "on_board": 7979811.4,
+            "arrivals": 3874844.75,
+            "departures": 3915632.75
+        },
+        "France": {
+            "on_board": 3621640.8,
+            "arrivals": 1811248.75,
+            "departures": 1779802.75
+        },
+        "Croatia": {
+            "on_board": 342010.0,
+            "arrivals": 158489.25,
+            "departures": 156939.75
+        },
+        "Italy": {
+            "on_board": 4801150.2,
+            "arrivals": 2355107.25,
+            "departures": 2384272.0
+        },
+        "Cyprus": {
+            "on_board": 79973.8,
+            "arrivals": 36510.0,
+            "departures": 38106.5
+        },
+        "Latvia": {
+            "on_board": 190119.0,
+            "arrivals": 91774.5,
+            "departures": 92625.75
+        },
+        "Lithuania": {
+            "on_board": 136332.8,
+            "arrivals": 65760.0,
+            "departures": 63945.75
+        },
+        "Luxembourg": {
+            "on_board": 169754.0,
+            "arrivals": 82919.5,
+            "departures": 82813.0
+        },
+        "Hungary": {
+            "on_board": 767723.4,
+            "arrivals": 381588.5,
+            "departures": 378313.5
+        },
+        "Malta": {
+            "on_board": 145119.2,
+            "arrivals": 70249.0,
+            "departures": 71961.5
+        },
+        "Austria": {
+            "on_board": 1131907.8,
+            "arrivals": 532538.25,
+            "departures": 537110.5
+        },
+        "Poland": {
+            "on_board": 1308157.6,
+            "arrivals": 601858.5,
+            "departures": 598394.75
+        },
+        "Portugal": {
+            "on_board": 2132245.2,
+            "arrivals": 1029775.25,
+            "departures": 1041343.75
+        },
+        "Romania": {
+            "on_board": 569467.2,
+            "arrivals": 276995.0,
+            "departures": 267942.5
+        },
+        "Slovenia": {
+            "on_board": 61676.0,
+            "arrivals": 26547.25,
+            "departures": 29585.75
+        },
+        "Slovakia": {
+            "on_board": 8760.6,
+            "arrivals": 2161.25,
+            "departures": 2078.0
+        },
+        "Finland": {
+            "on_board": 660086.2,
+            "arrivals": 319580.75,
+            "departures": 318594.25
+        },
+        "Sweden": {
+            "on_board": 1342675.4,
+            "arrivals": 660600.0,
+            "departures": 655635.0
+        },
+        "United Kingdom of Great Britain": {
+            "on_board": 10596596.6,
+            "arrivals": 5197976.25,
+            "departures": 5214805.75
+        }
+    },
+    "Austria": {
+        "Belgium": {
+            "on_board": 482682.8,
+            "arrivals": 236920.0,
+            "departures": 239384.75
+        },
+        "Bulgaria": {
+            "on_board": 441703.4,
+            "arrivals": 212342.5,
+            "departures": 213934.0
+        },
+        "Czech Republic": {
+            "on_board": 160778.8,
+            "arrivals": 76739.75,
+            "departures": 79009.5
+        },
+        "Denmark": {
+            "on_board": 438554.4,
+            "arrivals": 201810.0,
+            "departures": 205595.5
+        },
+        "Germany": {
+            "on_board": 7036822.4,
+            "arrivals": 3450441.5,
+            "departures": 3508977.75
+        },
+        "Estonia": {
+            "on_board": 43532.8,
+            "arrivals": 21336.25,
+            "departures": 20662.75
+        },
+        "Ireland": {
+            "on_board": 163914.4,
+            "arrivals": 70010.75,
+            "departures": 69763.0
+        },
+        "Greece": {
+            "on_board": 978833.4,
+            "arrivals": 460544.0,
+            "departures": 455120.0
+        },
+        "Spain": {
+            "on_board": 1817206.6,
+            "arrivals": 807335.25,
+            "departures": 814201.75
+        },
+        "France": {
+            "on_board": 1219153.4,
+            "arrivals": 570918.0,
+            "departures": 576967.75
+        },
+        "Croatia": {
+            "on_board": 329830.0,
+            "arrivals": 164888.0,
+            "departures": 157726.5
+        },
+        "Italy": {
+            "on_board": 1447560.4,
+            "arrivals": 641147.5,
+            "departures": 655139.0
+        },
+        "Cyprus": {
+            "on_board": 249586.6,
+            "arrivals": 117260.25,
+            "departures": 117253.75
+        },
+        "Latvia": {
+            "on_board": 106446.0,
+            "arrivals": 50074.25,
+            "departures": 48750.0
+        },
+        "Lithuania": {
+            "on_board": 57611.2,
+            "arrivals": 26275.25,
+            "departures": 28169.0
+        },
+        "Luxembourg": {
+            "on_board": 106667.2,
+            "arrivals": 50979.0,
+            "departures": 51148.75
+        },
+        "Hungary": {
+            "on_board": 105975.6,
+            "arrivals": 52779.75,
+            "departures": 51050.75
+        },
+        "Malta": {
+            "on_board": 114426.8,
+            "arrivals": 55035.0,
+            "departures": 56239.0
+        },
+        "Netherlands": {
+            "on_board": 1142167.8,
+            "arrivals": 534352.5,
+            "departures": 539474.25
+        },
+        "Poland": {
+            "on_board": 354889.2,
+            "arrivals": 153799.5,
+            "departures": 153706.0
+        },
+        "Portugal": {
+            "on_board": 290109.6,
+            "arrivals": 125951.5,
+            "departures": 127020.0
+        },
+        "Romania": {
+            "on_board": 548562.8,
+            "arrivals": 249786.5,
+            "departures": 248044.75
+        },
+        "Slovenia": {
+            "on_board": 60633.2,
+            "arrivals": 32853.0,
+            "departures": 31345.5
+        },
+        "Slovakia": {
+            "on_board": 58675.6,
+            "arrivals": 28179.75,
+            "departures": 27718.5
+        },
+        "Finland": {
+            "on_board": 199185.4,
+            "arrivals": 94999.75,
+            "departures": 98914.75
+        },
+        "Sweden": {
+            "on_board": 378304.0,
+            "arrivals": 180225.75,
+            "departures": 179417.0
+        },
+        "United Kingdom of Great Britain": {
+            "on_board": 2191450.2,
+            "arrivals": 1058793.25,
+            "departures": 1079116.5
+        }
+    },
+    "Poland": {
+        "Belgium": {
+            "on_board": 777416.8,
+            "arrivals": 376725.5,
+            "departures": 379362.0
+        },
+        "Bulgaria": {
+            "on_board": 566910.4,
+            "arrivals": 268869.5,
+            "departures": 268084.0
+        },
+        "Czech Republic": {
+            "on_board": 229818.4,
+            "arrivals": 109444.5,
+            "departures": 107553.0
+        },
+        "Denmark": {
+            "on_board": 681895.4,
+            "arrivals": 311909.75,
+            "departures": 320226.5
+        },
+        "Germany": {
+            "on_board": 4173644.0,
+            "arrivals": 2010200.0,
+            "departures": 2025526.5
+        },
+        "Estonia": {
+            "on_board": 105872.8,
+            "arrivals": 43112.0,
+            "departures": 41454.5
+        },
+        "Ireland": {
+            "on_board": 1006191.2,
+            "arrivals": 500938.5,
+            "departures": 500247.0
+        },
+        "Greece": {
+            "on_board": 1728019.0,
+            "arrivals": 831144.75,
+            "departures": 832590.0
+        },
+        "Spain": {
+            "on_board": 2235266.2,
+            "arrivals": 1103834.25,
+            "departures": 1106961.25
+        },
+        "France": {
+            "on_board": 1326978.2,
+            "arrivals": 644227.25,
+            "departures": 638010.25
+        },
+        "Croatia": {
+            "on_board": 133493.0,
+            "arrivals": 52814.25,
+            "departures": 54152.25
+        },
+        "Italy": {
+            "on_board": 2204261.6,
+            "arrivals": 1035604.0,
+            "departures": 1035704.75
+        },
+        "Cyprus": {
+            "on_board": 214867.6,
+            "arrivals": 97277.5,
+            "departures": 99521.25
+        },
+        "Latvia": {
+            "on_board": 134219.6,
+            "arrivals": 58430.5,
+            "departures": 59002.0
+        },
+        "Lithuania": {
+            "on_board": 203427.4,
+            "arrivals": 92522.25,
+            "departures": 92894.75
+        },
+        "Luxembourg": {
+            "on_board": 34718.4,
+            "arrivals": 14294.25,
+            "departures": 14423.0
+        },
+        "Hungary": {
+            "on_board": 256076.8,
+            "arrivals": 118454.5,
+            "departures": 114900.0
+        },
+        "Malta": {
+            "on_board": 187095.8,
+            "arrivals": 86545.75,
+            "departures": 87945.25
+        },
+        "Netherlands": {
+            "on_board": 1304219.6,
+            "arrivals": 596494.25,
+            "departures": 599097.25
+        },
+        "Austria": {
+            "on_board": 355442.4,
+            "arrivals": 153893.5,
+            "departures": 154537.5
+        },
+        "Portugal": {
+            "on_board": 432746.2,
+            "arrivals": 199550.75,
+            "departures": 202262.25
+        },
+        "Romania": {
+            "on_board": 186635.6,
+            "arrivals": 84213.75,
+            "departures": 82118.75
+        },
+        "Slovenia": {
+            "on_board": 40451.8,
+            "arrivals": 19493.25,
+            "departures": 19495.75
+        },
+        "Slovakia": {
+            "on_board": 38567.4,
+            "arrivals": 18363.5,
+            "departures": 18280.25
+        },
+        "Finland": {
+            "on_board": 344477.8,
+            "arrivals": 149823.5,
+            "departures": 151176.75
+        },
+        "Sweden": {
+            "on_board": 1264319.0,
+            "arrivals": 605076.25,
+            "departures": 610194.5
+        },
+        "United Kingdom of Great Britain": {
+            "on_board": 7450713.0,
+            "arrivals": 3625569.75,
+            "departures": 3633653.25
+        }
+    },
+    "Portugal": {
+        "Belgium": {
+            "on_board": 1423399.2,
+            "arrivals": 686956.75,
+            "departures": 687667.25
+        },
+        "Bulgaria": {
+            "on_board": 17263.0,
+            "arrivals": 6711.25,
+            "departures": 6635.75
+        },
+        "Czech Republic": {
+            "on_board": 160849.2,
+            "arrivals": 80891.75,
+            "departures": 77189.5
+        },
+        "Denmark": {
+            "on_board": 346402.6,
+            "arrivals": 165587.0,
+            "departures": 168639.0
+        },
+        "Germany": {
+            "on_board": 4723741.8,
+            "arrivals": 2299050.75,
+            "departures": 2305162.25
+        },
+        "Estonia": {
+            "on_board": 2187.8,
+            "arrivals": 945.25,
+            "departures": 884.5
+        },
+        "Ireland": {
+            "on_board": 1080027.8,
+            "arrivals": 504257.5,
+            "departures": 502822.25
+        },
+        "Greece": {
+            "on_board": 59875.0,
+            "arrivals": 21839.25,
+            "departures": 21636.25
+        },
+        "Spain": {
+            "on_board": 4366416.8,
+            "arrivals": 2045735.5,
+            "departures": 1994878.25
+        },
+        "France": {
+            "on_board": 6569637.8,
+            "arrivals": 3211867.5,
+            "departures": 3154111.25
+        },
+        "Croatia": {
+            "on_board": 27375.8,
+            "arrivals": 12920.5,
+            "departures": 13280.0
+        },
+        "Italy": {
+            "on_board": 2004998.6,
+            "arrivals": 937902.75,
+            "departures": 933099.75
+        },
+        "Cyprus": {
+            "on_board": 89.4,
+            "arrivals": 70.5,
+            "departures": 23.25
+        },
+        "Latvia": {
+            "on_board": 11756.8,
+            "arrivals": 3921.0,
+            "departures": 3638.75
+        },
+        "Lithuania": {
+            "on_board": 7480.8,
+            "arrivals": 2714.25,
+            "departures": 2675.75
+        },
+        "Luxembourg": {
+            "on_board": 561991.2,
+            "arrivals": 261769.0,
+            "departures": 260277.75
+        },
+        "Hungary": {
+            "on_board": 157116.2,
+            "arrivals": 70193.25,
+            "departures": 67325.75
+        },
+        "Malta": {
+            "on_board": 27136.0,
+            "arrivals": 7544.5,
+            "departures": 7441.25
+        },
+        "Netherlands": {
+            "on_board": 2137166.8,
+            "arrivals": 1044183.75,
+            "departures": 1030542.75
+        },
+        "Austria": {
+            "on_board": 291171.8,
+            "arrivals": 126989.75,
+            "departures": 127210.25
+        },
+        "Poland": {
+            "on_board": 431796.6,
+            "arrivals": 202454.5,
+            "departures": 199141.25
+        },
+        "Romania": {
+            "on_board": 96178.4,
+            "arrivals": 49772.5,
+            "departures": 49264.0
+        },
+        "Slovenia": {
+            "on_board": 262.4,
+            "arrivals": 137.25,
+            "departures": 138.5
+        },
+        "Slovakia": {
+            "on_board": 646.8,
+            "arrivals": 366.75,
+            "departures": 334.5
+        },
+        "Finland": {
+            "on_board": 162540.8,
+            "arrivals": 69399.5,
+            "departures": 67694.0
+        },
+        "Sweden": {
+            "on_board": 251722.2,
+            "arrivals": 117826.25,
+            "departures": 115751.5
+        },
+        "United Kingdom of Great Britain": {
+            "on_board": 7945011.0,
+            "arrivals": 3853418.25,
+            "departures": 3841249.25
+        }
+    },
+    "Romania": {
+        "Belgium": {
+            "on_board": 608085.6,
+            "arrivals": 288099.75,
+            "departures": 293423.75
+        },
+        "Bulgaria": {
+            "on_board": 42055.8,
+            "arrivals": 20720.5,
+            "departures": 20880.0
+        },
+        "Czech Republic": {
+            "on_board": 86740.8,
+            "arrivals": 39411.75,
+            "departures": 43012.0
+        },
+        "Denmark": {
+            "on_board": 111066.2,
+            "arrivals": 44231.75,
+            "departures": 46037.5
+        },
+        "Germany": {
+            "on_board": 2436270.0,
+            "arrivals": 1139119.25,
+            "departures": 1187292.75
+        },
+        "Estonia": {
+            "on_board": 43.5,
+            "arrivals": 43.5,
+            "departures": 0.0
+        },
+        "Ireland": {
+            "on_board": 200239.2,
+            "arrivals": 93981.75,
+            "departures": 97023.0
+        },
+        "Greece": {
+            "on_board": 459174.6,
+            "arrivals": 218769.0,
+            "departures": 218499.5
+        },
+        "Spain": {
+            "on_board": 1525050.8,
+            "arrivals": 728522.5,
+            "departures": 726684.0
+        },
+        "France": {
+            "on_board": 939532.8,
+            "arrivals": 433520.5,
+            "departures": 439785.75
+        },
+        "Croatia": {
+            "on_board": 5451.8,
+            "arrivals": 2184.25,
+            "departures": 2289.75
+        },
+        "Italy": {
+            "on_board": 3159619.6,
+            "arrivals": 1525689.75,
+            "departures": 1516982.5
+        },
+        "Cyprus": {
+            "on_board": 207293.6,
+            "arrivals": 98026.5,
+            "departures": 96433.0
+        },
+        "Latvia": {
+            "on_board": 2687.25,
+            "arrivals": 1692.3333333333333,
+            "departures": 2631.5
+        },
+        "Lithuania": {
+            "on_board": 180.66666666666666,
+            "arrivals": 107.0,
+            "departures": 68.0
+        },
+        "Luxembourg": {
+            "on_board": 41.0,
+            "arrivals": 28.666666666666668,
+            "departures": 25.333333333333332
+        },
+        "Hungary": {
+            "on_board": 126009.0,
+            "arrivals": 60270.25,
+            "departures": 60888.5
+        },
+        "Malta": {
+            "on_board": 57063.2,
+            "arrivals": 27061.5,
+            "departures": 27391.75
+        },
+        "Netherlands": {
+            "on_board": 567997.2,
+            "arrivals": 267209.75,
+            "departures": 276152.75
+        },
+        "Austria": {
+            "on_board": 544378.2,
+            "arrivals": 245925.75,
+            "departures": 248917.25
+        },
+        "Poland": {
+            "on_board": 186320.6,
+            "arrivals": 81671.0,
+            "departures": 84235.5
+        },
+        "Portugal": {
+            "on_board": 95989.0,
+            "arrivals": 49238.5,
+            "departures": 49707.75
+        },
+        "Slovenia": {
+            "on_board": 1115.6,
+            "arrivals": 670.25,
+            "departures": 964.3333333333334
+        },
+        "Slovakia": {
+            "on_board": 3737.0,
+            "arrivals": 2285.75,
+            "departures": 2367.5
+        },
+        "Finland": {
+            "on_board": 19041.6,
+            "arrivals": 7167.5,
+            "departures": 9953.0
+        },
+        "Sweden": {
+            "on_board": 160862.4,
+            "arrivals": 75636.5,
+            "departures": 79497.5
+        },
+        "United Kingdom of Great Britain": {
+            "on_board": 2418805.8,
+            "arrivals": 1082313.75,
+            "departures": 1125523.5
+        }
+    },
+    "Slovenia": {
+        "Belgium": {
+            "on_board": 102085.4,
+            "arrivals": 51178.75,
+            "departures": 51794.75
+        },
+        "Bulgaria": {
+            "on_board": 3355.8,
+            "arrivals": 1095.5,
+            "departures": 1271.6666666666667
+        },
+        "Czech Republic": {
+            "on_board": 12468.6,
+            "arrivals": 6416.75,
+            "departures": 6556.25
+        },
+        "Denmark": {
+            "on_board": 25126.2,
+            "arrivals": 12580.25,
+            "departures": 12328.25
+        },
+        "Germany": {
+            "on_board": 241128.0,
+            "arrivals": 117576.0,
+            "departures": 121168.75
+        },
+        "Estonia": {
+            "on_board": 335.3333333333333,
+            "arrivals": 217.0,
+            "departures": 180.0
+        },
+        "Ireland": {
+            "on_board": 52.4,
+            "arrivals": 70.0,
+            "departures": 24.0
+        },
+        "Greece": {
+            "on_board": 53671.6,
+            "arrivals": 27159.0,
+            "departures": 27208.0
+        },
+        "Spain": {
+            "on_board": 5107.2,
+            "arrivals": 2334.75,
+            "departures": 2422.5
+        },
+        "France": {
+            "on_board": 88051.6,
+            "arrivals": 43495.25,
+            "departures": 41015.0
+        },
+        "Croatia": {
+            "on_board": 936.2,
+            "arrivals": 536.0,
+            "departures": 578.25
+        },
+        "Italy": {
+            "on_board": 2966.8,
+            "arrivals": 1551.0,
+            "departures": 1661.25
+        },
+        "Cyprus": {
+            "on_board": 4470.6,
+            "arrivals": 3165.0,
+            "departures": 2355.5
+        },
+        "Latvia": {
+            "on_board": 193.5,
+            "arrivals": 33.0,
+            "departures": 70.0
+        },
+        "Lithuania": {
+            "on_board": 126.33333333333333,
+            "arrivals": 127.0,
+            "departures": 115.0
+        },
+        "Luxembourg": {
+            "on_board": 196.5,
+            "arrivals": 96.0,
+            "departures": 100.5
+        },
+        "Hungary": {
+            "on_board": 224.75,
+            "arrivals": 68.33333333333333,
+            "departures": 173.5
+        },
+        "Malta": {
+            "on_board": 4634.0,
+            "arrivals": 2197.5,
+            "departures": 2280.75
+        },
+        "Netherlands": {
+            "on_board": 66639.6,
+            "arrivals": 29555.0,
+            "departures": 29811.75
+        },
+        "Austria": {
+            "on_board": 60040.6,
+            "arrivals": 30905.5,
+            "departures": 32806.0
+        },
+        "Poland": {
+            "on_board": 40736.6,
+            "arrivals": 19549.0,
+            "departures": 19755.5
+        },
+        "Portugal": {
+            "on_board": 309.4,
+            "arrivals": 163.75,
+            "departures": 172.5
+        },
+        "Romania": {
+            "on_board": 1420.5,
+            "arrivals": 760.25,
+            "departures": 660.25
+        },
+        "Slovakia": {
+            "on_board": 175.2,
+            "arrivals": 135.0,
+            "departures": 115.5
+        },
+        "Finland": {
+            "on_board": 32586.0,
+            "arrivals": 17550.25,
+            "departures": 14859.0
+        },
+        "Sweden": {
+            "on_board": 1514.2,
+            "arrivals": 1213.0,
+            "departures": 945.75
+        },
+        "United Kingdom of Great Britain": {
+            "on_board": 215023.6,
+            "arrivals": 104451.75,
+            "departures": 105795.0
+        }
+    },
+    "Slovakia": {
+        "Belgium": {
+            "on_board": 67146.4,
+            "arrivals": 33854.5,
+            "departures": 34651.25
+        },
+        "Bulgaria": {
+            "on_board": 112034.6,
+            "arrivals": 51518.25,
+            "departures": 51675.0
+        },
+        "Czech Republic": {
+            "on_board": 63907.8,
+            "arrivals": 32553.5,
+            "departures": 33685.0
+        },
+        "Denmark": {
+            "on_board": 342.4,
+            "arrivals": 168.0,
+            "departures": 249.0
+        },
+        "Germany": {
+            "on_board": 51306.8,
+            "arrivals": 29857.5,
+            "departures": 30464.0
+        },
+        "Estonia": {
+            "on_board": 12.0,
+            "arrivals": 9.0,
+            "departures": 5.5
+        },
+        "Ireland": {
+            "on_board": 128110.8,
+            "arrivals": 64184.25,
+            "departures": 64609.75
+        },
+        "Greece": {
+            "on_board": 217403.0,
+            "arrivals": 105890.75,
+            "departures": 106361.25
+        },
+        "Spain": {
+            "on_board": 152777.0,
+            "arrivals": 79929.5,
+            "departures": 81897.75
+        },
+        "France": {
+            "on_board": 31642.6,
+            "arrivals": 14433.0,
+            "departures": 16636.75
+        },
+        "Croatia": {
+            "on_board": 2341.2,
+            "arrivals": 1074.0,
+            "departures": 1246.0
+        },
+        "Italy": {
+            "on_board": 232057.4,
+            "arrivals": 118133.5,
+            "departures": 117415.5
+        },
+        "Cyprus": {
+            "on_board": 34620.4,
+            "arrivals": 11568.75,
+            "departures": 11552.5
+        },
+        "Latvia": {
+            "on_board": 509.0,
+            "arrivals": 225.25,
+            "departures": 137.75
+        },
+        "Lithuania": {
+            "on_board": 60.0,
+            "arrivals": 58.0,
+            "departures": 6.0
+        },
+        "Luxembourg": {
+            "on_board": 80.2,
+            "arrivals": 46.0,
+            "departures": 21.5
+        },
+        "Hungary": {
+            "on_board": 885.0,
+            "arrivals": 277.25,
+            "departures": 186.0
+        },
+        "Malta": {
+            "on_board": 15077.2,
+            "arrivals": 4964.25,
+            "departures": 5002.5
+        },
+        "Netherlands": {
+            "on_board": 8699.0,
+            "arrivals": 2109.0,
+            "departures": 2097.5
+        },
+        "Austria": {
+            "on_board": 58993.2,
+            "arrivals": 27681.5,
+            "departures": 28657.0
+        },
+        "Poland": {
+            "on_board": 38370.4,
+            "arrivals": 18023.75,
+            "departures": 18281.25
+        },
+        "Portugal": {
+            "on_board": 538.8,
+            "arrivals": 276.0,
+            "departures": 302.25
+        },
+        "Romania": {
+            "on_board": 3764.4,
+            "arrivals": 2392.5,
+            "departures": 2279.75
+        },
+        "Slovenia": {
+            "on_board": 191.0,
+            "arrivals": 91.75,
+            "departures": 113.75
+        },
+        "Finland": {
+            "on_board": 732.0,
+            "arrivals": 120.5,
+            "departures": 115.75
+        },
+        "Sweden": {
+            "on_board": 688.0,
+            "arrivals": 220.25,
+            "departures": 296.25
+        },
+        "United Kingdom of Great Britain": {
+            "on_board": 619618.4,
+            "arrivals": 302216.5,
+            "departures": 304635.25
+        }
+    },
+    "Finland": {
+        "Belgium": {
+            "on_board": 196741.0,
+            "arrivals": 94038.25,
+            "departures": 91618.5
+        },
+        "Bulgaria": {
+            "on_board": 54596.8,
+            "arrivals": 25371.25,
+            "departures": 25612.25
+        },
+        "Czech Republic": {
+            "on_board": 290497.8,
+            "arrivals": 141437.0,
+            "departures": 143766.75
+        },
+        "Denmark": {
+            "on_board": 890055.4,
+            "arrivals": 439928.0,
+            "departures": 444514.0
+        },
+        "Germany": {
+            "on_board": 1878686.4,
+            "arrivals": 907500.0,
+            "departures": 914058.25
+        },
+        "Estonia": {
+            "on_board": 280518.6,
+            "arrivals": 136041.5,
+            "departures": 133138.75
+        },
+        "Ireland": {
+            "on_board": 102673.4,
+            "arrivals": 50672.5,
+            "departures": 47943.75
+        },
+        "Greece": {
+            "on_board": 501811.2,
+            "arrivals": 235700.25,
+            "departures": 234972.5
+        },
+        "Spain": {
+            "on_board": 1578773.6,
+            "arrivals": 765514.75,
+            "departures": 771328.75
+        },
+        "France": {
+            "on_board": 640797.2,
+            "arrivals": 322946.25,
+            "departures": 302068.25
+        },
+        "Croatia": {
+            "on_board": 184039.4,
+            "arrivals": 88814.75,
+            "departures": 84810.25
+        },
+        "Italy": {
+            "on_board": 548027.0,
+            "arrivals": 262215.0,
+            "departures": 274374.75
+        },
+        "Cyprus": {
+            "on_board": 37828.0,
+            "arrivals": 18483.25,
+            "departures": 18116.75
+        },
+        "Latvia": {
+            "on_board": 335110.8,
+            "arrivals": 157548.75,
+            "departures": 159731.25
+        },
+        "Lithuania": {
+            "on_board": 108468.4,
+            "arrivals": 48098.25,
+            "departures": 49803.25
+        },
+        "Luxembourg": {
+            "on_board": 1172.2,
+            "arrivals": 575.5,
+            "departures": 585.0
+        },
+        "Hungary": {
+            "on_board": 245742.4,
+            "arrivals": 122431.0,
+            "departures": 120199.25
+        },
+        "Malta": {
+            "on_board": 23206.6,
+            "arrivals": 13134.0,
+            "departures": 12964.5
+        },
+        "Netherlands": {
+            "on_board": 654077.8,
+            "arrivals": 315037.0,
+            "departures": 317363.25
+        },
+        "Austria": {
+            "on_board": 199372.8,
+            "arrivals": 98806.0,
+            "departures": 95183.5
+        },
+        "Poland": {
+            "on_board": 344482.2,
+            "arrivals": 151244.0,
+            "departures": 149864.75
+        },
+        "Portugal": {
+            "on_board": 160804.0,
+            "arrivals": 67183.0,
+            "departures": 68004.5
+        },
+        "Romania": {
+            "on_board": 19819.0,
+            "arrivals": 7989.0,
+            "departures": 7608.0
+        },
+        "Slovenia": {
+            "on_board": 32513.8,
+            "arrivals": 14813.5,
+            "departures": 17507.25
+        },
+        "Slovakia": {
+            "on_board": 951.4,
+            "arrivals": 174.75,
+            "departures": 373.75
+        },
+        "Sweden": {
+            "on_board": 1832849.0,
+            "arrivals": 901262.25,
+            "departures": 908293.75
+        },
+        "United Kingdom of Great Britain": {
+            "on_board": 1305863.4,
+            "arrivals": 624175.75,
+            "departures": 634726.25
+        }
+    },
+    "Sweden": {
+        "Belgium": {
+            "on_board": 549157.8,
+            "arrivals": 266051.5,
+            "departures": 264908.0
+        },
+        "Bulgaria": {
+            "on_board": 68552.2,
+            "arrivals": 37410.75,
+            "departures": 36508.0
+        },
+        "Czech Republic": {
+            "on_board": 263608.8,
+            "arrivals": 121452.25,
+            "departures": 131966.5
+        },
+        "Denmark": {
+            "on_board": 1917546.8,
+            "arrivals": 973470.25,
+            "departures": 974671.75
+        },
+        "Germany": {
+            "on_board": 3221104.0,
+            "arrivals": 1602368.25,
+            "departures": 1611766.0
+        },
+        "Estonia": {
+            "on_board": 194837.2,
+            "arrivals": 87431.0,
+            "departures": 83662.0
+        },
+        "Ireland": {
+            "on_board": 135683.4,
+            "arrivals": 63899.0,
+            "departures": 62490.75
+        },
+        "Greece": {
+            "on_board": 1193115.4,
+            "arrivals": 594214.0,
+            "departures": 592536.5
+        },
+        "Spain": {
+            "on_board": 3484487.2,
+            "arrivals": 1730854.5,
+            "departures": 1741390.0
+        },
+        "France": {
+            "on_board": 1142624.0,
+            "arrivals": 568203.75,
+            "departures": 556132.0
+        },
+        "Croatia": {
+            "on_board": 342565.6,
+            "arrivals": 165755.25,
+            "departures": 164885.75
+        },
+        "Italy": {
+            "on_board": 877687.4,
+            "arrivals": 443409.25,
+            "departures": 441012.5
+        },
+        "Cyprus": {
+            "on_board": 233093.4,
+            "arrivals": 114181.25,
+            "departures": 114882.5
+        },
+        "Latvia": {
+            "on_board": 266658.2,
+            "arrivals": 131529.25,
+            "departures": 127942.25
+        },
+        "Lithuania": {
+            "on_board": 164838.2,
+            "arrivals": 81437.5,
+            "departures": 82517.5
+        },
+        "Luxembourg": {
+            "on_board": 24108.4,
+            "arrivals": 14567.75,
+            "departures": 14919.0
+        },
+        "Hungary": {
+            "on_board": 362727.4,
+            "arrivals": 183694.5,
+            "departures": 177737.75
+        },
+        "Malta": {
+            "on_board": 89867.0,
+            "arrivals": 44444.25,
+            "departures": 42858.5
+        },
+        "Netherlands": {
+            "on_board": 1290200.8,
+            "arrivals": 623329.5,
+            "departures": 626837.25
+        },
+        "Austria": {
+            "on_board": 377743.2,
+            "arrivals": 179219.75,
+            "departures": 179419.75
+        },
+        "Poland": {
+            "on_board": 1285191.0,
+            "arrivals": 623651.5,
+            "departures": 617908.25
+        },
+        "Portugal": {
+            "on_board": 252940.4,
+            "arrivals": 118660.75,
+            "departures": 116771.25
+        },
+        "Romania": {
+            "on_board": 160895.4,
+            "arrivals": 79682.5,
+            "departures": 75444.5
+        },
+        "Slovenia": {
+            "on_board": 1764.4,
+            "arrivals": 941.25,
+            "departures": 1114.0
+        },
+        "Slovakia": {
+            "on_board": 582.0,
+            "arrivals": 241.0,
+            "departures": 236.25
+        },
+        "Finland": {
+            "on_board": 1829510.4,
+            "arrivals": 905155.5,
+            "departures": 901618.5
+        },
+        "United Kingdom of Great Britain": {
+            "on_board": 2733202.0,
+            "arrivals": 1370500.75,
+            "departures": 1387929.0
+        }
+    },
+    "United Kingdom of Great Britain": {
+        "Belgium": {
+            "on_board": 1575170.6,
+            "arrivals": 804184.5,
+            "departures": 768670.0
+        },
+        "Bulgaria": {
+            "on_board": 1640554.2,
+            "arrivals": 787988.75,
+            "departures": 765767.25
+        },
+        "Czech Republic": {
+            "on_board": 2073138.0,
+            "arrivals": 999919.75,
+            "departures": 1002309.5
+        },
+        "Denmark": {
+            "on_board": 3583638.2,
+            "arrivals": 1803258.5,
+            "departures": 1780826.75
+        },
+        "Germany": {
+            "on_board": 14299321.0,
+            "arrivals": 7136241.0,
+            "departures": 7108477.25
+        },
+        "Estonia": {
+            "on_board": 159382.8,
+            "arrivals": 71318.75,
+            "departures": 70395.5
+        },
+        "Ireland": {
+            "on_board": 12638619.6,
+            "arrivals": 6263885.0,
+            "departures": 6244346.0
+        },
+        "Greece": {
+            "on_board": 7151506.8,
+            "arrivals": 3458764.0,
+            "departures": 3454716.25
+        },
+        "Spain": {
+            "on_board": 42169073.6,
+            "arrivals": 20782175.5,
+            "departures": 20775063.5
+        },
+        "France": {
+            "on_board": 13029638.2,
+            "arrivals": 6451291.0,
+            "departures": 6436797.25
+        },
+        "Croatia": {
+            "on_board": 1479000.6,
+            "arrivals": 698312.0,
+            "departures": 695855.75
+        },
+        "Italy": {
+            "on_board": 14754528.6,
+            "arrivals": 7235717.25,
+            "departures": 7193981.75
+        },
+        "Cyprus": {
+            "on_board": 2861468.2,
+            "arrivals": 1396793.75,
+            "departures": 1405161.5
+        },
+        "Latvia": {
+            "on_board": 800445.2,
+            "arrivals": 397359.75,
+            "departures": 396616.25
+        },
+        "Lithuania": {
+            "on_board": 1042625.8,
+            "arrivals": 506462.0,
+            "departures": 505673.0
+        },
+        "Luxembourg": {
+            "on_board": 505592.0,
+            "arrivals": 243509.25,
+            "departures": 240606.0
+        },
+        "Hungary": {
+            "on_board": 2154921.2,
+            "arrivals": 1030472.0,
+            "departures": 1014857.25
+        },
+        "Malta": {
+            "on_board": 1503923.0,
+            "arrivals": 725384.75,
+            "departures": 725672.25
+        },
+        "Netherlands": {
+            "on_board": 10571737.2,
+            "arrivals": 5198152.0,
+            "departures": 5188585.5
+        },
+        "Austria": {
+            "on_board": 2193687.6,
+            "arrivals": 1078137.25,
+            "departures": 1062517.0
+        },
+        "Poland": {
+            "on_board": 7482180.6,
+            "arrivals": 3644667.5,
+            "departures": 3632904.25
+        },
+        "Portugal": {
+            "on_board": 7882241.0,
+            "arrivals": 3813662.25,
+            "departures": 3816751.75
+        },
+        "Romania": {
+            "on_board": 2601140.8,
+            "arrivals": 1226304.25,
+            "departures": 1169499.5
+        },
+        "Slovenia": {
+            "on_board": 217198.6,
+            "arrivals": 106737.0,
+            "departures": 106204.5
+        },
+        "Slovakia": {
+            "on_board": 685031.2,
+            "arrivals": 338094.0,
+            "departures": 334823.5
+        },
+        "Finland": {
+            "on_board": 1306315.4,
+            "arrivals": 635493.0,
+            "departures": 625106.25
+        },
+        "Sweden": {
+            "on_board": 2768307.4,
+            "arrivals": 1400079.0,
+            "departures": 1387435.0
+        }
+    }
+}

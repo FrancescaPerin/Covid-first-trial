@@ -1,0 +1,48 @@
+{
+    "iterations": 1000,
+    "fixed_migration": false,
+    "pop_migration": 2e-5,
+    "nation_def": "Nation",
+    "age_group": false,
+    "age_group_summary": false,
+    "economy": false,
+    "lockdown_period": 15,
+    "bufferSettings": {
+        "maxSize": 300,
+        "batchSize": 40,
+        "shuffle_data": true
+    },
+    "networkParameters": {
+        "gamma": 0.99,
+        "device": "cpu",
+        "actor": {
+            "optim": {
+                "lr": 0.001
+            },
+            "net": {
+                "state_size": 7,
+                "output_size": 1,
+                "neurons": [128, 64, 32],
+                "activations": "LeakyReLU",
+                "out_activation": null,
+                "n_heads": 2
+            }
+        },
+        "critic": {
+            "optim": {
+                "lr": 0.001
+            },
+            "net": {
+                "state_size": 7,
+                "output_size": 1,
+                "neurons": [128, 64, 32],
+                "activations": "LeakyReLU",
+                "out_activation": null,
+                "n_heads": 1
+            }
+        }
+    },
+    "updatePeriod": 10,
+    "updateN": 30,
+    "alpha": 0.2
+}
