@@ -8,12 +8,12 @@
     "economy": false,
     "lockdown_period": 15,
     "bufferSettings": {
-        "maxSize": 5000,
-        "batchSize": 150,
+        "maxSize": 300,
+        "batchSize": 40,
         "shuffle_data": true
     },
     "networkParameters": {
-        "gamma": 0.98,
+        "gamma": 0.99,
         "device": "cpu",
         "actor": {
             "optim": {
@@ -23,8 +23,8 @@
                 "state_size": 7,
                 "output_size": 1,
                 "neurons": [128, 64, 32],
-                "activations": "ReLU",
-                "out_activation": "ReLU",
+                "activations": "LeakyReLU",
+                "out_activation": null,
                 "n_heads": 2
             }
         },
@@ -36,13 +36,13 @@
                 "state_size": 7,
                 "output_size": 1,
                 "neurons": [128, 64, 32],
-                "activations": "ReLU",
-                "out_activation": "Sigmoid",
+                "activations": "LeakyReLU",
+                "out_activation": null,
                 "n_heads": 1
             }
         }
     },
-    "updatePeriod": 80,
-    "updateN": 500,
+    "updatePeriod": 10,
+    "updateN": 30,
     "alpha": 0.2
 }
