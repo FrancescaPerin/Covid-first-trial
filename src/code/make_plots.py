@@ -1,3 +1,4 @@
+import torch
 import json
 import numpy as np
 from argparse import ArgumentParser
@@ -5,11 +6,6 @@ from os.path import join as joinpath
 from os.path import relpath
 
 import os
-os.environ['KMP_DUPLICATE_LIB_OK']='True'
-
-import torch
-
-import seaborn as sns
 
 from plots import (
     plot_age_compartment_comparison,
@@ -21,7 +17,8 @@ from plots import (
 
 def all_plots(settings, agents, alphas, total_group, output_dir, show, values=None):
 
-    colors = sns.color_palette("hls", 13)
+    colors=['#e6194B', '#f58231', '#ffe119', '#3cb44b', '#42d4f4', '#4363d8', '#f032e6', '#a9a9a9', '#469990', '#000075', '#9A6324', '#aaffc3', '#fabed4']
+
     line_style = ['-', ':']
 
     plot_alphas(agents, alphas, colors, line_style, output_dir, show, group_vals=values)
