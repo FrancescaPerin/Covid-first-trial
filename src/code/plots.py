@@ -333,7 +333,7 @@ def plot_loss_GDP(experiments, colors, line_style, sub_dir=".", show=False, grou
 
             history = np.array([agents[agent_name].history[:, -1] for agents in group], dtype=np.float64)
 
-            history = -np.diff(history, n=1, axis=1)[:,1:]
+            history = np.diff(history, n=1, axis=1)[:,1:]
 
             history_mean = np.mean(
                     history, axis=0
